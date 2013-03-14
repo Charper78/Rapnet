@@ -1,0 +1,467 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes
+END
+RegisterDetailsViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Rapnet/!svn/ver/918/trunk/Rapnet/Rapnet/Classes/RegisterDetailsViewController.h
+END
+BusinessPickerList.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/955/trunk/Rapnet/Rapnet/Classes/BusinessPickerList.m
+END
+MoreViewC.xib
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Rapnet/!svn/ver/374/trunk/Rapnet/Rapnet/Classes/MoreViewC.xib
+END
+RegisterDetailsViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Rapnet/!svn/ver/945/trunk/Rapnet/Rapnet/Classes/RegisterDetailsViewController.m
+END
+WebLinkController.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/978/trunk/Rapnet/Rapnet/Classes/WebLinkController.h
+END
+WebLinkController.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/979/trunk/Rapnet/Rapnet/Classes/WebLinkController.m
+END
+WebServicesEngine.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/WebServicesEngine.h
+END
+LabelCustomAlignment.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/908/trunk/Rapnet/Rapnet/Classes/LabelCustomAlignment.h
+END
+RelatedViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Rapnet/!svn/ver/972/trunk/Rapnet/Rapnet/Classes/RelatedViewController.xib
+END
+NewsCustomTableCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/861/trunk/Rapnet/Rapnet/Classes/NewsCustomTableCell.xib
+END
+WebServicesEngine.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/949/trunk/Rapnet/Rapnet/Classes/WebServicesEngine.m
+END
+LabelCustomAlignment.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/909/trunk/Rapnet/Rapnet/Classes/LabelCustomAlignment.m
+END
+RegisterViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Rapnet/!svn/ver/968/trunk/Rapnet/Rapnet/Classes/RegisterViewController.xib
+END
+MoreViewDetailC.xib
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/614/trunk/Rapnet/Rapnet/Classes/MoreViewDetailC.xib
+END
+RelatedViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/970/trunk/Rapnet/Rapnet/Classes/RelatedViewController.h
+END
+ActivityAlertView.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/891/trunk/Rapnet/Rapnet/Classes/ActivityAlertView.h
+END
+MoreDetailCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Rapnet/!svn/ver/773/trunk/Rapnet/Rapnet/Classes/MoreDetailCell.xib
+END
+SignUpParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Rapnet/!svn/ver/451/trunk/Rapnet/Rapnet/Classes/SignUpParser.h
+END
+RegisterViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Rapnet/!svn/ver/967/trunk/Rapnet/Rapnet/Classes/RegisterViewController.h
+END
+MoreViewDetailC.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Rapnet/!svn/ver/651/trunk/Rapnet/Rapnet/Classes/MoreViewDetailC.h
+END
+ActivityAlertView.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/892/trunk/Rapnet/Rapnet/Classes/ActivityAlertView.m
+END
+RelatedViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/971/trunk/Rapnet/Rapnet/Classes/RelatedViewController.m
+END
+SignUpParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Rapnet/!svn/ver/974/trunk/Rapnet/Rapnet/Classes/SignUpParser.m
+END
+RegisterViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Rapnet/!svn/ver/922/trunk/Rapnet/Rapnet/Classes/RegisterViewController.m
+END
+MoreViewDetailC.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Rapnet/!svn/ver/960/trunk/Rapnet/Rapnet/Classes/MoreViewDetailC.m
+END
+UserInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/UserInfo.h
+END
+SplashScreen.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/SplashScreen.h
+END
+NewsDetailViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Rapnet/!svn/ver/961/trunk/Rapnet/Rapnet/Classes/NewsDetailViewController.h
+END
+InnerAlertView.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/904/trunk/Rapnet/Rapnet/Classes/InnerAlertView.h
+END
+UserInfo.m
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/UserInfo.m
+END
+SplashScreen.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Rapnet/!svn/ver/925/trunk/Rapnet/Rapnet/Classes/SplashScreen.m
+END
+WebSiteController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Rapnet/!svn/ver/836/trunk/Rapnet/Rapnet/Classes/WebSiteController.xib
+END
+LoginViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/958/trunk/Rapnet/Rapnet/Classes/LoginViewController.xib
+END
+InnerAlertView.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/905/trunk/Rapnet/Rapnet/Classes/InnerAlertView.m
+END
+NewsDetailViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Rapnet/!svn/ver/962/trunk/Rapnet/Rapnet/Classes/NewsDetailViewController.m
+END
+NewsViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/867/trunk/Rapnet/Rapnet/Classes/NewsViewController.xib
+END
+LoginViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Rapnet/!svn/ver/855/trunk/Rapnet/Rapnet/Classes/LoginViewController.h
+END
+NewsViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/964/trunk/Rapnet/Rapnet/Classes/NewsViewController.h
+END
+LoginViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Rapnet/!svn/ver/910/trunk/Rapnet/Rapnet/Classes/LoginViewController.m
+END
+FBLoginButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FBLoginButton.h
+END
+Constants.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Rapnet/!svn/ver/896/trunk/Rapnet/Rapnet/Classes/Constants.h
+END
+NewsViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/965/trunk/Rapnet/Rapnet/Classes/NewsViewController.m
+END
+FBLoginButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FBLoginButton.m
+END
+UserRequestResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/UserRequestResult.h
+END
+UserRequestResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/UserRequestResult.m
+END
+CountryListController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Rapnet/!svn/ver/898/trunk/Rapnet/Rapnet/Classes/CountryListController.xib
+END
+ForgotPasswordParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/468/trunk/Rapnet/Rapnet/Classes/ForgotPasswordParser.h
+END
+MoreViewC.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/MoreViewC.h
+END
+RelatedArticleParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/627/trunk/Rapnet/Rapnet/Classes/RelatedArticleParser.h
+END
+FriendsRequestResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FriendsRequestResult.h
+END
+FacebookViewC.xib
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FacebookViewC.xib
+END
+CountryListController.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/848/trunk/Rapnet/Rapnet/Classes/CountryListController.h
+END
+ForgotPasswordParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/495/trunk/Rapnet/Rapnet/Classes/ForgotPasswordParser.m
+END
+MoreTableCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Rapnet/!svn/ver/858/trunk/Rapnet/Rapnet/Classes/MoreTableCell.xib
+END
+MoreViewC.m
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Rapnet/!svn/ver/959/trunk/Rapnet/Rapnet/Classes/MoreViewC.m
+END
+RelatedArticleParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/969/trunk/Rapnet/Rapnet/Classes/RelatedArticleParser.m
+END
+NewsCustomCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/775/trunk/Rapnet/Rapnet/Classes/NewsCustomCell.h
+END
+FriendsRequestResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FriendsRequestResult.m
+END
+FacebookViewC.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FacebookViewC.h
+END
+CountryListController.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/956/trunk/Rapnet/Rapnet/Classes/CountryListController.m
+END
+FacebookViewC.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/Classes/FacebookViewC.m
+END
+NewsCustomCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/669/trunk/Rapnet/Rapnet/Classes/NewsCustomCell.m
+END
+SplashScreen.xib
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/487/trunk/Rapnet/Rapnet/Classes/SplashScreen.xib
+END
+InnerAlertView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Rapnet/!svn/ver/767/trunk/Rapnet/Rapnet/Classes/InnerAlertView.xib
+END
+NewsDetailViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Rapnet/!svn/ver/963/trunk/Rapnet/Rapnet/Classes/NewsDetailViewController.xib
+END
+CustomAlertViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Rapnet/!svn/ver/851/trunk/Rapnet/Rapnet/Classes/CustomAlertViewController.xib
+END
+CustomAlertViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Rapnet/!svn/ver/899/trunk/Rapnet/Rapnet/Classes/CustomAlertViewController.h
+END
+CustomAlertViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Rapnet/!svn/ver/900/trunk/Rapnet/Rapnet/Classes/CustomAlertViewController.m
+END
+WebSiteController.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/576/trunk/Rapnet/Rapnet/Classes/WebSiteController.h
+END
+WebSiteController.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/884/trunk/Rapnet/Rapnet/Classes/WebSiteController.m
+END
+BusinessPickerList.xib
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/895/trunk/Rapnet/Rapnet/Classes/BusinessPickerList.xib
+END
+GetAuthArticleParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/604/trunk/Rapnet/Rapnet/Classes/GetAuthArticleParser.h
+END
+ArticlesParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/953/trunk/Rapnet/Rapnet/Classes/ArticlesParser.h
+END
+RegisterDetailsViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Rapnet/!svn/ver/920/trunk/Rapnet/Rapnet/Classes/RegisterDetailsViewController.xib
+END
+BusinessPickerList.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/893/trunk/Rapnet/Rapnet/Classes/BusinessPickerList.h
+END
+GetAuthArticleParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Rapnet/!svn/ver/605/trunk/Rapnet/Rapnet/Classes/GetAuthArticleParser.m
+END
+ArticlesParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Rapnet/!svn/ver/954/trunk/Rapnet/Rapnet/Classes/ArticlesParser.m
+END

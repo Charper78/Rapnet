@@ -1,0 +1,88 @@
+//
+//  WebSiteController.m
+//  DailyExpenses
+//
+//  Created by shiva on 23/02/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import "WebSiteController.h"
+
+
+@implementation WebSiteController
+@synthesize objWebView,indicatorView, strUrl;//,chkUrl;
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad 
+{
+	objWebView.scalesPageToFit=YES;
+	indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 50, 20, 20)];
+	indicatorView.center = self.view.center;
+    indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self.view addSubview:indicatorView ];
+	
+    NSURL *url=[NSURL URLWithString:strUrl];
+    NSURLRequest *requestObj=[NSURLRequest requestWithURL:url];
+    [objWebView loadRequest:requestObj];
+    
+	/*if (chkUrl == YES) {
+		
+		NSString *urlAddress=@"http://www.diamonds.net/legal/PrivacyPolicy.aspx";
+		NSURL *url=[NSURL URLWithString:urlAddress];
+		NSURLRequest *requestObj=[NSURLRequest requestWithURL:url];
+		[objWebView loadRequest:requestObj];
+		
+	}
+	else if(chkUrl == NO)
+	{
+		NSString *urlAddress=@"http://www.diamonds.net/legal/TermsOfUse.aspx";
+		NSURL *url=[NSURL URLWithString:urlAddress];
+		NSURLRequest *requestObj=[NSURLRequest requestWithURL:url];
+		[objWebView loadRequest:requestObj];
+	}*/
+    [super viewDidLoad];
+}
+
+-(IBAction)backBtn
+{
+	//[[self navigationController] popViewControllerAnimated:YES];
+    [self.view removeFromSuperview];
+}
+
+/*- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}*/
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
+
+- (void)dealloc {
+	[objWebView release];
+	[indicatorView release];
+	
+    [super dealloc];
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView 
+{
+    [indicatorView stopAnimating];
+    [indicatorView removeFromSuperview];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView 
+{ 
+
+    [indicatorView startAnimating];
+}
+
+
+
+@end

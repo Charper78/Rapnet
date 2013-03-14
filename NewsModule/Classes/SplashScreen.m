@@ -1,0 +1,50 @@
+//
+//  SplashScreen.m
+//  Rapnet
+//
+//  Created by Sudeep Srivastava on 5/24/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import "SplashScreen.h"
+#import "NewsViewController.h"
+#import "AppDelegate.h"
+
+@implementation SplashScreen
+@synthesize act;
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	[act startAnimating];
+	//[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(loadFirstScreen) userInfo:nil repeats:NO];
+}
+
+-(void)loadFirstScreen
+{
+	[[AppDelegate getAppDelegate] showNewsScreen];
+}
+
+-(void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
+/*-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+ {
+   return (interfaceOrientation == UIInterfaceOrientationPortrait ||interfaceOrientation==UIInterfaceOrientationPortraitUpsideDown);
+ }*/
+
+-(void)dealloc
+{
+	[act release];
+    [super dealloc];
+}
+
+
+@end

@@ -1,0 +1,484 @@
+//
+//  LoginViewController.m
+//  Rapnet
+//
+//  Created by Richa on 6/6/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+
+#import "LoginViewController.h"
+#import "RegisterViewController.h"
+#import "WebSiteController.h"
+#import "funcClass.h"
+
+@implementation LoginViewController
+@synthesize strSucceed;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	isKeyBoardDown = YES;
+	if(![StoredData sharedData].isUserAuthenticated){
+		logOutBttn.hidden =YES;
+		logInBttn.hidden=NO;
+	}
+	
+	else if([StoredData sharedData].isUserAuthenticated){
+		logOutBttn.hidden =NO;
+		logInBttn.hidden=YES;
+	}
+		
+	loginScroll.contentSize = CGSizeMake(0,490);
+	[loginScroll setShowsHorizontalScrollIndicator:NO];
+	[loginScroll setShowsVerticalScrollIndicator:NO];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	objUserName.text = [prefs stringForKey:@"UserName"];
+	objPassword.text = [prefs stringForKey:@"Password"]; 
+	if (objUserName.text.length > 0) 
+	{
+		btnRememPwd.selected = YES;
+		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
+		[btnRememPwd setImage:btnImage forState:UIControlStateNormal];
+	}
+}
+
+- (NSString*)validateTextFields
+{
+	if ([objUserName.text isEqualToString:@"(null)"] || objUserName.text == nil || [objUserName.text isEqualToString:@""] ) 
+	{
+		return @"Enter the user name";
+	}
+	else if([objPassword.text isEqualToString:@"(null)"] || objPassword.text == nil || [objPassword.text isEqualToString:@""] ) 
+	{
+		return @"Enter the password";
+	}
+	return nil;
+}
+
+
+-(IBAction)loginBtn:(id)sender
+{
+	NSString *message = [[NSString alloc]init ];
+	message = [self validateTextFields];
+	if (message == nil)
+	{
+		UIButton*  aBtn = (UIButton*)[self.view viewWithTag:55];
+		if (aBtn.selected)
+		{
+			NSUserDefaults *SaveData = [NSUserDefaults standardUserDefaults];
+			[SaveData setObject:objUserName.text forKey:@"UserName"];
+			[SaveData setObject:objPassword.text forKey:@"Password"];
+			[SaveData synchronize];
+		}
+		loginParser=[[LoginParser alloc]init];
+		loginParser.delegate = self;
+		[loginParser authenticateWithUserName:objUserName.text password:objPassword.text];
+		
+	}
+	else
+	{
+		UIAlertView* warnMsg = [[UIAlertView alloc]initWithTitle:message message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[warnMsg show];
+		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+		CGSize theSize = [warnMsg frame].size;
+		
+		UIGraphicsBeginImageContext(theSize);    
+		[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+		theImage = UIGraphicsGetImageFromCurrentImageContext();    
+		UIGraphicsEndImageContext();
+		for (UIView *sub in [warnMsg subviews])
+		{
+			if ([sub class] == [UIImageView class] && sub.tag == 0) {
+				[sub removeFromSuperview];
+				break;
+			}
+		}
+		[[warnMsg layer] setContents:(id)theImage.CGImage];
+		
+		
+		[warnMsg release];
+	}
+	
+	[message release];
+}
+
+
+-(void)webserviceCallFinished
+{	
+	arrLogin = [loginParser getResults];
+	if(arrLogin.count>0)
+	{
+		[StoredData sharedData].isUserAuthenticated=TRUE;
+		[StoredData sharedData].strTicket=[NSString stringWithFormat:@"%@",[[arrLogin objectAtIndex:0]objectForKey:@"Ticket"]];
+		
+		alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogin Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		[alert show];
+		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+		CGSize theSize = [alert frame].size;
+		
+		UIGraphicsBeginImageContext(theSize);    
+		[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+		theImage = UIGraphicsGetImageFromCurrentImageContext();    
+		UIGraphicsEndImageContext();
+		for (UIView *sub in [alert subviews])
+		{
+			if ([sub class] == [UIImageView class] && sub.tag == 0) {
+				[sub removeFromSuperview];
+				break;
+			}
+		}
+		[[alert layer] setContents:(id)theImage.CGImage];
+		
+		[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+		
+		logOutBttn.hidden =NO;
+		logInBttn.hidden=YES;
+		
+	}
+	else {
+		alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour login attempt was not successful." message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		[alert show];
+		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+		CGSize theSize = [alert frame].size;
+		
+		UIGraphicsBeginImageContext(theSize);    
+		[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+		theImage = UIGraphicsGetImageFromCurrentImageContext();    
+		UIGraphicsEndImageContext();
+		for (UIView *sub in [alert subviews])
+		{
+			if ([sub class] == [UIImageView class] && sub.tag == 0) {
+				[sub removeFromSuperview];
+				break;
+			}
+		}
+		[[alert layer] setContents:(id)theImage.CGImage];
+		
+		[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(aTimer:)userInfo:nil repeats:NO];
+	}
+	
+	
+}
+
+-(void)serviceCallFinished
+{	
+	arrForgotService = [objForgot getResults];
+	if(arrForgotService.count>0)
+	{
+		self.strSucceed=[NSString stringWithFormat:@"%@",[[arrForgotService objectAtIndex:0]objectForKey:@"Succeed"]];
+	}
+	
+	if([self.strSucceed isEqual:@"true"])
+	{
+		alert = [[UIAlertView alloc] initWithTitle:@"\n\nYou will receive an email shortly with your password." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		[alert show];
+		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+		CGSize theSize = [alert frame].size;
+		
+		UIGraphicsBeginImageContext(theSize);    
+		[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+		theImage = UIGraphicsGetImageFromCurrentImageContext();    
+		UIGraphicsEndImageContext();
+		for (UIView *sub in [alert subviews])
+		{
+			if ([sub class] == [UIImageView class] && sub.tag == 0) {
+				[sub removeFromSuperview];
+				break;
+			}
+		}
+		[[alert layer] setContents:(id)theImage.CGImage];
+		
+		[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+	}
+	else {
+		alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour email id is invaild" message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		[alert show];
+		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+		CGSize theSize = [alert frame].size;
+		
+		UIGraphicsBeginImageContext(theSize);    
+		[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+		theImage = UIGraphicsGetImageFromCurrentImageContext();    
+		UIGraphicsEndImageContext();
+		for (UIView *sub in [alert subviews])
+		{
+			if ([sub class] == [UIImageView class] && sub.tag == 0) {
+				[sub removeFromSuperview];
+				break;
+			}
+		}
+		[[alert layer] setContents:(id)theImage.CGImage];
+		
+		[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(aTimer:)userInfo:nil repeats:NO];
+	}
+}
+
+
+#pragma mark timer
+- (void)theTimer:(NSTimer*)timer 
+{ 
+	[alert dismissWithClickedButtonIndex:0 animated:YES];
+	[[self navigationController] popViewControllerAnimated:YES];
+	[theTimer invalidate];
+	[theTimer release];
+	btnForgotPwd.enabled=YES;
+}
+
+
+- (void)aTimer:(NSTimer*)timer 
+{ 
+	[alert dismissWithClickedButtonIndex:0 animated:YES];
+	[aTimer invalidate];
+	[aTimer release];
+	btnForgotPwd.enabled=YES;
+}
+
+-(IBAction)logOutBttn:(id)sender
+{
+	logOutBttn.hidden =YES;
+	logInBttn.hidden=NO;
+	
+	[StoredData sharedData].isUserAuthenticated=FALSE;
+    alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogout Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+	[alert show];
+	UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+	theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+	CGSize theSize = [alert frame].size;
+	
+	UIGraphicsBeginImageContext(theSize);    
+	[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+	theImage = UIGraphicsGetImageFromCurrentImageContext();    
+	UIGraphicsEndImageContext();
+	for (UIView *sub in [alert subviews])
+	{
+		if ([sub class] == [UIImageView class] && sub.tag == 0) {
+			[sub removeFromSuperview];
+			break;
+		}
+	}
+	[[alert layer] setContents:(id)theImage.CGImage];
+	
+	[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+}
+
+-(IBAction)sendBtn
+{
+	btnForgotPwd.enabled=NO;
+	objForgot=[[ForgotPasswordParser alloc]init];
+	objForgot.delegate = self;
+	[objForgot GetForgotPassword:objForgotPw.text];
+}
+-(IBAction)signupBtn
+{
+	RegisterViewController *signUp =[[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
+	[[self navigationController] pushViewController:signUp animated:YES];
+	[signUp release];
+	signUp=nil;
+	
+}
+
+-(IBAction)chkBtn:(id)sender
+{
+	UIButton *aBtn = (UIButton *)sender;
+	aBtn.tag=55;
+	BOOL isSel = aBtn.selected;
+	if (isSel == YES)
+	{ 
+		aBtn.selected = NO;
+		UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
+		[aBtn setImage:btnImage forState:UIControlStateNormal];
+		
+	}
+	else 
+	{
+		aBtn.selected = YES;
+		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
+		[aBtn setImage:btnImage forState:UIControlStateNormal];
+
+	}
+
+}
+
+
+-(IBAction)newsToggleBtn:(id)sender
+{
+	UIButton *toggle = (UIButton *)sender;
+	BOOL isSelected = [toggle isSelected];
+	toggle.selected = !isSelected;
+	if( isSelected == TRUE)
+	{
+		UIImage *btnImage = [UIImage imageNamed:@"on.png"];
+		[toggle setImage:btnImage forState:UIControlStateNormal];
+	}
+	else {
+		UIImage *btnImage = [UIImage imageNamed:@"off.png"];
+		[toggle setImage:btnImage forState:UIControlStateNormal];
+		
+	}
+}
+
+
+-(IBAction)priceToggleBtn:(id)sender
+{
+	UIButton *toggle = (UIButton *)sender;
+	BOOL isSelected = [toggle isSelected];
+	toggle.selected = !isSelected;
+	if( isSelected == TRUE)
+	{
+		UIImage *btnImage = [UIImage imageNamed:@"off.png"];
+		[toggle setImage:btnImage forState:UIControlStateNormal];
+	}
+	else {
+		UIImage *btnImage = [UIImage imageNamed:@"on.png"];
+		[toggle setImage:btnImage forState:UIControlStateNormal];
+	}
+	
+}
+-(IBAction)resetBtn
+{
+	objUserName.text = nil;
+	objPassword.text = nil;
+	objForgotPw.text = nil;
+	[StoredData sharedData].isUserAuthenticated=FALSE;
+	
+	[priceSwitch setOn:NO];
+	[newsSwitch setOn:NO];
+	
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserName"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Password"];
+	
+	btnRememPwd.selected = NO;
+	UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
+	[btnRememPwd setImage:btnImage forState:UIControlStateNormal];
+	
+	[funcClass showAlertView:@"Your settings have been reset" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	
+}
+
+-(IBAction)cancelBtn
+{
+	[[self navigationController] popViewControllerAnimated:YES];
+}
+
+
+#pragma mark textField delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	loginScroll.frame = CGRectMake(0,35,320,435);
+	
+	
+	if(textField.tag == 1)
+	{
+		loginScroll.contentSize = CGSizeMake(0,490);
+		[self setViewMovedUp:NO coordinateY:0];
+		
+	}
+	return YES;
+}
+
+
+#pragma mark textFieldDidBeginEditing
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+	
+	if(textField.tag == 1)
+	{
+		if(isKeyBoardDown)
+		{
+			loginScroll.contentSize = CGSizeMake(0,700);
+			[self setViewMovedUp:YES coordinateY:100];
+		}
+	}
+}
+
+#pragma mark setViewMovedUp
+-(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY
+{
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.5]; // if you want to slide up the view
+	
+	CGRect rect = loginScroll.frame;
+	
+	if(movedUp)
+	{
+		isKeyBoardDown = NO;
+		
+		rect.origin.y -= coordinateY;
+		rect.size.height += coordinateY;
+	}
+	
+	else
+	{
+		isKeyBoardDown = YES;
+		rect.origin.y += coordinateY;
+		rect.size.height -= coordinateY;
+	}
+	
+	loginScroll.frame = rect;
+	
+	[UIView commitAnimations];
+}
+
+#pragma mark keyboardDidHide
+-(void) keyboardDidHide:(NSNotification *) notification 
+{
+	
+	loginScroll.frame = CGRectMake(0,35,320,435);	
+	if(!isKeyBoardDown)
+	{
+		isKeyBoardDown = YES;
+	}
+}
+
+-(IBAction)privacyPolicyLink
+{
+	WebSiteController *website=[[WebSiteController alloc]initWithNibName:@"WebSiteController" bundle:nil];
+	website.chkUrl = YES;
+	[[self navigationController] pushViewController:website animated:YES];
+	
+	[website release];
+	website = nil;
+}
+-(IBAction)termsOfUseLink
+{
+	WebSiteController *website=[[WebSiteController alloc]initWithNibName:@"WebSiteController" bundle:nil];
+	website.chkUrl = NO;
+	[[self navigationController] pushViewController:website animated:YES];
+	
+	[website release];
+	website = nil;
+}
+
+/*-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||interfaceOrientation==UIInterfaceOrientationPortraitUpsideDown);
+}*/
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+	
+}
+
+- (void)dealloc {
+	[strSucceed release];
+	[arrLogin release];
+	[alert release];
+    [super dealloc];
+}
+
+
+@end

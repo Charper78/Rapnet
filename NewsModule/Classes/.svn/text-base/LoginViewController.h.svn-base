@@ -1,0 +1,52 @@
+//
+//  LoginViewController.h
+//  Rapnet
+//
+//  Created by Richa on 6/6/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "LoginParser.h"
+#import "ForgotPasswordParser.h"
+
+@interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate> {
+
+	IBOutlet UIScrollView *loginScroll;
+	IBOutlet UIButton *btnRememPwd;
+	IBOutlet UIButton *btnForgotPwd;
+	IBOutlet UIButton *logOutBttn;
+	IBOutlet UIButton *logInBttn;
+	
+	IBOutlet UITextField *objUserName;
+	IBOutlet UITextField *objPassword;
+	IBOutlet UITextField *objForgotPw;
+	IBOutlet UISwitch *priceSwitch;
+	IBOutlet UISwitch *newsSwitch;
+	
+	NSMutableArray *arrLogin;
+	NSMutableArray *arrForgotService;
+	LoginParser *loginParser;
+	ForgotPasswordParser *objForgot;
+	NSString *strSucceed;
+	NSTimer *theTimer;
+	NSTimer *aTimer;
+	UIAlertView *alert;
+    BOOL isKeyBoardDown;
+}
+
+@property(nonatomic,retain)NSString *strSucceed;;
+-(IBAction)chkBtn:(id)sender;
+-(IBAction)newsToggleBtn:(id)sender;
+-(IBAction)priceToggleBtn:(id)sender;
+-(IBAction)logOutBttn:(id)sender;
+-(IBAction)sendBtn;
+-(IBAction)signupBtn;
+-(IBAction)loginBtn:(id)sender;
+-(IBAction)resetBtn;
+-(IBAction)cancelBtn;
+-(IBAction)privacyPolicyLink;
+-(IBAction)termsOfUseLink;
+-(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY;
+
+@end

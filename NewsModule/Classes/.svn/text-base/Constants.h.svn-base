@@ -1,0 +1,10 @@
+
+
+#define BaseUrl @"http://app13.rapaport.com"
+#define SoftwareCode @"Drf@eGyh463@dMVsqOp$sd"
+#define NewsUserName @"75416"
+#define NewsPassword @"RBone123"
+
+#define SoapEnvelope @"<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+
+#define	ReleaseObject(obj) if (obj != nil) { [obj release]; obj = nil; }

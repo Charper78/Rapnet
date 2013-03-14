@@ -1,0 +1,80 @@
+//
+//  StoredData.h
+//  Rapnet
+//
+//  Created by NEHA SINGH on 17/05/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface StoredData : NSObject
+{
+	NSMutableString *strTicket;
+	NSMutableString *topicName;
+	NSMutableString *countryID;
+	NSMutableString *countryPhoneCode;
+	NSMutableString *relatedArticleID;
+	NSMutableArray *arrSavedArticle;
+	NSMutableArray *arrDuplicateChk;
+	NSMutableArray *arrReadArticle;
+	
+	NSString *strBusinessName;
+	NSString *strName;
+	NSString *strCountryName;
+	NSString *strWebURL;
+	
+	BOOL isVideo;
+	BOOL isSaved;
+	BOOL isMore;
+	BOOL isNews;
+	BOOL isViewed;
+	BOOL isSearch;
+	BOOL isEditor;
+	BOOL isRelatedVideo;
+	BOOL isRelatedArticle;
+	BOOL isUserAuthenticated;
+	
+	BOOL Analysis;
+	BOOL Features;
+	BOOL TradeAlerts;
+	BOOL Statistics;
+	BOOL PressRelease;
+}
+
++ (StoredData*) sharedData;
+
+@property (nonatomic,retain) NSMutableString *strTicket;
+@property (nonatomic,retain) NSMutableString *topicName;
+@property (nonatomic,retain) NSMutableString *countryID;
+@property (nonatomic,retain) NSMutableString *countryPhoneCode;
+@property (nonatomic,retain) NSMutableString *relatedArticleID;
+@property (nonatomic,retain) NSString *strBusinessName;
+@property (nonatomic,retain) NSString *strName;
+@property (nonatomic,retain) NSString *strCountryName;
+@property (nonatomic,retain) NSString *strWebURL;
+@property (nonatomic,retain) NSMutableArray *arrSavedArticle;
+@property (nonatomic,retain) NSMutableArray *arrDuplicateChk;
+@property (nonatomic,retain) NSMutableArray *arrReadArticle;
+
+@property (nonatomic)BOOL isVideo;
+@property (nonatomic)BOOL isSaved;
+@property (nonatomic)BOOL isMore;
+@property (nonatomic)BOOL isNews;
+@property (nonatomic)BOOL isViewed;
+@property (nonatomic)BOOL isSearch;
+@property (nonatomic)BOOL isEditor;
+
+@property (nonatomic)BOOL Analysis;
+@property (nonatomic)BOOL Features;
+@property (nonatomic)BOOL TradeAlerts;
+@property (nonatomic)BOOL Statistics;
+@property (nonatomic)BOOL PressRelease;
+
+@property (nonatomic)BOOL isRelatedVideo;
+@property (nonatomic)BOOL isRelatedArticle;
+@property (nonatomic)BOOL isUserAuthenticated;
+
+
+
+@end

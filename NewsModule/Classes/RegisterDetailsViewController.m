@@ -1,0 +1,344 @@
+//
+//  RegisterDetailsViewController.m
+//  Rapnet
+//
+//  Created by Richa on 6/6/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import "RegisterDetailsViewController.h"
+#import "BusinessPickerList.h"
+#import "StoredData.h"
+#import "funcClass.h"
+
+
+@implementation RegisterDetailsViewController
+@synthesize txtTitle,txtFName,txtLName,txtEmail,txtPass,txtCnfrmPass,txtbusinsType,txtCmpny,strResult;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	isKeyBoardDown = YES;
+	[StoredData sharedData].strName=nil;
+	registerScroll.contentSize = CGSizeMake(0,580);
+	[registerScroll setShowsHorizontalScrollIndicator:NO];
+	[registerScroll setShowsVerticalScrollIndicator:NO];
+}
+
+-(void)webServiceStart
+{
+	//NSLog(@"strBusinessName%@",[StoredData sharedData].strBusinessName);
+	objSignUp=[[SignUpParser alloc]init];
+	objSignUp.delegate = self;
+	[appDelegate showActivityIndicator:self];
+    [objSignUp signUpService:@"TRADEWIRE" language:@"ENGLISH" business:[StoredData sharedData].strBusinessName firstName:txtFName.text password:txtPass.text phoneArea:[StoredData sharedData].countryPhoneCode phoneNo:txtbusinsType.text company:txtCmpny.text lastName:txtLName.text email:txtEmail.text countryID:[[StoredData sharedData].countryID intValue]];
+	
+}
+
+-(void)webserviceCallFinished
+{
+	arrSignUpResult = [objSignUp getResults];
+	[appDelegate stopActivityIndicator:self];
+	
+	if(arrSignUpResult.count>0)
+	{
+	    self.strResult=[NSString stringWithFormat:@"\n\n%@",[[arrSignUpResult objectAtIndex:0]objectForKey:@"AddTradeWireRegistrationResult"]];
+					
+		    alert = [[UIAlertView alloc] initWithTitle:self.strResult message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		    [alert show];
+			UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
+			theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+			CGSize theSize = [alert frame].size;
+			
+			UIGraphicsBeginImageContext(theSize);    
+			[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
+			theImage = UIGraphicsGetImageFromCurrentImageContext();    
+			UIGraphicsEndImageContext();
+			for (UIView *sub in [alert subviews])
+			{
+				if ([sub class] == [UIImageView class] && sub.tag == 0)
+				{
+					[sub removeFromSuperview];
+					break;
+				}
+			}
+			[[alert layer] setContents:(id)theImage.CGImage];
+			[NSTimer scheduledTimerWithTimeInterval:5.0f target: self selector:@selector(aTimer:)userInfo:nil repeats:NO];
+	}
+}
+
+
+- (void)aTimer:(NSTimer*)timer 
+{ 
+	[alert dismissWithClickedButtonIndex:0 animated:YES];
+	[aTimer invalidate];
+	[aTimer release];
+}
+
+
+-(IBAction)cancelBtn
+{
+	[[self navigationController] popViewControllerAnimated:YES];
+}
+
+
+-(IBAction)registerBtn
+{
+	if([self Validate])
+	{
+		[self webServiceStart];
+	}
+}
+
+-(IBAction)businessList
+{
+	BusinessPickerList *objBsnList =[[BusinessPickerList alloc]initWithNibName:@"BusinessPickerList" bundle:nil];
+	[[self navigationController] pushViewController:objBsnList animated:YES];
+	[objBsnList release];
+	objBsnList=nil;
+}
+
+
+#pragma mark alertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	
+	
+}
+
+
+//For Data Validation
+
+-(BOOL)Validate
+{
+	if([self validateEmptyFields] && [self validateEmail])
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}    	
+}
+
+-(BOOL)validateEmail
+{
+	NSString  *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"; 
+	NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex]; 
+	
+	if ([emailTest evaluateWithObject:txtEmail.text]) 
+	{
+		return TRUE;
+	}    
+	else 
+	{
+		[funcClass showAlertView:@"Invalid Email ID" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+}
+
+
+/*-(BOOL) validateContactFields
+{
+	if([txtbusinsType.text length] > 10 ) 
+    {
+		[funcClass showAlertView:@"Contact Number Exceeding Maximum Digit Limit" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        return FALSE;
+    }
+	
+    else 
+    {
+        return TRUE;
+    }	
+}*/
+
+
+-(BOOL) validateEmptyFields
+{
+	txtBusiness.text=[StoredData sharedData].strName;
+	
+	if([txtFName.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else if([txtLName.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else if([txtEmail.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else if([txtPass.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else if([txtCnfrmPass.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else if([txtbusinsType.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else if([txtBusiness.text length] < 1) 
+	{
+		[funcClass showAlertView:@"Empty Fields" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		return FALSE;
+	}
+	else 
+	{
+		return TRUE;
+	}
+	
+}
+
+#pragma mark textField delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	[registerScroll setContentOffset:CGPointMake(0, 0) animated:NO];
+	registerScroll.frame = CGRectMake(0,35,320,480);
+	registerScroll.contentSize = CGSizeMake(0,580);
+	
+	if(textField.tag == 2)
+	{
+		[self setViewMovedUp:NO coordinateY:0];
+	}
+	if(textField.tag == 3)
+	{
+		[self setViewMovedUp:NO coordinateY:0];
+	}
+	if(textField.tag == 4)
+	{
+		[self setViewMovedUp:NO coordinateY:0];
+	}
+	if(textField.tag == 5)
+	{
+		[self setViewMovedUp:NO coordinateY:0];
+	}
+	
+	
+	return YES;
+}
+
+
+#pragma mark textFieldDidBeginEditing
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+	registerScroll.contentSize = CGSizeMake(0,700);
+	if(textField.tag == 2)
+	{
+		if(isKeyBoardDown)
+		{
+			[self setViewMovedUp:YES coordinateY:65];
+		}
+	}
+	if(textField.tag == 3)
+	{
+		if(isKeyBoardDown)
+		{
+			[self setViewMovedUp:YES coordinateY:130];
+		}
+	}
+	if(textField.tag == 4)
+	{
+		if(isKeyBoardDown)
+		{
+			[self setViewMovedUp:YES coordinateY:270];
+		}
+	}
+	
+	if(textField.tag == 5)
+	{
+		if(isKeyBoardDown)
+		{
+			[self setViewMovedUp:YES coordinateY:210];
+		}
+	}
+	
+	
+}
+
+#pragma mark setViewMovedUp
+-(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY
+{
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.5];
+	
+	CGRect rect = registerScroll.frame;
+	
+	if(movedUp)
+	{
+		isKeyBoardDown = NO;
+		
+		rect.origin.y -= coordinateY;
+		rect.size.height += coordinateY;
+	}
+	
+	else
+	{
+		isKeyBoardDown = YES;
+		rect.origin.y += coordinateY;
+		rect.size.height -= coordinateY;
+	}
+	
+	registerScroll.frame = rect;
+	[UIView commitAnimations];
+}
+
+#pragma mark keyboardDidHide
+-(void) keyboardDidHide:(NSNotification *) notification 
+{
+	registerScroll.frame = CGRectMake(0,35,320,480);	
+	if(!isKeyBoardDown)
+	{
+		isKeyBoardDown = YES;
+	}
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+	
+	txtBusiness.text=[StoredData sharedData].strName;
+	
+}
+
+
+/*-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||interfaceOrientation==UIInterfaceOrientationPortraitUpsideDown);
+}*/
+
+
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+
+}
+
+
+- (void)dealloc {
+	[txtTitle release];
+	[txtFName release];
+	[txtLName release];
+	[txtEmail release];
+	[txtPass release];
+	[txtCnfrmPass release];
+	[txtbusinsType release];
+	[txtCmpny release];
+	[strResult release];
+	[alert release];
+    [super dealloc];
+}
+
+
+@end

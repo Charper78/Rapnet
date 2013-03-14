@@ -1,0 +1,31 @@
+//
+//  CustomAlertViewCOntroller.h
+//  Rapnet
+//
+//  Created by Richa on 6/8/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "RapnetAppDelegate.h"
+
+
+@interface CustomAlertViewController : UIViewController
+{
+	IBOutlet UILabel *msgLbl;
+	IBOutlet UIButton *logInBtn;
+	IBOutlet UIButton *joinNowBtn;
+	IBOutlet UIButton *okBtn;
+	RapnetAppDelegate *appDelegate;
+}
+
+@property(nonatomic,retain)UILabel *msgLbl;
+@property(nonatomic,retain)IBOutlet UIButton *logInBtn;
+@property(nonatomic,retain)IBOutlet UIButton *joinNowBtn;
+@property(nonatomic,retain)IBOutlet UIButton *okBtn;
+
+-(IBAction)joinNowBtn:(id)sender;
+-(IBAction)logInBtn:(id)sender;
+-(IBAction)okBtn:(id)sender;
+
+@end

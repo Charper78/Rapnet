@@ -1,0 +1,145 @@
+//
+//  Database.m
+//  Rapnet
+//
+//  Created by NEHA SINGH on 20/05/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import "Database.h"
+#import "StoredData.h"
+#import "ObjSavedArticles.h"
+
+@implementation Database
+static sqlite3 *database = nil;
+
+
++(void)insertArticles:(NSString*)dbPath articleID:(NSString*)articleID thumbID:(NSString*)thumbID title:(NSString*)title subTitle:(NSString*)subTitle articleTxt:(NSString*)articleTxt author:(NSString*)author date:(NSString*)date articleTyp:(NSString*)articleTyp imageURL:(NSString*)imageURL videoURL:(NSString*)videoURL articleURL:(NSString*)articleURL;
+{
+	sqlite3_stmt *addStmt = nil;
+	if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
+	{
+		NSString *myQuery = [NSString stringWithFormat:@"Insert Into savedArticle(\"article_ID\",\"thumb_ID\",\"title\",\"subTitle\",\"articleTxt\",\"author\",\"date\",\"articleTyp\",\"imageURL\",\"videoURL\",\"articleURL\") Values(?,?,?,?,?,?,?,?,?,?,?)"];
+		const char *sql = [myQuery UTF8String];
+		
+		if(sqlite3_prepare_v2(database, sql, -1, &addStmt, NULL) == SQLITE_OK)
+		{
+			sqlite3_bind_text(addStmt, 1, [articleID UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 2, [thumbID UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 3, [title UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 4, [subTitle UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 5, [articleTxt UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 6, [author UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 7, [date UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 8, [articleTyp UTF8String], -1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 9, [imageURL UTF8String],-1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 10,[videoURL UTF8String],-1, SQLITE_TRANSIENT);
+			sqlite3_bind_text(addStmt, 11,[articleURL UTF8String],-1, SQLITE_TRANSIENT);
+		}
+		
+		if(SQLITE_DONE != sqlite3_step(addStmt))
+			NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database));
+	}
+	else
+		sqlite3_close(database);
+	if(addStmt) sqlite3_finalize(addStmt);
+	if (database) sqlite3_close(database);
+}
+
+
++(void)fetchArticles:(NSString*)dbPath
+{
+	if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK) {
+		
+		const char *sql = "select * from savedArticle";
+		sqlite3_stmt *selectstmt;
+		
+		if(sqlite3_prepare_v2(database, sql, -1, &selectstmt, NULL) == SQLITE_OK) 
+		{
+			while(sqlite3_step(selectstmt) <= SQLITE_ROW) 
+			{
+				ObjSavedArticles* myArticles = [[ObjSavedArticles alloc] init];
+				myArticles.articleID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt,1)];
+				myArticles.thumbID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt,2)];
+				myArticles.title = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt,3)];
+				myArticles.subTitle = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 4)];
+				myArticles.articleTxt = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 5)];
+				myArticles.author = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 6)];
+				myArticles.date = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 7)];
+				myArticles.articleType = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 8)];
+				myArticles.imageURL = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 9)];
+				myArticles.videoURL = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 10)];
+				myArticles.articleURL = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 11)];
+				[[StoredData sharedData].arrSavedArticle addObject:myArticles];
+				//[myArticles release];
+			}
+		}
+	}
+	else
+		sqlite3_close(database);
+}
+
+
+
+
++(void)checkDuplicateArticle:(NSString*)dbPath arg2:(NSString*)ID
+{
+	
+	if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK) {
+		
+		NSString* query = [NSString stringWithFormat:@"SELECT id FROM savedArticle Where article_ID='%@'",ID];
+		const char *sql = [query UTF8String];
+		sqlite3_stmt *selectstmt;
+		
+		if(sqlite3_prepare_v2(database, sql, -1, &selectstmt, NULL) == SQLITE_OK) 
+		{
+			while(sqlite3_step(selectstmt) <= SQLITE_ROW) 
+			{
+				[[StoredData sharedData].arrDuplicateChk addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt,0)]];
+			}
+		}
+	}
+	else
+		sqlite3_close(database);
+}
+
+
+
++(void)deleteArticle:(NSString*)dbPath arg2:(NSInteger)articleID
+{
+		sqlite3_stmt *deleteStmt = nil;
+		if (sqlite3_open([dbPath UTF8String], &database) == SQLITE_OK)
+		{
+			NSString *myQuery = [NSString stringWithFormat:@"DELETE FROM savedArticle Where article_ID=?"];		
+			const char *sql = [myQuery UTF8String];
+
+			if(sqlite3_prepare_v2(database, sql, -1, &deleteStmt, NULL) == SQLITE_OK)
+			{
+				sqlite3_bind_int(deleteStmt, 1, articleID);
+			}
+			if(SQLITE_DONE != sqlite3_step(deleteStmt))
+				NSAssert1(0, @"Error while updating. '%s'", sqlite3_errmsg(database));
+		}
+		else
+		{
+			sqlite3_close(database);
+		}	
+		if(deleteStmt) sqlite3_finalize(deleteStmt);
+}
+
+
++(NSString *)getDBPath
+{
+	NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
+	NSString *documentsDir = [paths1 objectAtIndex:0];
+	return [documentsDir stringByAppendingPathComponent:@"RapnetDB.sqlite"];	
+}
+
+
+- (void)finalizeStatements
+{
+	if (database) sqlite3_close(database);
+}
+
+@end
+

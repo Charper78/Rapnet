@@ -1,0 +1,21 @@
+//
+//  Database.h
+//  Rapnet
+//  Created by NEHA SINGH on 20/05/11.
+//  Copyright 2011 TechAhead. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <sqlite3.h>
+
+@interface Database : NSObject {
+
+}
+
++(NSString *)getDBPath;
++(void)insertArticles:(NSString*)dbPath articleID:(NSString*)articleID thumbID:(NSString*)thumbID title:(NSString*)title subTitle:(NSString*)subTitle articleTxt:(NSString*)articleTxt author:(NSString*)author date:(NSString*)date articleTyp:(NSString*)articleTyp imageURL:(NSString*)imageURL videoURL:(NSString*)videoURL articleURL:(NSString*)articleURL;
++(void)fetchArticles:(NSString*)dbPath;
++(void)checkDuplicateArticle:(NSString*)dbPath arg2:(NSString*)ID;
++(void)deleteArticle:(NSString*)dbPath arg2:(NSInteger)articleID;
+
+@end

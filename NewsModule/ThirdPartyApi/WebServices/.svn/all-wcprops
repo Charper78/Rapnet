@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ThirdPartyApi/WebServices
+END
+ATWebServiceAPI.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ThirdPartyApi/WebServices/ATWebServiceAPI.h
+END
+ATNWebServiceContents.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ThirdPartyApi/WebServices/ATNWebServiceContents.h
+END
+ATWebServiceAPI.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Rapnet/!svn/ver/491/trunk/Rapnet/Rapnet/ThirdPartyApi/WebServices/ATWebServiceAPI.m
+END
+ATNWebServiceContents.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ThirdPartyApi/WebServices/ATNWebServiceContents.m
+END

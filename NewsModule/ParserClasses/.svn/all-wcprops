@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ParserClasses
+END
+LoginParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/500/trunk/Rapnet/Rapnet/ParserClasses/LoginParser.m
+END
+GetCountriesParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Rapnet/!svn/ver/957/trunk/Rapnet/Rapnet/ParserClasses/GetCountriesParser.m
+END
+NewsTopicParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/510/trunk/Rapnet/Rapnet/ParserClasses/NewsTopicParser.m
+END
+GetArticleParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Rapnet/!svn/ver/682/trunk/Rapnet/Rapnet/ParserClasses/GetArticleParser.h
+END
+GetEditorParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/606/trunk/Rapnet/Rapnet/ParserClasses/GetEditorParser.h
+END
+MostViewedParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Rapnet/!svn/ver/615/trunk/Rapnet/Rapnet/ParserClasses/MostViewedParser.h
+END
+GetArticleParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Rapnet/!svn/ver/852/trunk/Rapnet/Rapnet/ParserClasses/GetArticleParser.m
+END
+VideosParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/633/trunk/Rapnet/Rapnet/ParserClasses/VideosParser.h
+END
+GetEditorParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/607/trunk/Rapnet/Rapnet/ParserClasses/GetEditorParser.m
+END
+MostViewedParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Rapnet/!svn/ver/616/trunk/Rapnet/Rapnet/ParserClasses/MostViewedParser.m
+END
+VideosParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/977/trunk/Rapnet/Rapnet/ParserClasses/VideosParser.m
+END
+SearchParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/631/trunk/Rapnet/Rapnet/ParserClasses/SearchParser.h
+END
+LoginParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ParserClasses/LoginParser.h
+END
+SearchParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Rapnet/!svn/ver/973/trunk/Rapnet/Rapnet/ParserClasses/SearchParser.m
+END
+NewsTopicParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ParserClasses/NewsTopicParser.h
+END
+GetCountriesParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Rapnet/!svn/ver/355/trunk/Rapnet/Rapnet/ParserClasses/GetCountriesParser.h
+END
