@@ -78,6 +78,25 @@
 	}
     
     
+    NSInteger badgeCount =  [UIApplication sharedApplication].applicationIconBadgeNumber;
+    badgeCount = 20;
+    CustomBadge *badge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeCount]
+                                                   withStringColor:[UIColor whiteColor]
+                                                    withInsetColor:[UIColor redColor]
+                                                    withBadgeFrame:YES
+											   withBadgeFrameColor:[UIColor whiteColor]
+														 withScale:0.8
+													   withShining:YES];
+    //float x = btnNotifications.frame.size.width - (badge.frame.size.width / 2);;
+    //float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
+    float x = btnNotifications.frame.origin.x + btnNotifications.frame.size.width - badge.frame.size.width + 10;
+    float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
+    
+    [badge setFrame:CGRectMake(x, y, badge.frame.size.width, badge.frame.size.height)];
+    //[badge setFrame:CGRectMake(self.view.frame.size.width/2-badge.frame.size.width/2+badge.frame.size.width/2, 110, badge.frame.size.width, badge.frame.size.height)];
+    [loginScroll addSubview:badge];
+    
+    //[self.view addSubview:badge];
 
 }
 

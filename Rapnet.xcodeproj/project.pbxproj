@@ -537,6 +537,7 @@
 		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
 		F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */; };
 		F4D6192216F349BC00AE3D19 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */; };
+		F4D6192616F34EA600AE3D19 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6192516F34EA600AE3D19 /* CustomBadge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1264,6 +1265,8 @@
 		F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
 		F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
 		F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F4D6192416F34EA600AE3D19 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
+		F4D6192516F34EA600AE3D19 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1504,7 +1507,6 @@
 		BB2F39BF14D3EA8E0065CBF5 = {
 			isa = PBXGroup;
 			children = (
-				F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */,
 				BB2F39D414D3EA8E0065CBF5 /* Rapnet */,
 				84D172F5165F76DD007E1BC6 /* rapnet114.png */,
 				8416627C15EBE9F10052FC4D /* rapnet72.png */,
@@ -1526,6 +1528,7 @@
 		BB2F39CD14D3EA8E0065CBF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */,
 				3240B98216C8089800B58C0E /* GoogleFW */,
 				BB2F3CA214D3F0EF0065CBF5 /* QuartzCore.framework */,
 				BB2F3C9214D3EDB50065CBF5 /* CFNetwork.framework */,
@@ -1546,6 +1549,7 @@
 		BB2F39D414D3EA8E0065CBF5 /* Rapnet */ = {
 			isa = PBXGroup;
 			children = (
+				F4D6192316F34EA600AE3D19 /* CustomBadge */,
 				F40AD8CC16EFAC9B006C5E49 /* Push */,
 				3240B98C16C80A1B00B58C0E /* Analytics */,
 				84DF013F156ECC5C000E405F /* Images */,
@@ -2366,6 +2370,15 @@
 			path = ../Push;
 			sourceTree = "<group>";
 		};
+		F4D6192316F34EA600AE3D19 /* CustomBadge */ = {
+			isa = PBXGroup;
+			children = (
+				F4D6192416F34EA600AE3D19 /* CustomBadge.h */,
+				F4D6192516F34EA600AE3D19 /* CustomBadge.m */,
+			);
+			path = CustomBadge;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2940,6 +2953,7 @@
 				3240B99216C80BCD00B58C0E /* AnalyticHelper.m in Sources */,
 				F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */,
 				F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */,
+				F4D6192616F34EA600AE3D19 /* CustomBadge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

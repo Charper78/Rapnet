@@ -29,6 +29,7 @@
 #import "GetPriceList.h"
 #import "LoginHelper.h"
 #import "AnalyticHelper.h"
+#import "CustomBadge.h"
 @interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate> {
 
 	IBOutlet UIScrollView *loginScroll;
@@ -36,7 +37,8 @@
 	IBOutlet UIButton *btnForgotPwd;
 	IBOutlet UIButton *logOutBttn;
 	IBOutlet UIButton *logInBttn;
-	
+	IBOutlet UIButton *btnNotifications;
+    
 	IBOutlet UITextField *objUserName;
 	IBOutlet UITextField *objPassword;
 	IBOutlet UITextField *objForgotPw;

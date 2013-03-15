@@ -123,7 +123,9 @@
     
     NSInteger count = self.tabBarController.tabBar.items.count;
     
-    [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d",[UIApplication sharedApplication].applicationIconBadgeNumber]];
+    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    if(badgeCount > 0)
+        [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
     
     return YES;
 }
@@ -463,8 +465,9 @@
  
    
     NSInteger count = self.tabBarController.tabBar.items.count;
-    
-    [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d",[UIApplication sharedApplication].applicationIconBadgeNumber]];
+    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    if(badgeCount > 0)
+        [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
     
     
     
