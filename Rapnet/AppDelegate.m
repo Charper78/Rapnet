@@ -119,7 +119,11 @@
      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 	
 	// Clear application badge when app launches
-	application.applicationIconBadgeNumber = 0;
+	//application.applicationIconBadgeNumber = 0;
+    
+    NSInteger count = self.tabBarController.tabBar.items.count;
+    
+    [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d",[UIApplication sharedApplication].applicationIconBadgeNumber]];
     
     return YES;
 }
@@ -430,6 +434,18 @@
 	
 #if !TARGET_IPHONE_SIMULATOR
     
+    //2[Functions deleteFile:kNotificationsFile];
+    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
+    
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithDictionary:userInfo copyItems:TRUE];
+    [tempDic setValue:[NSDate date] forKey:kNotificationDateKey];
+    
+    [curDic setValue:tempDic forKey:[NSString stringWithFormat:@"%d", [curDic count] + 1]];
+    
+    [Functions writeToFile:curDic fileName:kNotificationsFile];
+    
+    //NSMutableDictionary *curDic1 =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
+    
 	NSLog(@"remote notification: %@",[userInfo description]);
 	NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
 	
@@ -438,12 +454,21 @@
 	
 	NSString *sound = [apsInfo objectForKey:@"sound"];
 	NSLog(@"Received Push Sound: %@", sound);
-	//AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 	
 	NSString *badge = [apsInfo objectForKey:@"badge"];
 	NSLog(@"Received Push Badge: %@", badge);
-	application.applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
+	application.applicationIconBadgeNumber += [[apsInfo objectForKey:@"badge"] integerValue];
 	
+ 
+   
+    NSInteger count = self.tabBarController.tabBar.items.count;
+    
+    [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d",[UIApplication sharedApplication].applicationIconBadgeNumber]];
+    
+    
+    
+    
 #endif
 }
 

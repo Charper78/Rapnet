@@ -534,6 +534,9 @@
 		BB4F3F2F150366FB0033157E /* cancelList.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F3F2D150366FB0033157E /* cancelList.png */; };
 		BB4F3F30150366FB0033157E /* gotocalc.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F3F2E150366FB0033157E /* gotocalc.png */; };
 		F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */; };
+		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
+		F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */; };
+		F4D6192216F349BC00AE3D19 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1257,6 +1260,10 @@
 		BB4F3F2E150366FB0033157E /* gotocalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gotocalc.png; sourceTree = "<group>"; };
 		F40AD8D016EFACE9006C5E49 /* RegisterDeviceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDeviceParser.h; sourceTree = "<group>"; };
 		F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDeviceParser.m; sourceTree = "<group>"; };
+		F4D6191C16F31BE100AE3D19 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
+		F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1264,6 +1271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D6192216F349BC00AE3D19 /* AudioToolbox.framework in Frameworks */,
 				BB2F3CA314D3F0EF0065CBF5 /* QuartzCore.framework in Frameworks */,
 				BB2F3C9A14D3EDB50065CBF5 /* CFNetwork.framework in Frameworks */,
 				BB2F3C9B14D3EDB50065CBF5 /* CoreData.framework in Frameworks */,
@@ -1496,6 +1504,7 @@
 		BB2F39BF14D3EA8E0065CBF5 = {
 			isa = PBXGroup;
 			children = (
+				F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */,
 				BB2F39D414D3EA8E0065CBF5 /* Rapnet */,
 				84D172F5165F76DD007E1BC6 /* rapnet114.png */,
 				8416627C15EBE9F10052FC4D /* rapnet72.png */,
@@ -2349,6 +2358,9 @@
 			children = (
 				F40AD8D016EFACE9006C5E49 /* RegisterDeviceParser.h */,
 				F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */,
+				F4D6191C16F31BE100AE3D19 /* NotificationsViewController.h */,
+				F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */,
+				F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */,
 			);
 			name = Push;
 			path = ../Push;
@@ -2756,6 +2768,7 @@
 				84D172F6165F76DD007E1BC6 /* rapnet114.png in Resources */,
 				8413063316712F55006851AB /* sqr.png in Resources */,
 				84F1C6881688EA5700EDEE0B /* border320X50.png in Resources */,
+				F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2926,6 +2939,7 @@
 				3235AC2916C41D0F00742EFC /* LT_Base.m in Sources */,
 				3240B99216C80BCD00B58C0E /* AnalyticHelper.m in Sources */,
 				F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */,
+				F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2994,7 +3008,7 @@
 				GCC_PREFIX_HEADER = "Rapnet/Rapnet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Rapnet/Rapnet-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NewsModule/ThirdPartyApi/AddThisLibrary\"",
@@ -3077,7 +3091,7 @@
 				GCC_PREFIX_HEADER = "Rapnet/Rapnet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Rapnet/Rapnet-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NewsModule/ThirdPartyApi/AddThisLibrary\"",
@@ -3102,7 +3116,7 @@
 				GCC_PREFIX_HEADER = "Rapnet/Rapnet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Rapnet/Rapnet-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NewsModule/ThirdPartyApi/AddThisLibrary\"",

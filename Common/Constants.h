@@ -22,6 +22,13 @@
 #define kTicketValidTimeInMinutes 60
 #define kUse10crts @"use10crts"
 
+#define kNotificationDateKey @"NotificationDate"
+#define kNotificationAlertKey @"alert"
+#define kNotificationApsKey @"aps"
+#define kNotificationBadgeKey @"badge"
+#define kNotificationSoundKey @"sound"
+#define kNotificationsFile @"Notifications.txt"
+
 #define SoapEnvelope @"<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">"
 
 

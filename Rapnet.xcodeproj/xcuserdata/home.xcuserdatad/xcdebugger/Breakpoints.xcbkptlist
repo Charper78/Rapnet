@@ -4,29 +4,29 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Push/RegisterDeviceParser.m"
-         timestampString = "384814962.938735"
+         filePath = "Rapnet/AppDelegate.m"
+         timestampString = "385033063.317813"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
-         landmarkName = "-registerDevice:appVersion:clientID:deviceUid:deviceToken:deviceName:deviceModel:deviceVersion:pushBadge:pushAlert:pushSound:"
+         startingLineNumber = "449"
+         endingLineNumber = "449"
+         landmarkName = "-application:didReceiveRemoteNotification:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Push/RegisterDeviceParser.m"
-         timestampString = "384815172.615989"
+         filePath = "Rapnet/AppDelegate.m"
+         timestampString = "385033063.317813"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
-         landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
+         startingLineNumber = "437"
+         endingLineNumber = "437"
+         landmarkName = "-application:didReceiveRemoteNotification:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
