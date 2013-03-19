@@ -534,6 +534,7 @@
 		BB4F3F2F150366FB0033157E /* cancelList.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F3F2D150366FB0033157E /* cancelList.png */; };
 		BB4F3F30150366FB0033157E /* gotocalc.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F3F2E150366FB0033157E /* gotocalc.png */; };
 		F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */; };
+		F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */; };
 		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
 		F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */; };
 		F4D6192216F349BC00AE3D19 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */; };
@@ -1261,6 +1262,8 @@
 		BB4F3F2E150366FB0033157E /* gotocalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gotocalc.png; sourceTree = "<group>"; };
 		F40AD8D016EFACE9006C5E49 /* RegisterDeviceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDeviceParser.h; sourceTree = "<group>"; };
 		F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDeviceParser.m; sourceTree = "<group>"; };
+		F4AFB45E16F90CAF0012C00C /* NotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsHelper.h; sourceTree = "<group>"; };
+		F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsHelper.m; sourceTree = "<group>"; };
 		F4D6191C16F31BE100AE3D19 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
 		F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
 		F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
@@ -2365,6 +2368,8 @@
 				F4D6191C16F31BE100AE3D19 /* NotificationsViewController.h */,
 				F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */,
 				F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */,
+				F4AFB45E16F90CAF0012C00C /* NotificationsHelper.h */,
+				F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */,
 			);
 			name = Push;
 			path = ../Push;
@@ -2954,6 +2959,7 @@
 				F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */,
 				F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */,
 				F4D6192616F34EA600AE3D19 /* CustomBadge.m in Sources */,
+				F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

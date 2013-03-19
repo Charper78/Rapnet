@@ -78,26 +78,6 @@
 	}
     
     
-    NSInteger badgeCount =  [UIApplication sharedApplication].applicationIconBadgeNumber;
-    badgeCount = 20;
-    CustomBadge *badge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeCount]
-                                                   withStringColor:[UIColor whiteColor]
-                                                    withInsetColor:[UIColor redColor]
-                                                    withBadgeFrame:YES
-											   withBadgeFrameColor:[UIColor whiteColor]
-														 withScale:0.8
-													   withShining:YES];
-    //float x = btnNotifications.frame.size.width - (badge.frame.size.width / 2);;
-    //float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
-    float x = btnNotifications.frame.origin.x + btnNotifications.frame.size.width - badge.frame.size.width + 10;
-    float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
-    
-    [badge setFrame:CGRectMake(x, y, badge.frame.size.width, badge.frame.size.height)];
-    //[badge setFrame:CGRectMake(self.view.frame.size.width/2-badge.frame.size.width/2+badge.frame.size.width/2, 110, badge.frame.size.width, badge.frame.size.height)];
-    [loginScroll addSubview:badge];
-    
-    //[self.view addSubview:badge];
-
 }
 
 -(void)initReachability
@@ -161,10 +141,41 @@
     webCallEndFlag[0] = FALSE;
     webCallEndFlag[1] = FALSE;
     
+    [self setBadgeCount];
     [self setPriceListLastUpdated];
 }
 
 
+-(void)setBadgeCount
+{
+    NSInteger badgeCount =  [UIApplication sharedApplication].applicationIconBadgeNumber;
+    if (badgeCount > 0)
+    {
+         badge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeCount]
+                                                withStringColor:[UIColor whiteColor]
+                                                 withInsetColor:[UIColor redColor]
+                                                 withBadgeFrame:YES
+                                            withBadgeFrameColor:[UIColor whiteColor]
+                                                      withScale:0.8
+                                                    withShining:YES];
+        //float x = btnNotifications.frame.size.width - (badge.frame.size.width / 2);;
+        //float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
+        float x = btnNotifications.frame.origin.x + btnNotifications.frame.size.width - badge.frame.size.width + 10;
+        float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
+        
+        [badge setFrame:CGRectMake(x, y, badge.frame.size.width, badge.frame.size.height)];
+        //[badge setFrame:CGRectMake(self.view.frame.size.width/2-badge.frame.size.width/2+badge.frame.size.width/2, 110, badge.frame.size.width, badge.frame.size.height)];
+        [loginScroll addSubview:badge];
+        
+        //[self.view addSubview:badge];
+    }
+    else if(badge != nil)
+    {
+        [badge removeFromSuperview];
+        badge = nil;
+    }
+
+}
 
 - (NSString*)validateTextFields
 {
@@ -1011,6 +1022,24 @@
     }
 }
 
+-(IBAction)btnNotifications_Clicked:(id)sender
+{
+    NotificationsViewController *n = [[NotificationsViewController alloc] init];
+  
+   /* UINavigationController *modalViewNavController =
+    [[UINavigationController alloc]
+     initWithRootViewController:n];
+    
+    [self.navigationController presentModalViewController:
+     modalViewNavController animated:YES];
+    [modalViewNavController release];*/
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [self setBadgeCount];
+    
+    [(AppDelegate *)[[UIApplication sharedApplication] delegate] setBadgeCount];
+    
+    [self.view addSubview:n.view];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -1028,6 +1057,7 @@
 	[alert release];
     [super dealloc];
 }
+
 
 
 @end

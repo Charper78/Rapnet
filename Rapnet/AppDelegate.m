@@ -121,12 +121,13 @@
 	// Clear application badge when app launches
 	//application.applicationIconBadgeNumber = 0;
     
-    NSInteger count = self.tabBarController.tabBar.items.count;
+   /* NSInteger count = self.tabBarController.tabBar.items.count;
     
     NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
     if(badgeCount > 0)
         [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
-    
+    */
+    [self setBadgeCount];
     return YES;
 }
 
@@ -240,6 +241,16 @@
     [UITabBar setAnimationDuration:1.5];
     //self.tabBarController.navigationBar.alpha = 0.1;
     [UITabBar commitAnimations];
+}
+
+-(void)setBadgeCount
+{
+    NSInteger count = self.tabBarController.tabBar.items.count;
+    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    if(badgeCount > 0)
+        [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+    else
+        [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -463,11 +474,8 @@
 	application.applicationIconBadgeNumber += [[apsInfo objectForKey:@"badge"] integerValue];
 	
  
-   
-    NSInteger count = self.tabBarController.tabBar.items.count;
-    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    if(badgeCount > 0)
-        [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
+   [self setBadgeCount];
+    
     
     
     

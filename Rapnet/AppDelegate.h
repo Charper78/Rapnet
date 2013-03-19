@@ -47,4 +47,5 @@
 -(BOOL)downloadPriceIfNeeded;
 -(void)hideTabBar;
 -(void)showTabBar;
+-(void)setBadgeCount;
 @end

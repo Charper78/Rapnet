@@ -30,6 +30,7 @@
 #import "LoginHelper.h"
 #import "AnalyticHelper.h"
 #import "CustomBadge.h"
+#import "NotificationsViewController.h"
 @interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate> {
 
 	IBOutlet UIScrollView *loginScroll;
@@ -70,6 +71,7 @@
     BOOL isReachable;
     bool IsDownloadViewVisible;
     IBOutlet UIProgressView *pvProgress;
+    CustomBadge *badge;
 }
 
 @property(nonatomic,retain)NSString *strSucceed;
@@ -88,6 +90,7 @@
 -(IBAction)termsOfUseLink;
 -(IBAction)btnUpdatePrices_Clicked;
 -(IBAction)sUse10crts_toggle:(id)sender;
+-(IBAction)btnNotifications_Clicked:(id)sender;
 -(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY;
 
 -(BOOL)checkAllWebSrviceEnded;

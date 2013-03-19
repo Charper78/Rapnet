@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Functions.h"
-
-@interface NotificationsViewController : UITableViewController
+#import "NotificationsHelper.h"
+@interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSDictionary *notificatios;
+    IBOutlet UITableView *tblNotifications;
 }
+
+-(IBAction)btnBack_Clicked:(id)sender;
+
 @end

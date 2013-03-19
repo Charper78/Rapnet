@@ -28,7 +28,8 @@
     [super viewDidLoad];
 
     notificatios = [Functions readFromFile:kNotificationsFile];
-    [self.tableView reloadData];
+    [tblNotifications reloadData];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -43,20 +44,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)btnBack_Clicked:(id)sender
+{
+    [self.view removeFromSuperview];
+    //[self.parentViewController
+    // dismissModalViewControllerAnimated:YES];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return [notificatios count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,19 +71,27 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        
     }
     
-    NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
-    NSDictionary *apsInfo = [notificatios valueForKey:kNotificationApsKey];
+    //NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
+    NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row]];
     
-    NSString *notificationDate = [curNotification valueForKey:kNotificationDateKey];
+    NSDictionary *apsInfo = [curNotification valueForKey:kNotificationApsKey];
+    
+    NSDate *notificationDate = [curNotification valueForKey:kNotificationDateKey];
     NSString *alert = [apsInfo valueForKey:kNotificationAlertKey];
     
     cell.textLabel.text = alert;
-    cell.detailTextLabel.text = notificationDate;
+    cell.detailTextLabel.text = [Functions dateFormatFromDate:notificationDate format:@"yyyy-MM-dd HH:mm:ss"];
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
 }
 
 /*
@@ -120,6 +135,19 @@
 
 #pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        
+        //[categoryArray objectAtIndex:indexPath.row];
+        NSString *key = [NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row];
+        [NotificationsHelper removeNotification:key];
+        notificatios = [NotificationsHelper getNotifications];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+        
+    }
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
