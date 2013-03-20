@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
 
-    notificatios = [Functions readFromFile:kNotificationsFile];
+    notificatios = [Functions readObjectFromFile:kNotificationsFile];
     [tblNotifications reloadData];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Uncomment the following line to preserve selection between presentations.
@@ -76,7 +76,7 @@
     }
     
     //NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
-    NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row]];
+    NSDictionary *curNotification = [notificatios objectAtIndex:[notificatios count] - indexPath.row - 1];
     
     NSDictionary *apsInfo = [curNotification valueForKey:kNotificationApsKey];
     
@@ -141,8 +141,10 @@
         // Delete the row from the data source
         
         //[categoryArray objectAtIndex:indexPath.row];
-        NSString *key = [NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row];
-        [NotificationsHelper removeNotification:key];
+        //NSString *key = [NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row];
+        //[NotificationsHelper removeNotification:key];
+        NSInteger index = [notificatios count] - indexPath.row - 1;
+        [NotificationsHelper removeNotification:index];
         notificatios = [NotificationsHelper getNotifications];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
         

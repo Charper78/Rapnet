@@ -11,7 +11,7 @@
 #import "NotificationsHelper.h"
 @interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    NSDictionary *notificatios;
+    NSArray *notificatios;
     IBOutlet UITableView *tblNotifications;
 }
 

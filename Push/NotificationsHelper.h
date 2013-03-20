@@ -14,6 +14,7 @@
     
 }
 
-+(NSDictionary*)getNotifications;
-+(void)removeNotification:(NSString*)key;
++(NSArray*)getNotifications;
++(void)removeNotification:(NSInteger)index;
++(void)addNotification:(NSDictionary*)d;
 @end

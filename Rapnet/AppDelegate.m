@@ -43,7 +43,7 @@
 {
     [AnalyticHelper initAnalytic];
     
-    
+ //   [Functions deleteFile:kNotificationsFile];
     
     [self copyDatabaseIfNeeded];
     [Database openDatabase];
@@ -127,6 +127,16 @@
     if(badgeCount > 0)
         [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
     */
+    if (launchOptions != nil)
+	{
+		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+			NSLog(@"Launched from push notification: %@", dictionary);
+			[self onReceiveRemoteNotification:dictionary];
+		}
+	}
+    
     [self setBadgeCount];
     return YES;
 }
@@ -332,28 +342,50 @@
 	return [documentsDir stringByAppendingPathComponent:@"RapnetDB.sqlite"];
 }
 
-
-#pragma mark - Show Screens
--(void)showNewsScreen
+-(void)onReceiveRemoteNotification:(NSDictionary*)userInfo
 {
-	[navigationController release];
-	NewsViewController *newsView=[[NewsViewController alloc] initWithNibName:@"NewsViewController" bundle:nil];
-	navigationController = [[UINavigationController alloc] initWithRootViewController:newsView];
-	[self.window addSubview:navigationController.view];
-	[newsView release];
+#if !TARGET_IPHONE_SIMULATOR
+    
+    //2[Functions deleteFile:kNotificationsFile];
+    //NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
+    
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithDictionary:userInfo copyItems:TRUE];
+    [tempDic setValue:[NSDate date] forKey:kNotificationDateKey];
+    [NotificationsHelper addNotification:tempDic];
+    //[curDic setValue:tempDic forKey:[NSString stringWithFormat:@"%d", [curDic count] + 1]];
+    
+    //  [Functions writeToFile:curDic fileName:kNotificationsFile];
+    
+    //NSMutableDictionary *curDic1 =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
+    
+	NSLog(@"remote notification: %@",[userInfo description]);
+	NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
+	
+	NSString *alert = [apsInfo objectForKey:@"alert"];
+	NSLog(@"Received Push Alert: %@", alert);
+	
+	NSString *sound = [apsInfo objectForKey:@"sound"];
+	NSLog(@"Received Push Sound: %@", sound);
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+	
+	NSString *badge = [apsInfo objectForKey:@"badge"];
+	NSLog(@"Received Push Badge: %@", badge);
+	
+    [UIApplication sharedApplication].applicationIconBadgeNumber += [[apsInfo objectForKey:@"badge"] integerValue];
+	
+    
+    [self setBadgeCount];
+    
+    
+    
+    
+    
+#endif
+    
 }
 
-/*
- * --------------------------------------------------------------------------------------------------------------
- *  BEGIN APNS CODE
- * --------------------------------------------------------------------------------------------------------------
- */
-
-/**
- * Fetch and Format Device Token and Register Important Information to Remote Server
- */
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-	
+-(void)registerDevice:(id)devToken
+{
 #if !TARGET_IPHONE_SIMULATOR
     
 	// Get Bundle Info for Remote Registration (handy if you have more than one app)
@@ -406,26 +438,51 @@
     BOOL r = [reg registerDevice:appName appVersion:appVersion clientID:nil deviceUid:deviceUuid deviceToken:deviceToken deviceName:deviceName deviceModel:deviceModel deviceVersion:deviceSystemVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound];
     NSLog(@"Return Data: %@", [Functions boolToString: r]);
     /*
-	// Build URL String for Registration
-	// !!! CHANGE "www.mywebsite.com" TO YOUR WEBSITE. Leave out the http://
-	// !!! SAMPLE: "secure.awesomeapp.com"
-	NSString *host = @"server.local/apns";
-	
-	// !!! CHANGE "/apns.php?" TO THE PATH TO WHERE apns.php IS INSTALLED
-	// !!! ( MUST START WITH / AND END WITH ? ).
-	// !!! SAMPLE: "/path/to/apns.php?"
-	NSString *urlString = [NSString stringWithFormat:@"/apns.php?task=%@&appname=%@&appversion=%@&deviceuid=%@&devicetoken=%@&devicename=%@&devicemodel=%@&deviceversion=%@&pushbadge=%@&pushalert=%@&pushsound=%@", @"register", appName,appVersion, deviceUuid, deviceToken, deviceName, deviceModel, deviceSystemVersion, pushBadge, pushAlert, pushSound];
-	
-	// Register the Device Data
-	// !!! CHANGE "http" TO "https" IF YOU ARE USING HTTPS PROTOCOL
-	NSURL *url = [[NSURL alloc] initWithScheme:@"http" host:host path:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-	NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-	NSLog(@"Register URL: %@", url);
-	NSLog(@"Return Data: %@", returnData);
+     // Build URL String for Registration
+     // !!! CHANGE "www.mywebsite.com" TO YOUR WEBSITE. Leave out the http://
+     // !!! SAMPLE: "secure.awesomeapp.com"
+     NSString *host = @"server.local/apns";
+     
+     // !!! CHANGE "/apns.php?" TO THE PATH TO WHERE apns.php IS INSTALLED
+     // !!! ( MUST START WITH / AND END WITH ? ).
+     // !!! SAMPLE: "/path/to/apns.php?"
+     NSString *urlString = [NSString stringWithFormat:@"/apns.php?task=%@&appname=%@&appversion=%@&deviceuid=%@&devicetoken=%@&devicename=%@&devicemodel=%@&deviceversion=%@&pushbadge=%@&pushalert=%@&pushsound=%@", @"register", appName,appVersion, deviceUuid, deviceToken, deviceName, deviceModel, deviceSystemVersion, pushBadge, pushAlert, pushSound];
+     
+     // Register the Device Data
+     // !!! CHANGE "http" TO "https" IF YOU ARE USING HTTPS PROTOCOL
+     NSURL *url = [[NSURL alloc] initWithScheme:@"http" host:host path:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+     NSLog(@"Register URL: %@", url);
+     NSLog(@"Return Data: %@", returnData);
      */
 	
 #endif
+
+}
+
+#pragma mark - Show Screens
+-(void)showNewsScreen
+{
+	[navigationController release];
+	NewsViewController *newsView=[[NewsViewController alloc] initWithNibName:@"NewsViewController" bundle:nil];
+	navigationController = [[UINavigationController alloc] initWithRootViewController:newsView];
+	[self.window addSubview:navigationController.view];
+	[newsView release];
+}
+
+/*
+ * --------------------------------------------------------------------------------------------------------------
+ *  BEGIN APNS CODE
+ * --------------------------------------------------------------------------------------------------------------
+ */
+
+/**
+ * Fetch and Format Device Token and Register Important Information to Remote Server
+ */
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+    [self performSelectorInBackground:@selector(registerDevice:) withObject:devToken];
+	//[NSThread detachNewThreadSelector:@selector(registerDevice) toTarget:nil withObject:devToken];
 }
 
 /**
@@ -444,43 +501,7 @@
  * Remote Notification Received while application was open.
  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	
-#if !TARGET_IPHONE_SIMULATOR
-    
-    //2[Functions deleteFile:kNotificationsFile];
-    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
-    
-    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithDictionary:userInfo copyItems:TRUE];
-    [tempDic setValue:[NSDate date] forKey:kNotificationDateKey];
-    
-    [curDic setValue:tempDic forKey:[NSString stringWithFormat:@"%d", [curDic count] + 1]];
-    
-    [Functions writeToFile:curDic fileName:kNotificationsFile];
-    
-    //NSMutableDictionary *curDic1 =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
-    
-	NSLog(@"remote notification: %@",[userInfo description]);
-	NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
-	
-	NSString *alert = [apsInfo objectForKey:@"alert"];
-	NSLog(@"Received Push Alert: %@", alert);
-	
-	NSString *sound = [apsInfo objectForKey:@"sound"];
-	NSLog(@"Received Push Sound: %@", sound);
-	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-	
-	NSString *badge = [apsInfo objectForKey:@"badge"];
-	NSLog(@"Received Push Badge: %@", badge);
-	application.applicationIconBadgeNumber += [[apsInfo objectForKey:@"badge"] integerValue];
-	
- 
-   [self setBadgeCount];
-    
-    
-    
-    
-    
-#endif
+	[self onReceiveRemoteNotification:userInfo];
 }
 
 /*

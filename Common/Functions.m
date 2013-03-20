@@ -213,11 +213,11 @@
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
     
     
-    NSLog(@"%@", filePath);
+   // NSLog(@"%@", filePath);
     //bool r = [d writeToFile:filePath atomically:NO];
     
     [NSKeyedArchiver archiveRootObject:d toFile:filePath];
-    NSLog(@"After NSKeyedArchiver");
+    //NSLog(@"After NSKeyedArchiver");
     //NSLog(r);
 }
 
@@ -230,6 +230,33 @@
     //NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:filePath];
     NSDictionary *d = [[NSKeyedUnarchiver unarchiveObjectWithFile:filePath] mutableCopy];
     return d;
+}
+
++(id)readObjectFromFile:(NSString*)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+    
+    //NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    id d = [[NSKeyedUnarchiver unarchiveObjectWithFile:filePath] mutableCopy];
+    return d;
+}
+
++(void)writeObjectToFile:(id)d fileName:(NSString*)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+    
+    
+   // NSLog(@"%@", filePath);
+    //bool r = [d writeToFile:filePath atomically:NO];
+    
+    [NSKeyedArchiver archiveRootObject:d toFile:filePath];
+   // NSLog(@"After NSKeyedArchiver");
+    //NSLog(r);
+
 }
 
 +(bool)canView:(LoginTypes)l

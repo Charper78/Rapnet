@@ -10,15 +10,30 @@
 
 @implementation NotificationsHelper
 
-+(NSDictionary*)getNotifications
++(NSArray*)getNotifications
 {
-    return [Functions readFromFile:kNotificationsFile];
+    return [Functions readObjectFromFile:kNotificationsFile];
 }
 
-+(void)removeNotification:(NSString*)key
++(void)removeNotification:(NSInteger)index
 {
-    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
-    [curDic removeObjectForKey:key];
-    [Functions writeToFile:curDic fileName:kNotificationsFile];
+    NSMutableArray *curArr =  [[NSMutableArray alloc] initWithArray:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    [curArr removeObjectAtIndex:index];
+    [Functions writeObjectToFile:curArr fileName:kNotificationsFile];
+}
+
++(void)addNotification:(NSDictionary*)d
+{
+    NSMutableArray *curArr =  [[NSMutableArray alloc] initWithArray:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    [curArr addObject:d];
+    [Functions writeObjectToFile:curArr fileName:kNotificationsFile];
+
+}
+
++(NSDictionary*)getNotification:(NSInteger)index
+{
+    NSMutableArray *curArr =  [[NSMutableArray alloc] initWithArray:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    NSDictionary *d = [curArr objectAtIndex:index];
+    return d;
 }
 @end

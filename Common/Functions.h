@@ -27,6 +27,8 @@
 +(NSString*)getShape:(Shapes)shape;
 +(void)writeToFile:(NSDictionary*)d fileName:(NSString*)fileName;
 +(NSDictionary*)readFromFile:(NSString*)fileName;
++(id)readObjectFromFile:(NSString*)fileName;
++(void)writeObjectToFile:(id)d fileName:(NSString*)fileName;
 +(void)deleteFile:(NSString*)path;
 +(bool)canView:(LoginTypes)l;
 +(NSString*)getTicket:(LoginTypes)l;

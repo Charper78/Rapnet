@@ -1,5 +1,7 @@
 
-#define kGoogleAnalyticsAccount @"UA-38346425-2"
+//#define kGoogleAnalyticsAccount @"UA-38346425-2"
+#define kGoogleAnalyticsAccount @"UA-1193854-26"
+
 #define BaseUrl @"http://app13.rapaport.com"
 #define NewsUrl @"http://app13.rapaport.com/NewsWebService.asmx"
 #define PricesUrl @"http://app13.rapaport.com/PricesWebService.asmx"
