@@ -26,11 +26,11 @@
                     withLabel:(NSString *)label
                     withValue:(NSNumber *)value
 {
-    //return [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"asdasd" withAction:@"asdasd" withLabel:nil withValue:nil];
+    //return TRUE;
     return [[GAI sharedInstance].defaultTracker sendEventWithCategory:category
-                                                    withAction:action
+                                                   withAction:action
                                                      withLabel:label
-                                                     withValue:value];
+                                                    withValue:value];
 
 }
 
@@ -42,6 +42,7 @@
 
 + (BOOL)sendView:(NSString *)screen
 {
+    //return TRUE;
     return [[GAI sharedInstance].defaultTracker sendView:screen];
 }
 @end

@@ -129,6 +129,7 @@
     */
     if (launchOptions != nil)
 	{
+        NSLog(@"launchOptions: %@", launchOptions);
 		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (dictionary != nil)
 		{
