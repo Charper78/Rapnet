@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Rapnet/AppDelegate.m"
-         timestampString = "385506883.827579"
+         timestampString = "386700914.629893"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "130"
-         endingLineNumber = "130"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         startingLineNumber = "428"
+         endingLineNumber = "428"
+         landmarkName = "-registerDevice:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

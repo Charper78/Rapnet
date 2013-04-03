@@ -387,7 +387,7 @@
 
 -(void)registerDevice:(id)devToken
 {
-#if !TARGET_IPHONE_SIMULATOR
+//#if !TARGET_IPHONE_SIMULATOR
     
 	// Get Bundle Info for Remote Registration (handy if you have more than one app)
 	NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
@@ -458,7 +458,7 @@
      NSLog(@"Return Data: %@", returnData);
      */
 	
-#endif
+//#endif
 
 }
 
@@ -491,11 +491,11 @@
  */
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 	
-#if !TARGET_IPHONE_SIMULATOR
+//#if !TARGET_IPHONE_SIMULATOR
 	
 	NSLog(@"Error in registration. Error: %@", error);
 	
-#endif
+//#endif
 }
 
 /**
