@@ -31,6 +31,8 @@
 #import "AnalyticHelper.h"
 #import "CustomBadge.h"
 #import "NotificationsViewController.h"
+#import "RegisterDevice.h"
+
 @interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate> {
 
 	IBOutlet UIScrollView *loginScroll;
@@ -39,6 +41,8 @@
 	IBOutlet UIButton *logOutBttn;
 	IBOutlet UIButton *logInBttn;
 	IBOutlet UIButton *btnNotifications;
+    IBOutlet UIButton *chkNotifyPriceListChange;
+    IBOutlet UIButton *chkAutoUpdatePriceList;
     
 	IBOutlet UITextField *objUserName;
 	IBOutlet UITextField *objPassword;
@@ -94,6 +98,7 @@
 -(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY;
 
 -(BOOL)checkAllWebSrviceEnded;
-
+-(IBAction)chkAutoUpdatePriceList_Click:(id)sender;
+-(IBAction)chkNotifyPriceListChange_Click:(id)sender;
 
 @end

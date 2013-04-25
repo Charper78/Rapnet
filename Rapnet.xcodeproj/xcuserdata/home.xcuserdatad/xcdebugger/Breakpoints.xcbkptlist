@@ -2,19 +2,4 @@
 <Bucket
    type = "1"
    version = "1.0">
-   <FileBreakpoints>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Rapnet/AppDelegate.m"
-         timestampString = "386700914.629893"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "428"
-         endingLineNumber = "428"
-         landmarkName = "-registerDevice:"
-         landmarkType = "5">
-      </FileBreakpoint>
-   </FileBreakpoints>
 </Bucket>

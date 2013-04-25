@@ -11,11 +11,16 @@
 @implementation RegisterDeviceParser
 
 -(bool)registerDevice:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
-            deviceUid:(NSString*)deviceUid deviceToken:(NSString*)deviceToken deviceName:(NSString*)deviceName
+            deviceToken:(NSString*)deviceToken 
           deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
             pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound
 {
     NSString *soapAction = @"RegisterDevice";
+    
+    NSString *client = @"";
+    
+    if(clientID != nil)
+        client = [NSString stringWithFormat:@"<clientID>%@</clientID> \n", clientID];
     
     NSString *soapMessage = [NSString stringWithFormat:
                              @"%@"
@@ -23,10 +28,8 @@
                              "<%@ xmlns=\"%@/\"> \n"
                              "<appName>%@</appName> \n"
                              "<appVersion>%@</appVersion> \n"
-                             "<clientID>%@</clientID> \n"
-                             "<deviceUid>%@</deviceUid> \n"
+                             "%@"
                              "<deviceToken>%@</deviceToken> \n"
-                             "<deviceName>%@</deviceName> \n"
                              "<deviceModel>%@</deviceModel> \n"
                              "<deviceVersion>%@</deviceVersion> \n"
                              "<pushBadge>%@</pushBadge> \n"
@@ -36,7 +39,7 @@
                              "</SOAP-ENV:Body> \n"
                              "</SOAP-ENV:Envelope>"
                              ,SoapEnvelope, soapAction, PnsNamespace, appName, appVersion,
-                             clientID, deviceUid, deviceToken, deviceName, deviceModel,
+                             client, deviceToken, deviceModel,
                              deviceVersion, [Functions boolToString: pushBadge],
                              [Functions boolToString: pushAlert], [Functions boolToString: pushSound],
                               soapAction];

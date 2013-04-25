@@ -225,6 +225,8 @@
         [Functions loginAll];
         
         if ([Functions isLogedIn]) {
+            [RegisterDevice registerDevice:objUserName.text];
+            
             alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogin Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [alert show];
             UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];
@@ -432,6 +434,8 @@
     objUserName.text = @"";
     objPassword.text = @"";
     
+    [RegisterDevice registerDevice:nil];
+    
     btnRememPwd.selected = NO;
     UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
     [btnRememPwd setImage:btnImage forState:UIControlStateNormal];
@@ -514,6 +518,63 @@
 
 }
 
+-(void)setAutoUpdatePriceListSelection:(BOOL)selected
+{
+    if (selected) {
+        chkAutoUpdatePriceList.selected = YES;
+		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
+		[chkAutoUpdatePriceList setImage:btnImage forState:UIControlStateNormal];
+        [NotificationSettings setAutoUpdatePriceList:YES];
+    }
+    else
+    {
+        chkAutoUpdatePriceList.selected = NO;
+		UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
+		[chkAutoUpdatePriceList setImage:btnImage forState:UIControlStateNormal];
+        [NotificationSettings setAutoUpdatePriceList:NO];
+
+    }
+}
+
+
+-(IBAction)chkAutoUpdatePriceList_Click:(id)sender
+{
+    UIButton *aBtn = (UIButton *)sender;
+	BOOL isSel = aBtn.selected;
+    
+	if (isSel == YES)
+	{
+		[self setAutoUpdatePriceListSelection: NO];
+	}
+	else
+	{
+		[self setAutoUpdatePriceListSelection: YES];
+	}
+
+}
+-(IBAction)chkNotifyPriceListChange_Click:(id)sender
+{
+    UIButton *aBtn = (UIButton *)sender;
+	
+	BOOL isSel = aBtn.selected;
+	if (isSel == YES)
+	{
+		aBtn.selected = NO;
+		UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
+		[aBtn setImage:btnImage forState:UIControlStateNormal];
+        
+        [self setAutoUpdatePriceListSelection: NO];
+        chkAutoUpdatePriceList.enabled = false;
+    }
+	else
+	{
+		aBtn.selected = YES;
+		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
+		[aBtn setImage:btnImage forState:UIControlStateNormal];
+        chkAutoUpdatePriceList.enabled = true;
+	}
+
+}
 
 -(IBAction)newsToggleBtn:(id)sender
 {

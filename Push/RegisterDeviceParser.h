@@ -30,7 +30,7 @@
 @property(nonatomic, retain) NSString *strTicket;
 
 -(bool)registerDevice:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
-deviceUid:(NSString*)deviceUid deviceToken:(NSString*)deviceToken deviceName:(NSString*)deviceName
+ deviceToken:(NSString*)deviceToken 
 deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
 pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound;
 
