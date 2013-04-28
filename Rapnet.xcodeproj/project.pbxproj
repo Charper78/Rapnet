@@ -3024,8 +3024,8 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "299645DC-F890-4AAA-A096-B3BD7565A543";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "299645DC-F890-4AAA-A096-B3BD7565A543";
+				PROVISIONING_PROFILE = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3034,8 +3034,8 @@
 		84BC79041572BBD200762C7D /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapnet/Rapnet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3049,8 +3049,8 @@
 					"\"$(SRCROOT)/GoogleFW\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -3082,8 +3082,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "299645DC-F890-4AAA-A096-B3BD7565A543";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "299645DC-F890-4AAA-A096-B3BD7565A543";
+				PROVISIONING_PROFILE = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3107,8 +3107,8 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "299645DC-F890-4AAA-A096-B3BD7565A543";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "299645DC-F890-4AAA-A096-B3BD7565A543";
+				PROVISIONING_PROFILE = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3117,8 +3117,8 @@
 		BB2F39F714D3EA8E0065CBF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapnet/Rapnet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3132,8 +3132,8 @@
 					"\"$(SRCROOT)/GoogleFW\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3142,8 +3142,8 @@
 		BB2F39F814D3EA8E0065CBF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapnet/Rapnet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3157,8 +3157,8 @@
 					"\"$(SRCROOT)/GoogleFW\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95011F98-9BD6-47F6-B38B-FC12901EDAC3";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
