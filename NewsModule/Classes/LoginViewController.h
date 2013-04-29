@@ -76,6 +76,7 @@
     bool IsDownloadViewVisible;
     IBOutlet UIProgressView *pvProgress;
     CustomBadge *badge;
+    
 }
 
 @property(nonatomic,retain)NSString *strSucceed;
@@ -96,6 +97,7 @@
 -(IBAction)sUse10crts_toggle:(id)sender;
 -(IBAction)btnNotifications_Clicked:(id)sender;
 -(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY;
+-(void)startUpdatePriceList;
 
 -(BOOL)checkAllWebSrviceEnded;
 -(IBAction)chkAutoUpdatePriceList_Click:(id)sender;

@@ -70,6 +70,9 @@
     objUserName.text = [LoginHelper getUserName];
     objPassword.text = [LoginHelper getPassword];
     
+    [self setNotifyPriceListChange:[NotificationSettings getNotifyPriceListChange]];
+    [self setAutoUpdatePriceListSelection:[NotificationSettings getAutoUpdatePriceList]];
+    
 	if (objUserName.text.length > 0) 
 	{
 		btnRememPwd.selected = YES;
@@ -254,6 +257,8 @@
             [objUserName resignFirstResponder];
             [objPassword resignFirstResponder];
             
+            [RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+            
         }else{
             alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour login attempt was not successful." message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [alert show];
@@ -434,7 +439,8 @@
     objUserName.text = @"";
     objPassword.text = @"";
     
-    [RegisterDevice registerDevice:nil];
+    [RegisterDevice registerDevice:@"" notifyPriceChange:NO];
+    [self setNotifyPriceListChange:FALSE];
     
     btnRememPwd.selected = NO;
     UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
@@ -502,6 +508,8 @@
 		UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
 		[aBtn setImage:btnImage forState:UIControlStateNormal];
         [LoginHelper resetSavedUserNameAndPassword];
+        
+        [self setNotifyPriceListChange:NO];
 		//
 	}
 	else 
@@ -536,6 +544,33 @@
     }
 }
 
+-(void)setNotifyPriceListChange:(BOOL)selected
+{
+    if(isReachable == NO)
+    {
+        [Functions NoInternetAlert];
+        return;
+    }
+    
+    if (selected) {
+        chkNotifyPriceListChange.selected = YES;
+		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
+		[chkNotifyPriceListChange setImage:btnImage forState:UIControlStateNormal];
+        [RegisterDevice registerDevice: objUserName.text notifyPriceChange:YES];
+        [NotificationSettings setNotifyPriceListChange:YES];
+    }
+    else
+    {
+        chkNotifyPriceListChange.selected = NO;
+		UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
+		[chkNotifyPriceListChange setImage:btnImage forState:UIControlStateNormal];
+        [RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+        [NotificationSettings setNotifyPriceListChange:NO];
+        
+        [self setAutoUpdatePriceListSelection: NO];
+        chkAutoUpdatePriceList.enabled = false;
+    }
+}
 
 -(IBAction)chkAutoUpdatePriceList_Click:(id)sender
 {
@@ -545,6 +580,7 @@
 	if (isSel == YES)
 	{
 		[self setAutoUpdatePriceListSelection: NO];
+        
 	}
 	else
 	{
@@ -565,6 +601,9 @@
         
         [self setAutoUpdatePriceListSelection: NO];
         chkAutoUpdatePriceList.enabled = false;
+        
+        [RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+        [NotificationSettings setNotifyPriceListChange:NO];
     }
 	else
 	{
@@ -572,6 +611,9 @@
 		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
 		[aBtn setImage:btnImage forState:UIControlStateNormal];
         chkAutoUpdatePriceList.enabled = true;
+        
+        [RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+        [NotificationSettings setNotifyPriceListChange:YES];
 	}
 
 }
@@ -775,6 +817,16 @@
         IsDownloadViewVisible = NO;
     }
 }
+-(void)startUpdatePriceList
+{
+    if ([Functions canView:L_Prices])
+    {
+        pvProgress.progress = 0.0f;
+        [self showLoadingScreen];
+        [self performSelectorInBackground:@selector(downloadPrices) withObject:nil];
+    }
+
+}
 
 -(IBAction)btnUpdatePrices_Clicked{
     
@@ -788,12 +840,13 @@
     
     if([Functions canView:L_Prices])
     {
-        if ([Functions canView:L_Prices])
+        /*if ([Functions canView:L_Prices])
         {
             pvProgress.progress = 0.0f;
             [self showLoadingScreen];
             [self performSelectorInBackground:@selector(downloadPrices) withObject:nil];
-        }
+        }*/
+        [self startUpdatePriceList];
     }
     else
     {

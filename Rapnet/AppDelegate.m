@@ -27,6 +27,8 @@
 @synthesize tabBarController = _tabBarController;
 @synthesize navigationController,activityView;
 
+bool startUpdatePriceList = FALSE;
+
 - (void)dealloc
 {
     [activityView release];
@@ -135,6 +137,13 @@
 		{
 			NSLog(@"Launched from push notification: %@", dictionary);
 			[self onReceiveRemoteNotification:dictionary];
+            
+            if([dictionary objectForKey:@"PriceListUpdate"])
+            {
+                startUpdatePriceList = TRUE;
+            }
+            else
+                NSLog(@"Don't start price list update");
 		}
 	}
     
@@ -292,6 +301,15 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    if(startUpdatePriceList)
+    {
+        startUpdatePriceList = FALSE;
+        NSLog(@"Start price list update");
+        LoginViewController *l = [[LoginViewController alloc] init];
+        [l startUpdatePriceList];
+        [l release];
+        l = NULL;
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -372,6 +390,14 @@
 	NSString *badge = [apsInfo objectForKey:@"badge"];
 	NSLog(@"Received Push Badge: %@", badge);
 	
+    if([userInfo objectForKey:@"PriceListUpdate"])
+    {
+        startUpdatePriceList = TRUE;
+        
+    }
+    else
+        NSLog(@"Don't start price list update");
+    
     [UIApplication sharedApplication].applicationIconBadgeNumber += [[apsInfo objectForKey:@"badge"] integerValue];
 	
     

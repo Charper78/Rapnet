@@ -38,4 +38,20 @@
     [SaveData synchronize];
 }
 
++(BOOL)getNotifyPriceListChange
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	BOOL autoUpdate = [prefs boolForKey:@"NotificationSettings_NotifyPriceListChange"];
+    return autoUpdate;
+}
+
++(void)setNotifyPriceListChange:(BOOL)autoUpdate
+{
+    NSUserDefaults *SaveData = [NSUserDefaults standardUserDefaults];
+    [SaveData setBool:autoUpdate forKey:@"NotificationSettings_NotifyPriceListChange"];
+    [SaveData synchronize];
+}
+
+
+
 @end

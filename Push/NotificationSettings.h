@@ -18,4 +18,8 @@
 
 +(BOOL)getAutoUpdatePriceList;
 +(void)setAutoUpdatePriceList:(BOOL)autoUpdate;
+
++(BOOL)getNotifyPriceListChange;
++(void)setNotifyPriceListChange:(BOOL)autoUpdate;
+
 @end
