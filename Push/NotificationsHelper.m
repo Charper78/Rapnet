@@ -22,6 +22,13 @@
     [Functions writeObjectToFile:curArr fileName:kNotificationsFile];
 }
 
++(void)removeAllNotifications
+{
+    NSMutableArray *curArr =  [[NSMutableArray alloc] initWithArray:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    [curArr removeAllObjects];
+    [Functions writeObjectToFile:curArr fileName:kNotificationsFile];
+}
+
 +(void)addNotification:(NSDictionary*)d
 {
     NSMutableArray *curArr =  [[NSMutableArray alloc] initWithArray:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];

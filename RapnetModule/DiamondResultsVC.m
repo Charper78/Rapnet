@@ -37,6 +37,13 @@ CGFloat fixHeight = 0;
     CGRect f = tblResults.frame;
     f.size.height = fixHeight;
     tblResults.frame = f;
+    
+    if(IsTallPhone())
+    {
+        CGRect ff = self.view.frame;
+        ff.size.height = fixHeight;
+        self.view.frame = ff;
+    }
  //[self.navigationController setNavigationBarHidden:YES];
     
     //resultParser = [[DiamondsSearchResultParser alloc] init];
@@ -230,12 +237,16 @@ CGFloat fixHeight = 0;
     [self.view addSubview:details.view];
     
     DiamondSearchResult *curResult = [results objectAtIndex:indexPath.row];
+    float h = 375.0;
     
-    if (fixHeight != 375) {
-        [details changeTableHeight:375-30];
+    if(IsTallPhone())
+        h  = 555.0;
+    
+    if (fixHeight != h) {
+        [details changeTableHeight:h-30];
     }
     else
-        [details changeTableHeight:375];
+        [details changeTableHeight:h];
     
     [details loadDiamond:curResult];
    // [details release];

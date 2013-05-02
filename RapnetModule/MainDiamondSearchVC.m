@@ -370,9 +370,15 @@ UIFont *buttonFont;
     
     DiamondResultsVC *objDiamondResult = [[DiamondResultsVC alloc]initWithNibName:@"DiamondResultsVC" bundle:nil];
     //[self.navigationController pushViewController:objDiamondResult animated:YES];
-     [objDiamondResult changeTableHeight:375.0];
+    float h = 375.0;
+    if(IsTallPhone())
+        h = 555.0;
+     [objDiamondResult changeTableHeight:h];
     [self.view addSubview:objDiamondResult.view];
     
+    CGRect f = self.view.frame;
+   // f.size.height = fixHeight;
+
     
     DiamondSearchParams *p = [[DiamondSearchParams alloc] init];
     
@@ -1555,7 +1561,7 @@ UIFont *buttonFont;
 -(void)addMainScrollView
 {
     if (mainViewLoaded == NO) {
-        svMain.frame = CGRectMake(0, 41, 320, 416);
+        svMain.frame = CGRectMake(0, 41, 320, 504);
         svMain.contentSize = CGSizeMake(320, mainViewHeightInit);
         //[self addToMainViewContentSize:0 h:85];
         [self.view addSubview:svMain];

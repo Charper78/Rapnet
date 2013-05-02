@@ -32,6 +32,7 @@
 #import "CustomBadge.h"
 #import "NotificationsViewController.h"
 #import "RegisterDevice.h"
+#import "NotificationsHelper.h"
 
 @interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate> {
 

@@ -129,7 +129,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIScrollView" id="513704813">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -404,6 +404,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{378, 35}</string>
+				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="688416234"/>
 				<reference key="IBUIBackgroundColor" ref="50874718"/>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -493,9 +494,10 @@
 				</object>
 			</object>
 			<object class="IBUIButton" id="235828332">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{20, 35}</string>
+				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="50874718"/>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -1226,7 +1228,7 @@
 				<string>{20, 35}</string>
 				<string>{27, 24}</string>
 				<string>{53, 45}</string>
-				<string>{320, 26}</string>
+				<string>{320, 37}</string>
 				<string>{51, 35}</string>
 			</object>
 		</object>

@@ -16,5 +16,6 @@
 
 +(NSArray*)getNotifications;
 +(void)removeNotification:(NSInteger)index;
++(void)removeAllNotifications;
 +(void)addNotification:(NSDictionary*)d;
 @end

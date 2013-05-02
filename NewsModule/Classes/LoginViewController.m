@@ -654,7 +654,7 @@
 }
 -(IBAction)resetBtn
 {
-    [LT_Clarity deleteAll];
+   /* [LT_Clarity deleteAll];
     [LT_Cut deleteAll];
     [LT_Color deleteAll];
     [LT_FancyColor deleteAll];
@@ -664,11 +664,18 @@
     [LT_Sym deleteAll];
     [LT_Fluor deleteAll];
     [LT_Lab deleteAll];
-
+*/
      
 	objUserName.text = nil;
 	objPassword.text = nil;
 	objForgotPw.text = nil;
+    
+    [RegisterDevice registerDevice: @"" notifyPriceChange:NO];
+    //[NotificationSettings setNotifyPriceListChange:NO];
+    [self setNotifyPriceListChange:NO];
+    [NotificationsHelper removeAllNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [self setBadgeCount];
 	//[StoredData sharedData].isUserAuthenticated=FALSE;
     //[StoredData sharedData].loginPriceFlag=FALSE;
 	//[StoredData sharedData].loginRapnetFlag=FALSE;

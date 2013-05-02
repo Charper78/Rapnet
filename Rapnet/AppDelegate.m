@@ -45,14 +45,9 @@ bool startUpdatePriceList = FALSE;
 {
     [AnalyticHelper initAnalytic];
     
- //   [Functions deleteFile:kNotificationsFile];
-    
     [self copyDatabaseIfNeeded];
     [Database openDatabase];
     [Database fetchWorkAreaDiamonds];
-	//[StoredData sharedData].isUserAuthenticated=FALSE;
-    //[StoredData sharedData].loginPriceFlag=FALSE;
-    //[StoredData sharedData].loginRapnetFlag=FALSE;
     [StoredData sharedData].selectedTabBfrLogin = -1;
     [StoredData sharedData].priceAlertFlag = FALSE;
 	
@@ -63,21 +58,6 @@ bool startUpdatePriceList = FALSE;
     if([Reachability reachable])
     {
         [Functions loginAll];
-        /*NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        NSString *objUserName = [prefs stringForKey:@"UserName"];
-        NSString *objPassword = [prefs stringForKey:@"Password"]; 
-        if (objUserName.length > 0) 
-        {
-            //NSLog (@"objUserName %@",objUserName);
-            //NSLog (@"objPassword %@",objPassword);
-            loginParser=[[LoginParser alloc]init];
-            loginParser.delegate = self;
-            [loginParser authenticateWithUserName:objUserName password:objPassword];
-        
-            objLoginParser=[[LoginPriceParser alloc]init];
-            objLoginParser.delegate = self;
-            [objLoginParser authenticateWithUserName:objUserName password:objPassword];
-        }*/
     }
     
     NewsViewController *newsView=[[NewsViewController alloc] initWithNibName:@"NewsViewController" bundle:nil];
@@ -120,15 +100,6 @@ bool startUpdatePriceList = FALSE;
     [[UIApplication sharedApplication]
      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 	
-	// Clear application badge when app launches
-	//application.applicationIconBadgeNumber = 0;
-    
-   /* NSInteger count = self.tabBarController.tabBar.items.count;
-    
-    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    if(badgeCount > 0)
-        [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
-    */
     if (launchOptions != nil)
 	{
         NSLog(@"launchOptions: %@", launchOptions);
@@ -181,27 +152,10 @@ bool startUpdatePriceList = FALSE;
 
 -(void)webserviceCallFinished
 {	
-	/*arrLogin = [loginParser getResults];
-	if(arrLogin.count>0)
-	{
-		[StoredData sharedData].isUserAuthenticated=TRUE;
-		[StoredData sharedData].strTicket=[NSString stringWithFormat:@"%@",[[arrLogin objectAtIndex:0]objectForKey:@"Ticket"]];
-	}*/
+	
 }
 
 -(void)webserviceCallLoginFinished:(NSMutableArray *)results{
-    /*arrPriceLogin = results;//[objLoginParser getResults];
-	if(arrPriceLogin.count>0)
-	{
-        NSString *priceTicket = [NSString stringWithFormat:@"%@",[[arrLogin objectAtIndex:0]objectForKey:@"Ticket"]];
-        
-        [StoredData sharedData].loginPriceFlag=TRUE;
-        [StoredData sharedData].strPriceTicket= [NSString stringWithFormat:@"%@" ,priceTicket];
-        [StoredData sharedData].strRapnetTicket =[NSString stringWithFormat:@"%@" ,priceTicket]; 
-	}*/
-    //if([Functions canView:L_Prices])
-    //    [StoredData sharedData].loginPriceFlag=TRUE;
-    
 }
 
 

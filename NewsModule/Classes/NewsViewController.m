@@ -94,44 +94,6 @@
 	[StoredData sharedData].isEditor=FALSE;
 	[self createScreenComponents];
 	
-	//Reachability *reach = [Reachability reachabilityWithHostName:@"www.apple.com"];
-	//NetworkStatus internetStatus = [reach currentReachabilityStatus];
-	
-	/*if ((internetStatus != ReachableViaWiFi) && (internetStatus != ReachableViaWWAN))
-	{
-		UIAlertView *myAlert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection" message:@"Check your internet connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[myAlert show];
-		
-		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
-		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
-		CGSize theSize = [myAlert frame].size;
-		
-		UIGraphicsBeginImageContext(theSize);    
-		[theImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];    
-		theImage = UIGraphicsGetImageFromCurrentImageContext();    
-		UIGraphicsEndImageContext();
-		for (UIView *sub in [myAlert subviews])
-		{
-			if ([sub class] == [UIImageView class] && sub.tag == 0) {
-				[sub removeFromSuperview];
-				break;
-			}
-		}
-		[[myAlert layer] setContents:(id)theImage.CGImage];
-		[myAlert release];
-	}*/
-    /*if(isReachable == NO)
-    {
-        [Functions NoInternetAlert];
-    }
-	
-	else
-	{
-		[appDelegate showActivityIndicator:self];
-        [self webserviceCallStart];
-		
-	}*/
-
 }
 
 -(void)initReachability
@@ -211,9 +173,10 @@
 	[myScrollView setShowsHorizontalScrollIndicator:NO];
 	[myScrollView setShowsVerticalScrollIndicator:NO];
 	
-    myScrollView.frame = CGRectMake(0, 35, 320, 35);
-    myScrollView.contentSize = CGSizeMake(360, 35);
     [self.view addSubview:myScrollView];
+    myScrollView.frame = CGRectMake(0, -35, 320, 35);
+    myScrollView.contentSize = CGSizeMake(360, 35);
+    //myScrollView.frame = CGRectMake(0, 35, 320, 35);
     
     leftArrowImageView.frame = CGRectMake(0, 35, 20, 35);
     rightArrowImageView.frame = CGRectMake(300, 35, 20, 35);
