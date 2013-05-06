@@ -178,7 +178,7 @@
 					</object>
 					<object class="IBUIView" id="1020278876">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483356</int>
+						<int key="NSvFlags">-2147483374</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIImageView" id="174197417">
 								<reference key="NSNextResponder" ref="1020278876"/>
@@ -261,6 +261,7 @@
 								<string key="NSFrame">{{183, 317}, {70, 32}}</string>
 								<reference key="NSSuperview" ref="1020278876"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="IBUIRestorationIdentifier"/>
@@ -1061,7 +1062,6 @@
 						<string key="btnOkClicked:">id</string>
 						<string key="btnSmsClicked:">id</string>
 						<string key="btnTelClicked:">id</string>
-						<string key="dismissKeyboard:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="btnBackClicked:">
@@ -1098,10 +1098,6 @@
 						</object>
 						<object class="IBActionInfo" key="btnTelClicked:">
 							<string key="name">btnTelClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="dismissKeyboard:">
-							<string key="name">dismissKeyboard:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

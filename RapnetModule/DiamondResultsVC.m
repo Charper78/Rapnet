@@ -240,7 +240,7 @@ CGFloat fixHeight = 0;
     float h = 375.0;
     
     if(IsTallPhone())
-        h  = 555.0;
+        h  = 655.0;
     
     if (fixHeight != h) {
         [details changeTableHeight:h-30];

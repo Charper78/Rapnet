@@ -113,7 +113,11 @@ CGFloat fixHeight;
     // Do any additional setup after loading the view from its nib.
     lblMainTitle.text = @"Diamond Details";
     CGRect f = tblDiamond.frame;
-    f.size.height = fixHeight;
+    //f.size.height = fixHeight;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    f.size.height = screenHeight - 75;
     tblDiamond.frame = f;
     
     UIView *paddingView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)] autorelease];

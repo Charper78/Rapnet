@@ -721,22 +721,7 @@
 		UIView *view =[objScrollV.subviews objectAtIndex:i];
 		sizeOfContent += view.frame.size.height;
 	}
-	/*if([StoredData sharedData].isRelatedVideo)
-	{
-		lblTitle.frame=CGRectMake(8, 20+HgtimgMain, 304, lblTitle.frame.size.height);
-		lblDate.frame=CGRectMake(8, 23+HgtimgMain+lblTitle.frame.size.height, 95, lblDate.frame.size.height);
-		lblType.frame=CGRectMake(100, 23+HgtimgMain+lblTitle.frame.size.height, 152, lblType.frame.size.height);
-		lblAuthor.frame=CGRectMake(8,25+HgtimgMain+lblTitle.frame.size.height+lblDate.frame.size.height, 304,lblAuthor.frame.size.height);
-		relVideoButton.frame=CGRectMake(3, 326, 325, 40);
-		relArticleButton.frame=CGRectMake(2, 366, 325, 40);
-		dotUp.frame=CGRectMake(0, 326, 320, 1);
-		dotDown.frame=CGRectMake(0, 366, 320, 1);
-		dotBottom.frame=CGRectMake(0, 406, 320, 1);
-		upGestureView.frame=CGRectMake(8, -33, 304, 349);
-		objScrollV.contentSize = CGSizeMake(objScrollV.frame.size.width, sizeOfContent+120-upGestureView.frame.size.height+130);
-	}
-    
-    else */if([StoredData sharedData].isVideo || [StoredData sharedData].isRelatedVideo){
+	if([StoredData sharedData].isVideo || [StoredData sharedData].isRelatedVideo){
         videoView.center = CGPointMake(280, 33);
         lblTitle.frame=CGRectMake(8, 20, 220, lblTitle.frame.size.height);
         lblDate.frame=CGRectMake(8, 23+lblTitle.frame.size.height, 95, lblDate.frame.size.height);
@@ -929,17 +914,7 @@
 			upGestureView.frame=CGRectMake(8,-33,304,fittingSize.height+239+33-HgtimgMain);
             
         }
-        /*
-        else{
-            descView.frame = CGRectMake(0, 223+lblTitle.frame.size.height-20, fittingSize.width,fittingSize.height);
-            relArticleButton.frame =CGRectMake(2,310+fittingSize.height,325,60);
-            relVideoButton.frame =CGRectMake(3,246+fittingSize.height,325,60);
-            dotUp.frame=CGRectMake(0,246+fittingSize.height,320,1);
-            dotDown.frame=CGRectMake(0,310+fittingSize.height,320,1);
-            dotBottom.frame=CGRectMake(0,373+fittingSize.height,320,1);
-            upGestureView.frame=CGRectMake(8,-33,304,fittingSize.height+239+33);
-        }*/
-	}
+        	}
 	
 	
 	else if([StoredData sharedData].isViewed||[StoredData sharedData].isSaved||[StoredData sharedData].isNews)
@@ -958,7 +933,8 @@
 		else {
 			
 			videoView.hidden=YES;
-			descView.frame = CGRectMake(0, 223-HgtimgMain+lblTitle.frame.size.height-20, fittingSize.width,fittingSize.height);
+			//descView.frame = CGRectMake(0, 223-HgtimgMain+lblTitle.frame.size.height-20, fittingSize.width,fittingSize.height);
+            //descView.frame = CGRectMake(0, lblTitle.frame.size.height - 20, fittingSize.width,fittingSize.height);
 			relArticleButton.frame =CGRectMake(2,310+fittingSize.height-HgtimgMain,325,60);
 			relVideoButton.frame =CGRectMake(3,246+fittingSize.height-HgtimgMain,325,60);
 			dotUp.frame=CGRectMake(0,246+fittingSize.height-HgtimgMain,320,1);
@@ -970,20 +946,6 @@
 			
 	}
     
-    
-   /* else if([StoredData sharedData].isRelatedArticle && [StoredData sharedData].isVideo)
-    {
-        videoView.hidden=YES;
-        descView.frame = CGRectMake(0, 223-HgtimgMain+lblTitle.frame.size.height-20, fittingSize.width,fittingSize.height);
-        relArticleButton.frame =CGRectMake(2,310+fittingSize.height-HgtimgMain,325,60);
-        relVideoButton.frame =CGRectMake(3,246+fittingSize.height-HgtimgMain,325,60);
-        dotUp.frame=CGRectMake(0,246+fittingSize.height-HgtimgMain,320,1);
-        dotDown.frame=CGRectMake(0,310+fittingSize.height-HgtimgMain,320,1);
-        dotBottom.frame=CGRectMake(0,373+fittingSize.height-HgtimgMain,320,1);
-        upGestureView.frame=CGRectMake(8,-33,304,fittingSize.height+239+33-HgtimgMain);
-
-    }*/
-	
 	else {
 		
 		videoView.hidden=YES;

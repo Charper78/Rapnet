@@ -174,9 +174,9 @@
 	[myScrollView setShowsVerticalScrollIndicator:NO];
 	
     [self.view addSubview:myScrollView];
-    myScrollView.frame = CGRectMake(0, -35, 320, 35);
+    myScrollView.frame = CGRectMake(0, 35, 320, 35);
     myScrollView.contentSize = CGSizeMake(360, 35);
-    //myScrollView.frame = CGRectMake(0, 35, 320, 35);
+   
     
     leftArrowImageView.frame = CGRectMake(0, 35, 20, 35);
     rightArrowImageView.frame = CGRectMake(300, 35, 20, 35);
