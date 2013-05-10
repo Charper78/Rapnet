@@ -536,6 +536,9 @@
 		F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */; };
 		F458F8BF1729CE0200F7A5B2 /* NotificationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F458F8BE1729CE0200F7A5B2 /* NotificationSettings.m */; };
 		F458F8C21729D52400F7A5B2 /* RegisterDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F458F8C11729D52400F7A5B2 /* RegisterDevice.m */; };
+		F47B814B173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814A173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png */; };
+		F47B814D173CF48900ECF79B /* WorkAreaFooter_548.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814C173CF48900ECF79B /* WorkAreaFooter_548.png */; };
+		F47B814F173CFDDD00ECF79B /* Price_Home_Work_top.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814E173CFDDD00ECF79B /* Price_Home_Work_top.png */; };
 		F49EB4661732E79800FAC102 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EB4651732E79800FAC102 /* Default-568h@2x.png */; };
 		F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */; };
 		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
@@ -1269,6 +1272,9 @@
 		F458F8BE1729CE0200F7A5B2 /* NotificationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationSettings.m; sourceTree = "<group>"; };
 		F458F8C01729D52400F7A5B2 /* RegisterDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDevice.h; sourceTree = "<group>"; };
 		F458F8C11729D52400F7A5B2 /* RegisterDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDevice.m; sourceTree = "<group>"; };
+		F47B814A173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_Work_Area3.3_548.png; sourceTree = "<group>"; };
+		F47B814C173CF48900ECF79B /* WorkAreaFooter_548.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorkAreaFooter_548.png; sourceTree = "<group>"; };
+		F47B814E173CFDDD00ECF79B /* Price_Home_Work_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_Work_top.png; sourceTree = "<group>"; };
 		F49EB4651732E79800FAC102 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F4AFB45E16F90CAF0012C00C /* NotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsHelper.h; sourceTree = "<group>"; };
 		F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsHelper.m; sourceTree = "<group>"; };
@@ -2284,6 +2290,8 @@
 		BB2F3D1814D415C30065CBF5 /* WorkArea */ = {
 			isa = PBXGroup;
 			children = (
+				F47B814C173CF48900ECF79B /* WorkAreaFooter_548.png */,
+				F47B814A173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png */,
 				BB2F3D1914D415C30065CBF5 /* bg.png */,
 				BB2F3D1A14D415C30065CBF5 /* Calculator1X.png */,
 				BB2F3D1B14D415C30065CBF5 /* check_box_1X.png */,
@@ -2303,6 +2311,7 @@
 				BB2F3D2914D415C30065CBF5 /* Save-Selected1X.png */,
 				BB2F3D2A14D415C30065CBF5 /* UnCheck_box_1X.png */,
 				BB2F3D2B14D415C30065CBF5 /* UnCheck_box_1X1.png */,
+				F47B814E173CFDDD00ECF79B /* Price_Home_Work_top.png */,
 				BB2F3D2C14D415C30065CBF5 /* work-area-header-1X.png */,
 				BB2F3D2D14D415C30065CBF5 /* WorkAreaFooter.png */,
 			);
@@ -2801,6 +2810,9 @@
 				84F1C6881688EA5700EDEE0B /* border320X50.png in Resources */,
 				F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */,
 				F49EB4661732E79800FAC102 /* Default-568h@2x.png in Resources */,
+				F47B814B173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png in Resources */,
+				F47B814D173CF48900ECF79B /* WorkAreaFooter_548.png in Resources */,
+				F47B814F173CFDDD00ECF79B /* Price_Home_Work_top.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

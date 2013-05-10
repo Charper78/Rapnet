@@ -53,5 +53,6 @@
 +(bool)getBoolData:(NSString*)key defalutVal:(bool)defaultVal;
 +(GetPriceListChangeDate*)getPriceListChangeDate;
 +(NSString*)boolToString:(BOOL)b;
-
++(CGFloat)getScreenHeight;
++(CGFloat)getScreenWidth;
 @end

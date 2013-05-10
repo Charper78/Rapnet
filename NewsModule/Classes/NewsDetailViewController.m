@@ -933,7 +933,7 @@
 		else {
 			
 			videoView.hidden=YES;
-			//descView.frame = CGRectMake(0, 223-HgtimgMain+lblTitle.frame.size.height-20, fittingSize.width,fittingSize.height);
+			descView.frame = CGRectMake(0, 223-HgtimgMain+lblTitle.frame.size.height-20, fittingSize.width,fittingSize.height);
             //descView.frame = CGRectMake(0, lblTitle.frame.size.height - 20, fittingSize.width,fittingSize.height);
 			relArticleButton.frame =CGRectMake(2,310+fittingSize.height-HgtimgMain,325,60);
 			relVideoButton.frame =CGRectMake(3,246+fittingSize.height-HgtimgMain,325,60);

@@ -18,7 +18,9 @@
 {
 	[super viewDidLoad];
 	[self.navigationController setNavigationBarHidden:YES];
-	self.view.frame=CGRectMake(0,82, 320, 320);
+	//self.view.frame=CGRectMake(0,82, 320, 320);
+    CGFloat height = [Functions getScreenHeight];
+    self.view.frame=CGRectMake(0,82, 320, height - 160);
     //self.objTable.contentSize = CGSizeMake(320, 1500);
 	self.view.backgroundColor=[UIColor grayColor];
 	

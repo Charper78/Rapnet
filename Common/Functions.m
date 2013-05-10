@@ -467,7 +467,14 @@
     return b ? @"true" : @"false";
 }
 
-/*
++(CGFloat)getScreenHeight
+{
+    return [[UIScreen mainScreen] bounds].size.height;
+}
+
++(CGFloat)getScreenWidth{
+    return [[UIScreen mainScreen] bounds].size.width;
+}/*
 #pragma mark sendInAppSMS
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
 -(void)sendInA/Users/admin/Documents/Google Drive/Projects/Rapnet/Rapnet/Common/Functions.mppSMS{

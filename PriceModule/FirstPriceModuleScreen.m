@@ -90,7 +90,7 @@
     if (/*[StoredData sharedData].loginPriceFlag*/ true) {
         
     }else{
-        [self.view addSubview:[StoredData sharedData].blackScreen];
+        //[self.view addSubview:[StoredData sharedData].blackScreen];
         
         //  NSLog(@"price not downloafing");
         
@@ -610,14 +610,18 @@
         [discountValuesArr addObject:[NSNumber numberWithInt:i-80]];
     }
     
-    
+    myPickerView = [[UIPickerView alloc] init];
+    myPickerView.delegate = self;
     UIImageView *img;    
     myPickerView.showsSelectionIndicator = YES;    
     myPickerView.tag = 30;
-    myPickerView.frame = CGRectMake(0, 0,320, 162);
+    //myPickerView.frame = CGRectMake(myPickerView.frame.origin.x, myPickerView.frame.origin.y,320, 162);
+    
+    myPickerView.frame = CGRectMake(myPickerView.frame.origin.x, myPickerView.frame.origin.y,320, 162);
+    
     myPickerView.transform=CGAffineTransformMakeScale(0.67, 0.67);
     myPickerView.center = CGPointMake(204, 121);
-    
+    [self.view addSubview:myPickerView];
     
     img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"border1.png"]];
     img.frame = CGRectMake(94, 66, 225, 8);
@@ -750,7 +754,7 @@
     totalPriceEditFlag = FALSE;
     pricePerCaratFlag = FALSE;
     sizeEditFlag = FALSE;
-    
+    [myPickerView reloadAllComponents];
     [myPickerView selectRow:50 inComponent:3 animated:YES];
     [myPickerView selectRow:0 inComponent:1 animated:YES];
     [myPickerView selectRow:0 inComponent:2 animated:YES];
@@ -759,7 +763,7 @@
     [StoredData sharedData].workABtnGlobal = workABtn;
     
     NSLog(@"line 697");
-    [myPickerView reloadAllComponents];
+    
     [self setPriceListLastUpdated];
     didInitializeScreen = YES;
     NSLog(@"line 700");
@@ -1555,7 +1559,9 @@
     
     if(workAreaObj == nil){
 	    workAreaObj = [[WorkAreaModuleScreen alloc]initWithNibName:@"WorkAreaModuleScreen" bundle:nil];
-        workAreaObj.view.frame = CGRectMake(0, -2, 320, 424);    
+        //workAreaObj.view.frame = CGRectMake(0, -2, 320, 412);
+        //workAreaObj.view.frame = CGRectMake(0, -2, 320, 500);
+        workAreaObj.view.frame = CGRectMake(0, -2, 320, [Functions getScreenHeight] - 68);
         workAreaObj.delegate = self;
 		[self.view addSubview:workAreaObj.view];
     }
@@ -2588,7 +2594,8 @@
             
             if(workAreaObj == nil){
                 workAreaObj = [[WorkAreaModuleScreen alloc]initWithNibName:@"WorkAreaModuleScreen" bundle:nil];
-                workAreaObj.view.frame = CGRectMake(0, 0, 320, 424);    
+                //workAreaObj.view.frame = CGRectMake(0, 0, 320, 424);
+                workAreaObj.view.frame = CGRectMake(0, -2, 320, [Functions getScreenHeight] - 68);
                 workAreaObj.delegate = self;
                 [self.view addSubview:workAreaObj.view];
             }
