@@ -194,11 +194,11 @@
 
 
 -(void)loadDataInTable{
-    UIImageView *headerBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header.png"]];
-    headerBG.frame = CGRectMake(0, 0, 320, 40);
-    [self.view addSubview:headerBG];
+    //UIImageView *headerBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header.png"]];
+    //headerBG.frame = CGRectMake(0, 0, 320, 40);
+    //[self.view addSubview:headerBG];
     
-    UILabel *lbl;
+  /*  UILabel *lbl;
     lbl = [[UILabel alloc]initWithFrame:CGRectMake(25, 10, 70, 20)]; // 0
     lbl.textAlignment = UITextAlignmentLeft;
     lbl.font = [UIFont fontWithName:@"Helvetica" size:11];
@@ -230,19 +230,19 @@
     lbl.backgroundColor=[UIColor clearColor];
     [lbl release];
     lbl = nil; 
+    */
     
     
     
-    
-    [headerBG release];
-    headerBG = nil;
+    //[headerBG release];
+   // headerBG = nil;
     
     [self.view bringSubviewToFront:checkBoxSelAllBtn];
     [self.view bringSubviewToFront:checkAllImage];
-    checkBoxSelAllBtn.frame = CGRectMake(checkBoxSelAllBtn.frame.origin.x, checkBoxSelAllBtn.frame.origin.y, checkBoxSelAllBtn.frame.size.width, checkBoxSelAllBtn.frame.size.height+10);
-    checkAllImage.frame = CGRectMake(checkAllImage.frame.origin.x, checkAllImage.frame.origin.y+6, checkAllImage.frame.size.width, checkAllImage.frame.size.height);
+    //checkBoxSelAllBtn.frame = CGRectMake(checkBoxSelAllBtn.frame.origin.x, checkBoxSelAllBtn.frame.origin.y, checkBoxSelAllBtn.frame.size.width, checkBoxSelAllBtn.frame.size.height+10);
+    //checkAllImage.frame = CGRectMake(checkAllImage.frame.origin.x, checkAllImage.frame.origin.y+6, checkAllImage.frame.size.width, checkAllImage.frame.size.height);
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 310) style:UITableViewStylePlain];    
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, vButtom.frame.origin.y - vButtom.frame.size.height + 30) style:UITableViewStylePlain];
     [tableView setAutoresizesSubviews:YES];    
     [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];     
     [tableView setDelegate:self];  

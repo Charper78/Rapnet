@@ -52,7 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    return;
+    
     // Do any additional setup after loading the view from its nib.
     
     //   NSLog(@"view did load");
@@ -100,7 +100,7 @@
 
 
 -(void)loadDataInTable{
-    UIImageView *headerBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header.png"]];
+   /* UIImageView *headerBG = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"header.png"]];
     headerBG.frame = CGRectMake(0, 30, 320, 40);
     [self.view addSubview:headerBG];
     
@@ -191,7 +191,7 @@
     
     [headerBG1 release];
     headerBG1 = nil;
-    
+    */
     [self.view bringSubviewToFront:calcBtn];
     [self.view bringSubviewToFront:calcL];
     [self.view bringSubviewToFront:deleteAllBtn];
@@ -199,15 +199,15 @@
     
     [self.view bringSubviewToFront:checkBoxSelAllBtn];
     [self.view bringSubviewToFront:checkAllImage];
-    checkBoxSelAllBtn.frame = CGRectMake(checkBoxSelAllBtn.frame.origin.x, checkBoxSelAllBtn.frame.origin.y, checkBoxSelAllBtn.frame.size.width, checkBoxSelAllBtn.frame.size.height+10);
-    checkAllImage.frame = CGRectMake(checkAllImage.frame.origin.x, checkAllImage.frame.origin.y+6, checkAllImage.frame.size.width, checkAllImage.frame.size.height);
+    //checkBoxSelAllBtn.frame = CGRectMake(checkBoxSelAllBtn.frame.origin.x, checkBoxSelAllBtn.frame.origin.y, checkBoxSelAllBtn.frame.size.width, checkBoxSelAllBtn.frame.size.height+10);
+    //checkAllImage.frame = CGRectMake(checkAllImage.frame.origin.x, checkAllImage.frame.origin.y+6, checkAllImage.frame.size.width, checkAllImage.frame.size.height);
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, 320, 240) style:UITableViewStylePlain];    
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, 320, vButtom.frame.origin.y - vButtom.frame.size.height + 20) style:UITableViewStylePlain];
     [tableView setAutoresizesSubviews:YES];    
     [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];     
     [tableView setDelegate:self];  
     [tableView setDataSource:self];
-    
+    //[tableView reloadData];
     [[self view] addSubview:tableView];
     
 }
@@ -1406,7 +1406,9 @@ picker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
+    //CGPoint location = [touch locationInView:self.view];
+    CGPoint location = [touch locationInView:vButtom];
+    CGRect rect = rapPercentage.frame;
     if (CGRectContainsPoint(rapPercentage.frame, location)) {
         if ([[StoredData sharedData].savedDiamondsArr count]>0) {
             if ([selectedRowArr count]>0) {

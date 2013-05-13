@@ -24,8 +24,8 @@
 @interface SavedCalculations : UIViewController<UITableViewDelegate,UITableViewDataSource,CustomRenameAlertDelegate,CustomOpenAlertDelegate,deleteSelectedAlertDelegate,MsgAlertViewDelegate,OpenFileModuleDelegate> {
     IBOutlet UIButton *openBtn,*deleteBtn,*renameBtn,*checkBoxSelAllBtn;
     UITableView *tableView;
-    IBOutlet UIImageView *toolBar,*checkAllImage;
-    
+    IBOutlet UIImageView *toolBar,*checkAllImage,*headerBG;
+    IBOutlet UIView *vButtom;
     BOOL deleteFlag,checkAllFlag;
     NSMutableArray *fileNameArr;
     

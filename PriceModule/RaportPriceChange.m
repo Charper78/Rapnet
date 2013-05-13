@@ -253,7 +253,10 @@
 }
 
 -(void)loadDataInTable{
-    roundShapeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, 320) style:UITableViewStylePlain];    
+    
+    CGFloat height = 320;
+    
+    roundShapeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, height) style:UITableViewStylePlain];    
     [roundShapeTableView setAutoresizesSubviews:YES];    
     [roundShapeTableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];     
     [roundShapeTableView setDelegate:self];  
@@ -263,7 +266,7 @@
     
     
     
-    pearShapeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, 320) style:UITableViewStylePlain];    
+    pearShapeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, height) style:UITableViewStylePlain];    
     [pearShapeTableView setAutoresizesSubviews:YES];    
     [pearShapeTableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];     
     [pearShapeTableView setDelegate:self];  
@@ -439,11 +442,14 @@
     // Configure the cell...
     
     NSDictionary *dic; 
+    int index = indexPath.row;
     
     if (tableView==roundShapeTableView) {
-        dic = [arrPriceChange[0] objectAtIndex:indexPath.row];
+        
+        dic = [arrPriceChange[0] objectAtIndex:index];
     }else{
-        dic = [arrPriceChange[1] objectAtIndex:indexPath.row];
+        
+        dic = [arrPriceChange[1] objectAtIndex:index];
     }
     
     

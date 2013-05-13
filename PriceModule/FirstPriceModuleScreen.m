@@ -1621,7 +1621,8 @@
     
     if(saveCalcObj == nil){
 	    saveCalcObj = [[SavedCalculations alloc]initWithNibName:@"SavedCalculations" bundle:nil];
-        saveCalcObj.view.frame = CGRectMake(0, 35, 320, 424);
+        //saveCalcObj.view.frame = CGRectMake(0, 35, 320, 424);
+        saveCalcObj.view.frame = CGRectMake(0, 35, 320, [Functions getScreenHeight] - 100);
         saveCalcObj.delegate = self;
 		[self.view addSubview:saveCalcObj.view];
     }
@@ -1670,7 +1671,8 @@
         if(raportPriceListObj == nil){
             raportPriceListObj = [[RaportPriceList alloc]initWithNibName:@"RaportPriceList" bundle:nil];
             raportPriceListObj.delegate = self;
-            raportPriceListObj.view.frame = CGRectMake(0, 36, 320, 424);        
+            //raportPriceListObj.view.frame = CGRectMake(0, 36, 320, 424);
+            raportPriceListObj.view.frame = CGRectMake(0, 36, 320, [Functions getScreenHeight] - 68);
             [self.view addSubview:raportPriceListObj.view];
         }
         
@@ -1729,7 +1731,8 @@
      
     if(raportPriceChangeObj == nil){
 	    raportPriceChangeObj = [[RaportPriceChange alloc]initWithNibName:@"RaportPriceChange" bundle:nil];
-        raportPriceChangeObj.view.frame = CGRectMake(0, 36, 320, 424);
+        //raportPriceChangeObj.view.frame = CGRectMake(0, 36, 320, 424);
+        raportPriceChangeObj.view.frame = CGRectMake(0, 36, 320, [Functions getScreenHeight] - 68);
         //raportPriceChangeObj.delegate = self;
 		[self.view addSubview:raportPriceChangeObj.view];
     }

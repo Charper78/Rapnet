@@ -545,6 +545,9 @@
 		F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */; };
 		F4D6192216F349BC00AE3D19 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */; };
 		F4D6192616F34EA600AE3D19 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6192516F34EA600AE3D19 /* CustomBadge.m */; };
+		F4DF21C0174168C500316857 /* PL_BG_SideBar.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DF21BE174168C500316857 /* PL_BG_SideBar.png */; };
+		F4DF21C1174168C500316857 /* PL_BG_Top.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DF21BF174168C500316857 /* PL_BG_Top.png */; };
+		F4DF21C31741750300316857 /* Price_Saved_Calculator_Buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = F4DF21C21741750300316857 /* Price_Saved_Calculator_Buttom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1284,6 +1287,9 @@
 		F4D6192116F349BC00AE3D19 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F4D6192416F34EA600AE3D19 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
 		F4D6192516F34EA600AE3D19 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
+		F4DF21BE174168C500316857 /* PL_BG_SideBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PL_BG_SideBar.png; sourceTree = "<group>"; };
+		F4DF21BF174168C500316857 /* PL_BG_Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PL_BG_Top.png; sourceTree = "<group>"; };
+		F4DF21C21741750300316857 /* Price_Saved_Calculator_Buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Saved_Calculator_Buttom.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2239,6 +2245,8 @@
 		BB2F3CF614D415C30065CBF5 /* RapnetPriceList */ = {
 			isa = PBXGroup;
 			children = (
+				F4DF21BE174168C500316857 /* PL_BG_SideBar.png */,
+				F4DF21BF174168C500316857 /* PL_BG_Top.png */,
 				BB4F3F2D150366FB0033157E /* cancelList.png */,
 				BB4F3F2E150366FB0033157E /* gotocalc.png */,
 				BB4F3F25150361970033157E /* RapaPort--Price-List-BOX_1x.png */,
@@ -2257,6 +2265,7 @@
 		BB2F3D0114D415C30065CBF5 /* SavedCalc */ = {
 			isa = PBXGroup;
 			children = (
+				F4DF21C21741750300316857 /* Price_Saved_Calculator_Buttom.png */,
 				BB2F3D0214D415C30065CBF5 /* Price_Saved_Calculator3.3.png */,
 			);
 			path = SavedCalc;
@@ -2813,6 +2822,9 @@
 				F47B814B173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png in Resources */,
 				F47B814D173CF48900ECF79B /* WorkAreaFooter_548.png in Resources */,
 				F47B814F173CFDDD00ECF79B /* Price_Home_Work_top.png in Resources */,
+				F4DF21C0174168C500316857 /* PL_BG_SideBar.png in Resources */,
+				F4DF21C1174168C500316857 /* PL_BG_Top.png in Resources */,
+				F4DF21C31741750300316857 /* Price_Saved_Calculator_Buttom.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

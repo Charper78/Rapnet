@@ -239,15 +239,19 @@ NSString *sizeSelectedRowKey = @"sizeSelectedRowKey";
         
     }
     
-    dataScrollView.center=CGPointMake(dataScrollView.center.x, dataScrollView.center.y+36);
-    rowScrollView.center=CGPointMake(rowScrollView.center.x, rowScrollView.center.y+36);
-    columnScrollView.center=CGPointMake(columnScrollView.center.x, columnScrollView.center.y+36);
+    //dataScrollView.center=CGPointMake(dataScrollView.center.x, dataScrollView.center.y+36);
+    //rowScrollView.center=CGPointMake(rowScrollView.center.x, rowScrollView.center.y+36);
+    //columnScrollView.center=CGPointMake(columnScrollView.center.x, columnScrollView.center.y+36);
     
     
-    dataScrollView.contentSize=CGSizeMake(700, 400);
-    rowScrollView.contentSize=CGSizeMake(42, 400);
+    //dataScrollView.contentSize=CGSizeMake(700, 400);
+    //rowScrollView.contentSize=CGSizeMake(42, 400);
+    
+    dataScrollView.contentSize=CGSizeMake(700, [Functions getScreenHeight]);
+    rowScrollView.contentSize=CGSizeMake(42, [Functions getScreenHeight]);
     columnScrollView.contentSize=CGSizeMake(700, 30);
     
+    [dataScrollView setContentOffset:CGPointMake(40, 20) animated:YES];
     
     dataScrollView.scrollEnabled=TRUE;
     xScroll=0;

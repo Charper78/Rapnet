@@ -32,7 +32,7 @@
     IBOutlet UILabel *avgDperC,*DperTtl,*rapPercentage,*rapPerC,*rapPerTtl,*workAreaText,*calcL;
     UITableView *tableView;
     IBOutlet UIImageView *toolBar,*checkAllImage;
-    
+    IBOutlet UIView *vButtom;
     BOOL deleteFlag,checkAllFlag,diamondSavedMsgflag;
     
     NSMutableArray *selectedRowArr;
