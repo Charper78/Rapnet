@@ -370,10 +370,10 @@ UIFont *buttonFont;
     
     DiamondResultsVC *objDiamondResult = [[DiamondResultsVC alloc]initWithNibName:@"DiamondResultsVC" bundle:nil];
     //[self.navigationController pushViewController:objDiamondResult animated:YES];
-    float h = 375.0;
-    if(IsTallPhone())
-        h = 555.0;
-     [objDiamondResult changeTableHeight:h];
+ //   float h = 375.0;
+  //  if(IsTallPhone())
+ //       h = 555.0;
+ //    [objDiamondResult changeTableHeight:h];
     [self.view addSubview:objDiamondResult.view];
     
     CGRect f = self.view.frame;

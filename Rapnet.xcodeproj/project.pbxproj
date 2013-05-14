@@ -539,6 +539,9 @@
 		F47B814B173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814A173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png */; };
 		F47B814D173CF48900ECF79B /* WorkAreaFooter_548.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814C173CF48900ECF79B /* WorkAreaFooter_548.png */; };
 		F47B814F173CFDDD00ECF79B /* Price_Home_Work_top.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814E173CFDDD00ECF79B /* Price_Home_Work_top.png */; };
+		F47E2CF9174210350091B2C6 /* header_save_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CF8174210350091B2C6 /* header_save_calc.png */; };
+		F47E2CFC174222390091B2C6 /* Price_Home_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */; };
+		F47E2CFD174222390091B2C6 /* Price_Home_top.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFB174222390091B2C6 /* Price_Home_top.png */; };
 		F49EB4661732E79800FAC102 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EB4651732E79800FAC102 /* Default-568h@2x.png */; };
 		F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */; };
 		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
@@ -1278,6 +1281,9 @@
 		F47B814A173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_Work_Area3.3_548.png; sourceTree = "<group>"; };
 		F47B814C173CF48900ECF79B /* WorkAreaFooter_548.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorkAreaFooter_548.png; sourceTree = "<group>"; };
 		F47B814E173CFDDD00ECF79B /* Price_Home_Work_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_Work_top.png; sourceTree = "<group>"; };
+		F47E2CF8174210350091B2C6 /* header_save_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_save_calc.png; sourceTree = "<group>"; };
+		F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_buttom.png; sourceTree = "<group>"; };
+		F47E2CFB174222390091B2C6 /* Price_Home_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_top.png; sourceTree = "<group>"; };
 		F49EB4651732E79800FAC102 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F4AFB45E16F90CAF0012C00C /* NotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsHelper.h; sourceTree = "<group>"; };
 		F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsHelper.m; sourceTree = "<group>"; };
@@ -2186,6 +2192,8 @@
 		BB2F3CDA14D415C30065CBF5 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */,
+				F47E2CFB174222390091B2C6 /* Price_Home_top.png */,
 				BBE417B21514FEA800CA2357 /* Popups */,
 				BB2F3CDB14D415C30065CBF5 /* Add_diamond.png */,
 				BB2F3CDC14D415C30065CBF5 /* border1.png */,
@@ -2265,6 +2273,7 @@
 		BB2F3D0114D415C30065CBF5 /* SavedCalc */ = {
 			isa = PBXGroup;
 			children = (
+				F47E2CF8174210350091B2C6 /* header_save_calc.png */,
 				F4DF21C21741750300316857 /* Price_Saved_Calculator_Buttom.png */,
 				BB2F3D0214D415C30065CBF5 /* Price_Saved_Calculator3.3.png */,
 			);
@@ -2825,6 +2834,9 @@
 				F4DF21C0174168C500316857 /* PL_BG_SideBar.png in Resources */,
 				F4DF21C1174168C500316857 /* PL_BG_Top.png in Resources */,
 				F4DF21C31741750300316857 /* Price_Saved_Calculator_Buttom.png in Resources */,
+				F47E2CF9174210350091B2C6 /* header_save_calc.png in Resources */,
+				F47E2CFC174222390091B2C6 /* Price_Home_buttom.png in Resources */,
+				F47E2CFD174222390091B2C6 /* Price_Home_top.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

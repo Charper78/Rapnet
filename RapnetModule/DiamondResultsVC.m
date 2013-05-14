@@ -16,7 +16,7 @@
 
 const NSInteger numIncrease = 20;
 bool loadingResults = YES;
-CGFloat fixHeight = 0;
+//CGFloat fixHeight = 0;
 @synthesize resultCell,moreResultsCell;
 
 /*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,16 +34,22 @@ CGFloat fixHeight = 0;
     
     [AnalyticHelper sendView:@"Rapnet - SearchResults"];
     
-    CGRect f = tblResults.frame;
-    f.size.height = fixHeight;
-    tblResults.frame = f;
+    //CGRect f = tblResults.frame;
+    //f.size.height = fixHeight;
+   // f.size.height = [Functions getScreenHeight] + 40;
+   // tblResults.frame = f;
     
-    if(IsTallPhone())
-    {
-        CGRect ff = self.view.frame;
-        ff.size.height = fixHeight;
-        self.view.frame = ff;
-    }
+    
+      CGRect ff = self.view.frame;
+       ff.size.height = [Functions getScreenHeight];
+      self.view.frame = ff;
+
+   // if(IsTallPhone())
+  //  {
+      //  CGRect ff = self.view.frame;
+     //   ff.size.height = fixHeight;
+      //  self.view.frame = ff;
+  //  }
  //[self.navigationController setNavigationBarHidden:YES];
     
     //resultParser = [[DiamondsSearchResultParser alloc] init];
@@ -78,11 +84,11 @@ CGFloat fixHeight = 0;
 
 
 #pragma mark - Table view data source
--(void)changeTableHeight:(CGFloat)height
+/*-(void)changeTableHeight:(CGFloat)height
 {
     fixHeight = height;
     
-}
+}*/
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -237,7 +243,7 @@ CGFloat fixHeight = 0;
     [self.view addSubview:details.view];
     
     DiamondSearchResult *curResult = [results objectAtIndex:indexPath.row];
-    float h = 375.0;
+   /* float h = 375.0;
     
     if(IsTallPhone())
         h  = 655.0;
@@ -247,7 +253,7 @@ CGFloat fixHeight = 0;
     }
     else
         [details changeTableHeight:h];
-    
+    */
     [details loadDiamond:curResult];
    // [details release];
 }

@@ -60,5 +60,5 @@
 
 -(IBAction)btnBackClicked:(id)sender;
 -(void) search:(DiamondSearchParams*)params;
--(void)changeTableHeight:(CGFloat)height;
+//-(void)changeTableHeight:(CGFloat)height;
 @end

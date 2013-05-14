@@ -558,10 +558,10 @@ NSString *sizeSelectedRowKey = @"sizeSelectedRowKey";
 
         DiamondResultsVC *objDiamondResult = [[DiamondResultsVC alloc]initWithNibName:@"DiamondResultsVC" bundle:nil];
         
-        [objDiamondResult changeTableHeight:375-35.0];
+      //  [objDiamondResult changeTableHeight:375-35.0];
         
-        [self.view addSubview:objDiamondResult.view];
-        
+       // [self.view addSubview:objDiamondResult.view];
+        [self.view.superview addSubview:objDiamondResult.view];
         DiamondSearchParams *p = [[DiamondSearchParams alloc] init];
         p.searchType = @"REGULAR";
         p.firstRowNum = @"0";

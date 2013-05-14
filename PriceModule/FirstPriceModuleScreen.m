@@ -937,7 +937,7 @@
     NSString *strDiscount = [NSString stringWithFormat:@"%.1f", discountFrom];
     DiamondResultsVC *objDiamondResult = [[DiamondResultsVC alloc]initWithNibName:@"DiamondResultsVC" bundle:nil];
     
-    [objDiamondResult changeTableHeight:375];
+    //[objDiamondResult changeTableHeight:375];
     
     [self.view addSubview:objDiamondResult.view];
     
@@ -1622,7 +1622,9 @@
     if(saveCalcObj == nil){
 	    saveCalcObj = [[SavedCalculations alloc]initWithNibName:@"SavedCalculations" bundle:nil];
         //saveCalcObj.view.frame = CGRectMake(0, 35, 320, 424);
-        saveCalcObj.view.frame = CGRectMake(0, 35, 320, [Functions getScreenHeight] - 100);
+       // CGFloat h = [Functions getScreenHeight] - 100;
+        CGFloat height = [Functions getScreenHeight] - 100;
+        saveCalcObj.view.frame = CGRectMake(0, 35, 320, height);
         saveCalcObj.delegate = self;
 		[self.view addSubview:saveCalcObj.view];
     }
@@ -2553,7 +2555,8 @@
             
             if(saveCalcObj == nil){
                 saveCalcObj = [[SavedCalculations alloc]initWithNibName:@"SavedCalculations" bundle:nil];
-                saveCalcObj.view.frame = CGRectMake(0, 36, 320, 424);
+                //saveCalcObj.view.frame = CGRectMake(0, 36, 320, 424);
+                saveCalcObj.view.frame = CGRectMake(0, 36, 320, [Functions getScreenHeight] - 100);
                 saveCalcObj.delegate = self;
                 [self.view addSubview:saveCalcObj.view];
             }

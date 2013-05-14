@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PriceModule/FirstPriceModuleScreen.m"
-         timestampString = "390166000.392483"
+         timestampString = "390209044.69329"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1910"
-         endingLineNumber = "1910"
+         startingLineNumber = "1912"
+         endingLineNumber = "1912"
          landmarkName = "-pickerView:numberOfRowsInComponent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -196,6 +196,58 @@
          startingLineNumber = "1408"
          endingLineNumber = "1408"
          landmarkName = "-touchesBegan:withEvent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PriceModule/SavedCalculations.m"
+         timestampString = "390207168.851367"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "904"
+         endingLineNumber = "904"
+         landmarkName = "-openFileModuleFinished:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PriceModule/FirstPriceModuleScreen.m"
+         timestampString = "390209044.69329"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "2559"
+         endingLineNumber = "2559"
+         landmarkName = "-alertAddDiamondFinished:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PriceModule/FirstPriceModuleScreen.m"
+         timestampString = "390209044.69329"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1627"
+         endingLineNumber = "1627"
+         landmarkName = "-saveButtonClick:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PriceModule/FirstPriceModuleScreen.m"
+         timestampString = "390209550.697205"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1626"
+         endingLineNumber = "1626"
+         landmarkName = "-saveButtonClick:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
