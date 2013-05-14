@@ -3990,11 +3990,11 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="Default.png">{320, 480}</string>
-			<string key="button.png">{149, 31}</string>
+			<string key="button.png">{61, 33}</string>
 			<string key="delete24.png">{24, 24}</string>
 			<string key="left.png">{20, 35}</string>
 			<string key="right.png">{20, 35}</string>
-			<string key="topBar.png">{320, 26}</string>
+			<string key="topBar.png">{320, 37}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

@@ -59,7 +59,8 @@
 		logInBttn.hidden=NO;
     }
 		
-	loginScroll.contentSize = CGSizeMake(0,350);
+	//loginScroll.contentSize = CGSizeMake(0,350);
+    loginScroll.contentSize = CGSizeMake(0,[Functions getScreenHeight]);
 	[loginScroll setShowsHorizontalScrollIndicator:NO];
 	[loginScroll setShowsVerticalScrollIndicator:NO];
     
@@ -70,7 +71,7 @@
     objUserName.text = [LoginHelper getUserName];
     objPassword.text = [LoginHelper getPassword];
     
-    [self setNotifyPriceListChange:[NotificationSettings getNotifyPriceListChange]];
+    //[self setNotifyPriceListChange:[NotificationSettings getNotifyPriceListChange]];
     [self setAutoUpdatePriceListSelection:[NotificationSettings getAutoUpdatePriceList]];
     
 	if (objUserName.text.length > 0) 
@@ -113,12 +114,13 @@
             case ReachableViaWWAN:
             {
                 isReachable = YES;
-                
+                [self setNotifyPriceListChange:[NotificationSettings getNotifyPriceListChange]];
                 break;
             }
             case ReachableViaWiFi:
             {
                 isReachable = YES;
+                [self setNotifyPriceListChange:[NotificationSettings getNotifyPriceListChange]];
                 break;
             }
         }
@@ -703,6 +705,34 @@
 	
 }
 
+-(void)resignTextFields
+{
+    [objUserName resignFirstResponder];
+    [objPassword resignFirstResponder];
+    [objForgotPw resignFirstResponder];
+ 
+    //CGFloat height = 350;
+    CGFloat height = [Functions getScreenHeight];
+    
+	loginScroll.frame = CGRectMake(0,35,320,height);
+	
+	
+	//if(textField.tag == 1)
+	{
+		loginScroll.contentSize = CGSizeMake(0,height);
+		[self setViewMovedUp:NO coordinateY:0];
+		
+	}
+	
+    
+    isKeyBoardDown = YES;
+}
+-(IBAction)dismissKeyboard:(id)sender
+{
+    [self resignTextFields];
+}
+
+
 -(IBAction)cancelBtn
 {
 	[[self navigationController] popViewControllerAnimated:YES];
@@ -712,7 +742,7 @@
 #pragma mark textField delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-	[textField resignFirstResponder];
+/*	[textField resignFirstResponder];
 	loginScroll.frame = CGRectMake(0,35,320,350);
 	
 	
@@ -722,6 +752,8 @@
 		[self setViewMovedUp:NO coordinateY:0];
 		
 	}
+ */
+    [self resignTextFields];
 	return YES;
 }
 

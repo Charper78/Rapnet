@@ -103,5 +103,5 @@
 -(BOOL)checkAllWebSrviceEnded;
 -(IBAction)chkAutoUpdatePriceList_Click:(id)sender;
 -(IBAction)chkNotifyPriceListChange_Click:(id)sender;
-
+-(IBAction)dismissKeyboard:(id)sender;
 @end
