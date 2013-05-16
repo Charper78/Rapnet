@@ -543,6 +543,8 @@
 		F47E2CFC174222390091B2C6 /* Price_Home_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */; };
 		F47E2CFD174222390091B2C6 /* Price_Home_top.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFB174222390091B2C6 /* Price_Home_top.png */; };
 		F49EB4661732E79800FAC102 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EB4651732E79800FAC102 /* Default-568h@2x.png */; };
+		F49EFE2C174554E5008C94B1 /* NotificationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2B174554E5008C94B1 /* NotificationParser.m */; };
+		F49EFE2F17455F1B008C94B1 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2E17455F1B008C94B1 /* Notification.m */; };
 		F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */; };
 		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
 		F4D6192016F31BE100AE3D19 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6191E16F31BE100AE3D19 /* NotificationsViewController.xib */; };
@@ -1285,6 +1287,10 @@
 		F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_buttom.png; sourceTree = "<group>"; };
 		F47E2CFB174222390091B2C6 /* Price_Home_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_top.png; sourceTree = "<group>"; };
 		F49EB4651732E79800FAC102 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F49EFE2A174554E5008C94B1 /* NotificationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationParser.h; sourceTree = "<group>"; };
+		F49EFE2B174554E5008C94B1 /* NotificationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationParser.m; sourceTree = "<group>"; };
+		F49EFE2D17455F1B008C94B1 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		F49EFE2E17455F1B008C94B1 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		F4AFB45E16F90CAF0012C00C /* NotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsHelper.h; sourceTree = "<group>"; };
 		F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsHelper.m; sourceTree = "<group>"; };
 		F4D6191C16F31BE100AE3D19 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
@@ -2410,6 +2416,10 @@
 				F458F8BE1729CE0200F7A5B2 /* NotificationSettings.m */,
 				F458F8C01729D52400F7A5B2 /* RegisterDevice.h */,
 				F458F8C11729D52400F7A5B2 /* RegisterDevice.m */,
+				F49EFE2A174554E5008C94B1 /* NotificationParser.h */,
+				F49EFE2B174554E5008C94B1 /* NotificationParser.m */,
+				F49EFE2D17455F1B008C94B1 /* Notification.h */,
+				F49EFE2E17455F1B008C94B1 /* Notification.m */,
 			);
 			name = Push;
 			path = /Users/home/Documents/Projects/iOS/Rapnet/Push;
@@ -3012,6 +3022,8 @@
 				F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */,
 				F458F8BF1729CE0200F7A5B2 /* NotificationSettings.m in Sources */,
 				F458F8C21729D52400F7A5B2 /* RegisterDevice.m in Sources */,
+				F49EFE2C174554E5008C94B1 /* NotificationParser.m in Sources */,
+				F49EFE2F17455F1B008C94B1 /* Notification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
