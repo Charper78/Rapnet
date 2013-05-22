@@ -112,13 +112,17 @@ CGFloat fixHeight;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     lblMainTitle.text = @"Diamond Details";
-    CGRect f = tblDiamond.frame;
-    //f.size.height = fixHeight;
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    f.size.height = screenHeight - 75;
-    tblDiamond.frame = f;
+    
+    CGRect ff = self.view.frame;
+    ff.size.height = [Functions getScreenHeight];
+    self.view.frame = ff;
+    
+    //CGRect f = tblDiamond.frame;
+        //f.size.height = [Functions getScreenHeight] - 75;
+   // f.size.height = [Functions getScreenHeight] ;
+   // tblDiamond.frame = f;
+    
+ //   [self.view bringSubviewToFront:tblDiamond];
     
     UIView *paddingView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)] autorelease];
     txtSubject.leftView = paddingView;

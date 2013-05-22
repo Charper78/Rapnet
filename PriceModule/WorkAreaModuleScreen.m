@@ -12,6 +12,7 @@
 @implementation WorkAreaModuleScreen
 
 @synthesize delegate;
+CGRect vButtomFrame;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -395,7 +396,8 @@
 
 -(IBAction)emailBtnTapped:(id)sender{
     
-        
+    vButtomFrame = vButtom.frame;
+    CGRect aa = tableView.frame;
     
     //MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
      MFMailComposeViewController *picker = [MFMailComposeViewController new];
@@ -546,6 +548,16 @@ picker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         //[self addChildViewController:picker];
         //[self.view.window addSubview:picker.view];
         [picker release];
+        
+        CGRect frame = tableView.frame;
+        frame.size.height = vButtom.frame.origin.y - vButtom.frame.size.height + 20;
+        frame.size.width = 320;
+        frame.origin.x = 0;
+        frame.origin.y = 70;
+        //tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, 320, vButtom.frame.origin.y - vButtom.frame.size.height + 20) style:UITableViewStylePlain];
+        tableView.frame = frame;
+        
+        
     }
     
 	
@@ -791,6 +803,11 @@ picker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
 	[self dismissModalViewControllerAnimated:YES];
 	[delegate clickedButton:FALSE];
+    
+    vButtom.frame = vButtomFrame;
+    [self.view bringSubviewToFront:vButtom];
+    
+
 }
 
 

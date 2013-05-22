@@ -14,8 +14,8 @@
 @end
 
 @implementation MainDiamondSearchVC
-NSInteger mainViewHeightInit = 990;
-
+//NSInteger mainViewHeightInit = 990;
+NSInteger mainViewHeightInit = 1070;
 bool isKeyBoardDown = YES;
 bool isLoadingCity = NO;
 bool shapeLoaded = NO;
