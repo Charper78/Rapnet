@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Functions.h"
 #import "Constants.h"
+#import "Notification.h"
+
 @interface NotificationsHelper : NSObject
 {
     
 }
 
-+(NSArray*)getNotifications;
-+(void)removeNotification:(NSInteger)index;
++(NSDictionary*)getNotifications;
++(void)removeNotification:(NSInteger)notificationID;
 +(void)removeAllNotifications;
-+(void)addNotification:(NSDictionary*)d;
++(void)addNotification:(Notification*)d;
 @end

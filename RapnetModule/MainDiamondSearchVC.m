@@ -38,6 +38,21 @@ UITextField *lastTextField;
 
 UIFont *buttonFont;
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSInteger)supportedInterfaceOrientations
+{
+    return UIDeviceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -269,10 +284,7 @@ UIFont *buttonFont;
        // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+
 
 -(void)loginCompleted:(BOOL)res
 {
@@ -1580,8 +1592,8 @@ UIFont *buttonFont;
     }
     else if (type == LT_TableClarity) 
     {
-        [LT_Clarity addToDatabase:result];
-        [self loadClarity:[LT_Clarity get]];
+        //[LT_Clarity addToDatabase:result];
+      //  [self loadClarity:[LT_Clarity get]];
       //  clarityLoaded = YES;
     }
     else if (type == LT_TableCut) 

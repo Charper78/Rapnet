@@ -61,6 +61,17 @@
 	
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+
 @end
 
 @implementation NewsDetailViewController
@@ -1071,6 +1082,9 @@
 }
 
 #pragma mark - Received Actions
+
+
+
 - (void)playVideo:(UITapGestureRecognizer *)recognizer
 {
 	    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 32000

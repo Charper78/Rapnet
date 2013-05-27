@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "Notification.h"
 #import "Functions.h"
+#import "NotificationsHelper.h"
 
 @protocol getNotificationsDelegate
 -(void)getNotificationsFinished:(NSMutableArray*)res total:(NSInteger)total;
@@ -39,4 +40,5 @@
 @property(nonatomic, retain) NSString *strTicket;
 //@property(nonatomic, retain) NSMutableArray *results;
 
+-(void)getNotifications:(NSString*)deviceID;
 @end

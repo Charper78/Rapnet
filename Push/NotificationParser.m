@@ -58,7 +58,9 @@ static NSString * const kResultElementName = @"Result";
     [theRequest setHTTPMethod:@"POST"];
     [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
     
-    //webData = [[NSMutableData alloc] initWithData: [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil]];
+    NSMutableData *webData = [[NSMutableData alloc] initWithData: [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil]];
+    NSString *theXML = [[NSString alloc] initWithBytes: [webData mutableBytes] length:[webData length] encoding:NSUTF8StringEncoding];
+	NSLog(@"%@",theXML);
     
     NSURLConnection *theConnection = [[[NSURLConnection alloc] initWithRequest:theRequest delegate:self]autorelease];
     
@@ -69,6 +71,17 @@ static NSString * const kResultElementName = @"Result";
 	else{
 		//NSLog(@"theConnection is NULL");
 	}
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+	[_webData setLength: 0];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)mydata
+{
+	
+	[_webData appendData:mydata];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -100,7 +113,7 @@ static NSString * const kResultElementName = @"Result";
     
 	_currentElement = [elementName copy];
 	
-    if ([elementName isEqualToString:kMessageElementName])
+    if ([elementName isEqualToString:kDataElementName])
         results = [[NSMutableArray alloc] init];
 	else if ([elementName isEqualToString:kMessageElementName])
 	{
@@ -140,6 +153,9 @@ static NSString * const kResultElementName = @"Result";
         notification.notificationID = [notificationID integerValue];
         notification.messageData = messageData;
         notification.messageDate = [Functions getDate:messageDate];
+        
+        [NotificationsHelper addNotification:notification];
+        
 		[results addObject:notification];
     }
 }
@@ -147,14 +163,16 @@ static NSString * const kResultElementName = @"Result";
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
-	//NSString * errorString = [NSString stringWithFormat:@"Unable to download story feed from web site (Error code %i )", [parseError code]];
+	NSString * errorString = [NSString stringWithFormat:@"Unable to download story feed from web site (Error code %i )", [parseError code]];
+    NSString * localizedDescription = parseError.localizedDescription;
+
 }
-
-
 -(void)parserDidEndDocument:(NSXMLParser *)parser{
     //NSLog(@"xml ended");
     //NSMutableArray *arr = [self getResults];
     [_delegate getNotificationsFinished:results total:results.count];
+    
+    
 }
 
 

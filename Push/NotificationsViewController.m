@@ -76,12 +76,14 @@
     }
     
     //NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
-    NSDictionary *curNotification = [notificatios objectAtIndex:[notificatios count] - indexPath.row - 1];
+    //NSDictionary *curNotification = [notificatios objectAtIndex:[notificatios count] - indexPath.row - 1];
+    Notification *curNotification = [[notificatios allValues] objectAtIndex:[[notificatios allValues] count] - indexPath.row - 1 ];
     
-    NSDictionary *apsInfo = [curNotification valueForKey:kNotificationApsKey];
-    
-    NSDate *notificationDate = [curNotification valueForKey:kNotificationDateKey];
-    NSString *alert = [apsInfo valueForKey:kNotificationAlertKey];
+    //NSDictionary *apsInfo = [curNotification valueForKey:kNotificationApsKey];
+    //NSDate *notificationDate = [curNotification valueForKey:kNotificationDateKey];
+    //NSString *alert = [apsInfo valueForKey:kNotificationAlertKey];
+    NSDate *notificationDate = curNotification.messageDate;
+    NSString *alert = curNotification.messageData;
     
     cell.textLabel.text = alert;
     cell.detailTextLabel.text = [Functions dateFormatFromDate:notificationDate format:@"yyyy-MM-dd HH:mm:ss"];
@@ -143,8 +145,11 @@
         //[categoryArray objectAtIndex:indexPath.row];
         //NSString *key = [NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row];
         //[NotificationsHelper removeNotification:key];
-        NSInteger index = [notificatios count] - indexPath.row - 1;
-        [NotificationsHelper removeNotification:index];
+        Notification *curNotification = [[notificatios allValues] objectAtIndex:[[notificatios allValues] count] - indexPath.row - 1 ];
+        [NotificationsHelper removeNotification:curNotification.notificationID];
+        
+        //NSInteger index = [notificatios count] - indexPath.row - 1;
+        //[NotificationsHelper removeNotification:index];
         notificatios = [NotificationsHelper getNotifications];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
         

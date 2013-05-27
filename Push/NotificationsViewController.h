@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Functions.h"
 #import "NotificationsHelper.h"
+#import "Notification.h"
 @interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    NSArray *notificatios;
+    NSDictionary *notificatios;
     IBOutlet UITableView *tblNotifications;
 }
 

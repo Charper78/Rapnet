@@ -47,7 +47,7 @@
 						<string key="NSFrame">{{0, 35}, {320, 425}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="1020278876"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -127,7 +127,7 @@
 						<string key="NSFrame">{{231, 5}, {84, 25}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1020278876"/>
+						<reference key="NSNextKeyView" ref="610715952"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="IBUIRestorationIdentifier"/>
@@ -261,7 +261,7 @@
 								<string key="NSFrame">{{183, 317}, {70, 32}}</string>
 								<reference key="NSSuperview" ref="1020278876"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="610715952"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="IBUIRestorationIdentifier"/>
@@ -1250,7 +1250,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="backButt.png">{44, 24}</string>
 			<string key="border320X50.png">{320, 50}</string>
-			<string key="button.png">{149, 31}</string>
+			<string key="button.png">{61, 33}</string>
 			<string key="button1.png">{61, 33}</string>
 			<string key="sqr.png">{320, 370}</string>
 			<string key="topBar.png">{320, 37}</string>
