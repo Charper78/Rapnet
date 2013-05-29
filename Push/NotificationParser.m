@@ -22,6 +22,8 @@ static NSString * const kResultElementName = @"Result";
 
 -(void)getNotifications:(NSString*)deviceID {
     
+    curDeviceID = deviceID;
+    
     NSString *soapAction = @"GetMessages";
     NSString *soapMessage = @"";
     
@@ -38,7 +40,7 @@ static NSString * const kResultElementName = @"Result";
                              @"%@"
                              "<SOAP-ENV:Body> \n"
                              "<%@ xmlns=\"%@/\"> \n"
-                             "<deviceID>%@</deviceID> \n"
+                             "<token>%@</token> \n"
                              "</%@> \n"
                              "</SOAP-ENV:Body> \n"
                              "</SOAP-ENV:Envelope>"
@@ -58,9 +60,10 @@ static NSString * const kResultElementName = @"Result";
     [theRequest setHTTPMethod:@"POST"];
     [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSMutableData *webData = [[NSMutableData alloc] initWithData: [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil]];
-    NSString *theXML = [[NSString alloc] initWithBytes: [webData mutableBytes] length:[webData length] encoding:NSUTF8StringEncoding];
-	NSLog(@"%@",theXML);
+    
+    //_webData = [[NSMutableData alloc] initWithData: [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil]];
+   // NSString *theXML = [[NSString alloc] initWithBytes: [webData mutableBytes] length:[webData length] encoding:NSUTF8StringEncoding];
+	//NSLog(@"%@",theXML);
     
     NSURLConnection *theConnection = [[[NSURLConnection alloc] initWithRequest:theRequest delegate:self]autorelease];
     
@@ -114,7 +117,10 @@ static NSString * const kResultElementName = @"Result";
 	_currentElement = [elementName copy];
 	
     if ([elementName isEqualToString:kDataElementName])
+    {
         results = [[NSMutableArray alloc] init];
+        downloadedIds = [[NSMutableString alloc] init];
+    }
 	else if ([elementName isEqualToString:kMessageElementName])
 	{
         ReleaseObject(notification);
@@ -154,6 +160,8 @@ static NSString * const kResultElementName = @"Result";
         notification.messageData = messageData;
         notification.messageDate = [Functions getDate:messageDate];
         
+        [downloadedIds appendString:[NSString stringWithFormat:@"<int>%@</int>", notificationID]];
+        
         [NotificationsHelper addNotification:notification];
         
 		[results addObject:notification];
@@ -170,11 +178,45 @@ static NSString * const kResultElementName = @"Result";
 -(void)parserDidEndDocument:(NSXMLParser *)parser{
     //NSLog(@"xml ended");
     //NSMutableArray *arr = [self getResults];
+    
+    if(results.count > 0)
+        [self setDownloadedNotifications:downloadedIds];
     [_delegate getNotificationsFinished:results total:results.count];
     
     
 }
 
+-(void)setDownloadedNotifications:(NSString*)ids
+{
+    NSString *soapAction = @"SetMessagesDownloaded";
+    NSString *soapMessage = [NSString stringWithFormat:
+                             @"%@"
+                             "<SOAP-ENV:Body> \n"
+                             "<%@ xmlns=\"%@/\"> \n"
+                             "<token>%@</token> \n"
+                             "<messageIDS>%@</messageIDS> \n"
+                             "</%@> \n"
+                             "</SOAP-ENV:Body> \n"
+                             "</SOAP-ENV:Envelope>"
+                             ,SoapEnvelope, soapAction, PnsNamespace, curDeviceID,
+                             ids, soapAction];
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", PnsUrl]];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue:[NSString stringWithFormat:@"%@/%@", PnsNamespace, soapAction] forHTTPHeaderField:@"Soapaction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"%@",soapMessage);
+    
+    NSMutableData *data = [[NSMutableData alloc] initWithData: [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil]];
+    NSString *theXML = [[NSString alloc] initWithBytes: [data mutableBytes] length:[data length] encoding:NSUTF8StringEncoding];
+	NSLog(@"%@",theXML);
+
+}
 
 - (void)dealloc
 {

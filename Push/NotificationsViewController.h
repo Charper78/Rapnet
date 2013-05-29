@@ -13,6 +13,7 @@
 @interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     NSDictionary *notificatios;
+    NSArray *sortedNotifications;
     IBOutlet UITableView *tblNotifications;
 }
 

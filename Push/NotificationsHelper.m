@@ -18,7 +18,7 @@
 +(void)removeNotification:(NSInteger)notificationID
 {
     NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
-    [curDic removeObjectForKey:notificationID];
+    [curDic removeObjectForKey:[NSString stringWithFormat:@"%d", notificationID]];
     [Functions writeObjectToFile:curDic fileName:kNotificationsFile];
 }
 
@@ -31,10 +31,12 @@
 
 +(void)addNotification:(Notification*)n
 {
-    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] ];
     
-    if ([curDic objectForKey:n.notificationID] != nil) {
-        [curDic setObject:n forKey:n.notificationID];
+    if ([curDic objectForKey:[NSString stringWithFormat:@"%d", n.notificationID]] == nil) {
+    //if ([curDic objectForKey: n.messageData] == nil) {
+        [curDic setObject:n forKey:[NSString stringWithFormat:@"%d", n.notificationID]];
+     //   [curDic setObject:n forKey: n.messageData];
         [Functions writeObjectToFile:curDic fileName:kNotificationsFile];
     }
 }

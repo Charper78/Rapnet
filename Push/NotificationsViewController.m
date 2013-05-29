@@ -12,6 +12,7 @@
 
 @end
 
+
 @implementation NotificationsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -28,6 +29,11 @@
     [super viewDidLoad];
 
     notificatios = [Functions readObjectFromFile:kNotificationsFile];
+    
+    NSArray *a = [notificatios allValues];
+    sortedNotifications = [[a sortedArrayUsingComparator:mySort] retain];
+    
+    
     [tblNotifications reloadData];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Uncomment the following line to preserve selection between presentations.
@@ -37,6 +43,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
 }
+
+id mySort = ^(Notification * obj1, Notification * obj2){
+    
+    if(obj1.notificationID == obj2.notificationID)
+        return NSOrderedSame;
+    
+    if(obj1.notificationID < obj2.notificationID)
+        return NSOrderedAscending;
+    
+    
+    return NSOrderedDescending;
+};
 
 - (void)didReceiveMemoryWarning
 {
@@ -77,7 +95,11 @@
     
     //NSDictionary *curNotification = [notificatios valueForKey:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
     //NSDictionary *curNotification = [notificatios objectAtIndex:[notificatios count] - indexPath.row - 1];
-    Notification *curNotification = [[notificatios allValues] objectAtIndex:[[notificatios allValues] count] - indexPath.row - 1 ];
+    
+    NSInteger index = [sortedNotifications count] - indexPath.row - 1;
+    Notification *curNotification = [sortedNotifications objectAtIndex: index];
+    
+    //Notification *curNotification = [[notificatios allValues] objectAtIndex:[[notificatios allValues] count] - indexPath.row - 1 ];
     
     //NSDictionary *apsInfo = [curNotification valueForKey:kNotificationApsKey];
     //NSDate *notificationDate = [curNotification valueForKey:kNotificationDateKey];
@@ -85,7 +107,7 @@
     NSDate *notificationDate = curNotification.messageDate;
     NSString *alert = curNotification.messageData;
     
-    cell.textLabel.text = alert;
+    cell.textLabel.text = [NSString stringWithFormat:@"%d - %@", curNotification.notificationID, alert];
     cell.detailTextLabel.text = [Functions dateFormatFromDate:notificationDate format:@"yyyy-MM-dd HH:mm:ss"];
     
     return cell;
@@ -146,7 +168,7 @@
         //NSString *key = [NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row];
         //[NotificationsHelper removeNotification:key];
         Notification *curNotification = [[notificatios allValues] objectAtIndex:[[notificatios allValues] count] - indexPath.row - 1 ];
-        [NotificationsHelper removeNotification:curNotification.notificationID];
+       // [NotificationsHelper removeNotification:curNotification.notificationID];
         
         //NSInteger index = [notificatios count] - indexPath.row - 1;
         //[NotificationsHelper removeNotification:index];
@@ -167,4 +189,18 @@
      */
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+}
+
+-(BOOL)isRowVisible :  {
+    NSArray *indexes = [tblNotifications indexPathsForVisibleRows];
+    for (NSIndexPath *index in indexes) {
+        if (index.row == 0) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
 @end

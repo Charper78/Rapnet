@@ -31,6 +31,10 @@
     NSMutableString *notificationID;
     NSMutableString *messageData;
     NSMutableString *messageDate;
+    
+    NSString *curDeviceID;
+    
+    NSMutableString *downloadedIds;
 }
 
 @property(retain, nonatomic) id<getNotificationsDelegate> delegate;
