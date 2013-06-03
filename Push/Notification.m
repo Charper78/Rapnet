@@ -46,4 +46,9 @@
     return copy;
 }
 */
+
+-(void)save {
+    [NotificationsHelper removeNotification:self.notificationID];
+    [NotificationsHelper addNotification:self];
+}
 @end

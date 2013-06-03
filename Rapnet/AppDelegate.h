@@ -19,7 +19,7 @@
 #import "Constants.h"
 #import "RegisterDevice.h"
 #import "NotificationSettings.h"
-#import "NotificationParser.h"
+#import "GetMessagesParser.h"
 
 @class LoginParser, MoreViewC, LoginPriceParser;
 

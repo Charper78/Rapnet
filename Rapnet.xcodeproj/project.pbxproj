@@ -534,6 +534,8 @@
 		BB4F3F2F150366FB0033157E /* cancelList.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F3F2D150366FB0033157E /* cancelList.png */; };
 		BB4F3F30150366FB0033157E /* gotocalc.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F3F2E150366FB0033157E /* gotocalc.png */; };
 		F40AD8D216EFACE9006C5E49 /* RegisterDeviceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */; };
+		F453C465175D0FC8007CECA9 /* SetMessagesDownloadedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F453C464175D0FC8007CECA9 /* SetMessagesDownloadedParser.m */; };
+		F453C468175D1510007CECA9 /* SetReadMessagesRead.m in Sources */ = {isa = PBXBuildFile; fileRef = F453C467175D1510007CECA9 /* SetReadMessagesRead.m */; };
 		F458F8BF1729CE0200F7A5B2 /* NotificationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F458F8BE1729CE0200F7A5B2 /* NotificationSettings.m */; };
 		F458F8C21729D52400F7A5B2 /* RegisterDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F458F8C11729D52400F7A5B2 /* RegisterDevice.m */; };
 		F47B814B173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png in Resources */ = {isa = PBXBuildFile; fileRef = F47B814A173CF38500ECF79B /* Price_Home_Work_Area3.3_548.png */; };
@@ -543,7 +545,7 @@
 		F47E2CFC174222390091B2C6 /* Price_Home_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */; };
 		F47E2CFD174222390091B2C6 /* Price_Home_top.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFB174222390091B2C6 /* Price_Home_top.png */; };
 		F49EB4661732E79800FAC102 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EB4651732E79800FAC102 /* Default-568h@2x.png */; };
-		F49EFE2C174554E5008C94B1 /* NotificationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2B174554E5008C94B1 /* NotificationParser.m */; };
+		F49EFE2C174554E5008C94B1 /* GetMessagesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2B174554E5008C94B1 /* GetMessagesParser.m */; };
 		F49EFE2F17455F1B008C94B1 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2E17455F1B008C94B1 /* Notification.m */; };
 		F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB45F16F90CAF0012C00C /* NotificationsHelper.m */; };
 		F4D6191F16F31BE100AE3D19 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6191D16F31BE100AE3D19 /* NotificationsViewController.m */; };
@@ -1276,6 +1278,10 @@
 		BB4F3F2E150366FB0033157E /* gotocalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gotocalc.png; sourceTree = "<group>"; };
 		F40AD8D016EFACE9006C5E49 /* RegisterDeviceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDeviceParser.h; sourceTree = "<group>"; };
 		F40AD8D116EFACE9006C5E49 /* RegisterDeviceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDeviceParser.m; sourceTree = "<group>"; };
+		F453C463175D0FC8007CECA9 /* SetMessagesDownloadedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMessagesDownloadedParser.h; sourceTree = "<group>"; };
+		F453C464175D0FC8007CECA9 /* SetMessagesDownloadedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMessagesDownloadedParser.m; sourceTree = "<group>"; };
+		F453C466175D1510007CECA9 /* SetReadMessagesRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetReadMessagesRead.h; sourceTree = "<group>"; };
+		F453C467175D1510007CECA9 /* SetReadMessagesRead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetReadMessagesRead.m; sourceTree = "<group>"; };
 		F458F8BD1729CE0200F7A5B2 /* NotificationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationSettings.h; sourceTree = "<group>"; };
 		F458F8BE1729CE0200F7A5B2 /* NotificationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationSettings.m; sourceTree = "<group>"; };
 		F458F8C01729D52400F7A5B2 /* RegisterDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDevice.h; sourceTree = "<group>"; };
@@ -1287,8 +1293,8 @@
 		F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_buttom.png; sourceTree = "<group>"; };
 		F47E2CFB174222390091B2C6 /* Price_Home_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_top.png; sourceTree = "<group>"; };
 		F49EB4651732E79800FAC102 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F49EFE2A174554E5008C94B1 /* NotificationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationParser.h; sourceTree = "<group>"; };
-		F49EFE2B174554E5008C94B1 /* NotificationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationParser.m; sourceTree = "<group>"; };
+		F49EFE2A174554E5008C94B1 /* GetMessagesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMessagesParser.h; sourceTree = "<group>"; };
+		F49EFE2B174554E5008C94B1 /* GetMessagesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMessagesParser.m; sourceTree = "<group>"; };
 		F49EFE2D17455F1B008C94B1 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
 		F49EFE2E17455F1B008C94B1 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		F4AFB45E16F90CAF0012C00C /* NotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsHelper.h; sourceTree = "<group>"; };
@@ -2416,10 +2422,14 @@
 				F458F8BE1729CE0200F7A5B2 /* NotificationSettings.m */,
 				F458F8C01729D52400F7A5B2 /* RegisterDevice.h */,
 				F458F8C11729D52400F7A5B2 /* RegisterDevice.m */,
-				F49EFE2A174554E5008C94B1 /* NotificationParser.h */,
-				F49EFE2B174554E5008C94B1 /* NotificationParser.m */,
+				F49EFE2A174554E5008C94B1 /* GetMessagesParser.h */,
+				F49EFE2B174554E5008C94B1 /* GetMessagesParser.m */,
 				F49EFE2D17455F1B008C94B1 /* Notification.h */,
 				F49EFE2E17455F1B008C94B1 /* Notification.m */,
+				F453C463175D0FC8007CECA9 /* SetMessagesDownloadedParser.h */,
+				F453C464175D0FC8007CECA9 /* SetMessagesDownloadedParser.m */,
+				F453C466175D1510007CECA9 /* SetReadMessagesRead.h */,
+				F453C467175D1510007CECA9 /* SetReadMessagesRead.m */,
 			);
 			name = Push;
 			path = /Users/home/Documents/Projects/iOS/Rapnet/Push;
@@ -3022,8 +3032,10 @@
 				F4AFB46016F90CAF0012C00C /* NotificationsHelper.m in Sources */,
 				F458F8BF1729CE0200F7A5B2 /* NotificationSettings.m in Sources */,
 				F458F8C21729D52400F7A5B2 /* RegisterDevice.m in Sources */,
-				F49EFE2C174554E5008C94B1 /* NotificationParser.m in Sources */,
+				F49EFE2C174554E5008C94B1 /* GetMessagesParser.m in Sources */,
 				F49EFE2F17455F1B008C94B1 /* Notification.m in Sources */,
+				F453C465175D0FC8007CECA9 /* SetMessagesDownloadedParser.m in Sources */,
+				F453C468175D1510007CECA9 /* SetReadMessagesRead.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

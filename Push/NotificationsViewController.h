@@ -10,7 +10,10 @@
 #import "Functions.h"
 #import "NotificationsHelper.h"
 #import "Notification.h"
-@interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+#import "SetReadMessagesRead.h"
+#import "NotificationSettings.h"
+
+@interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, setReadMessagesReadDelegate>
 {
     NSDictionary *notificatios;
     NSArray *sortedNotifications;

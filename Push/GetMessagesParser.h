@@ -11,6 +11,7 @@
 #import "Notification.h"
 #import "Functions.h"
 #import "NotificationsHelper.h"
+#import "SetMessagesDownloadedParser.h"
 
 @protocol getNotificationsDelegate
 -(void)getNotificationsFinished:(NSMutableArray*)res total:(NSInteger)total;

@@ -28,12 +28,8 @@
 {
     [super viewDidLoad];
 
-    notificatios = [Functions readObjectFromFile:kNotificationsFile];
-    
-    NSArray *a = [notificatios allValues];
-    sortedNotifications = [[a sortedArrayUsingComparator:mySort] retain];
-    
-    
+        
+    [self loadData];
     [tblNotifications reloadData];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Uncomment the following line to preserve selection between presentations.
@@ -55,6 +51,14 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     
     return NSOrderedDescending;
 };
+
+-(void)loadData {
+    notificatios = [Functions readObjectFromFile:kNotificationsFile];
+    
+    NSArray *a = [notificatios allValues];
+    sortedNotifications = [[a sortedArrayUsingComparator:mySort] retain];
+
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -110,6 +114,8 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     cell.textLabel.text = [NSString stringWithFormat:@"%d - %@", curNotification.notificationID, alert];
     cell.detailTextLabel.text = [Functions dateFormatFromDate:notificationDate format:@"yyyy-MM-dd HH:mm:ss"];
     
+    if(indexPath.row == sortedNotifications.count - 1)
+        [self setReadMessages];
     return cell;
 }
 
@@ -157,6 +163,20 @@ id mySort = ^(Notification * obj1, Notification * obj2){
 }
 */
 
+#pragma mark - setReadMessagesReadDelegate delegate
+
+-(void)setReadMessagesReadFinished:(NSArray *)ids{
+    Notification *n;
+    
+    for (NSInteger i=0; i<ids.count; i++) {
+        n = [notificatios objectForKey:[ids objectAtIndex:i]];
+        n.readMessage = true;
+        [n save];
+    }
+    
+    [self loadData];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -190,10 +210,27 @@ id mySort = ^(Notification * obj1, Notification * obj2){
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
+    [self setReadMessages];
 }
 
--(BOOL)isRowVisible :  {
+-(void) setReadMessages {
+    NSMutableArray *ids = [[NSMutableArray alloc] init];
+    Notification *n;
+    
+    NSArray *indexes = [tblNotifications indexPathsForVisibleRows];
+    for (NSIndexPath *index in indexes) {
+        n = [sortedNotifications objectAtIndex:index.row];
+        if (n.readMessage == NO) {
+            [ids addObject:[NSString stringWithFormat:@"%d", n.notificationID]];
+        }
+    }
+    
+    SetReadMessagesRead *r = [[SetReadMessagesRead alloc] init];
+    r.delegate = self;
+    [r setReadMessagesRead:[NotificationSettings getDeviceToken] ids:ids];
+}
+
+/*-(BOOL)isRowVisible :  {
     NSArray *indexes = [tblNotifications indexPathsForVisibleRows];
     for (NSIndexPath *index in indexes) {
         if (index.row == 0) {
@@ -202,5 +239,5 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     }
     
     return NO;
-}
+}*/
 @end

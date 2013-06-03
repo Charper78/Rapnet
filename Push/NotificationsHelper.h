@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "Notification.h"
 
+@class Notification;
 @interface NotificationsHelper : NSObject
 {
     
@@ -19,5 +20,5 @@
 +(NSDictionary*)getNotifications;
 +(void)removeNotification:(NSInteger)notificationID;
 +(void)removeAllNotifications;
-+(void)addNotification:(Notification*)d;
++(void)addNotification:(Notification*)n;
 @end

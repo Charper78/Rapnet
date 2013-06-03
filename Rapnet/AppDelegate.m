@@ -122,8 +122,8 @@ bool startUpdatePriceList = FALSE;
     
     NotificationParser *nParser = [[NotificationParser alloc] init];
     
-   // NSString *deviceToken = [NotificationSettings getDeviceToken];
-   NSString *deviceToken = @"c6aa4f184da5763a6194cd5acbe93a5136d1d66f6c70402645a6120cfdea1438";
+    NSString *deviceToken = [NotificationSettings getDeviceToken];
+   
     if(deviceToken != nil)
         [nParser getNotifications:deviceToken];
     

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NotificationsHelper.h"
 
 @interface Notification : NSObject
 {
@@ -20,4 +21,7 @@
 @property (nonatomic, retain) NSString *messageData;
 @property (nonatomic, retain) NSDate *messageDate;
 @property (nonatomic) BOOL readMessage;
+
+-(void)save;
+
 @end
