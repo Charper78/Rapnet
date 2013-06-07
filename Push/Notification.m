@@ -24,7 +24,7 @@
         self.notificationID = [[[decoder decodeObjectForKey:@"notificationID"] copy] integerValue];
         self.messageData = [[decoder decodeObjectForKey:@"messageData"] copy];
         self.messageDate = [[decoder decodeObjectForKey:@"messageDate"] copy];
-        self.readMessage = [[[decoder decodeObjectForKey:@"messageData"] copy] boolValue];
+        self.readMessage = [[[decoder decodeObjectForKey:@"readMessage"] copy] boolValue];
     }
     return self;
 }
@@ -44,8 +44,8 @@
     }
     
     return copy;
-}
-*/
+}*/
+
 
 -(void)save {
     [NotificationsHelper removeNotification:self.notificationID];

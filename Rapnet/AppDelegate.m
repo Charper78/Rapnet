@@ -331,9 +331,9 @@ bool startUpdatePriceList = FALSE;
     //2[Functions deleteFile:kNotificationsFile];
     //NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
     
-    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithDictionary:userInfo copyItems:TRUE];
-    [tempDic setValue:[NSDate date] forKey:kNotificationDateKey];
-    [NotificationsHelper addNotification:tempDic];
+   // NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithDictionary:userInfo copyItems:TRUE];
+    //[tempDic setValue:[NSDate date] forKey:kNotificationDateKey];
+    //[NotificationsHelper addNotification:tempDic];
     //[curDic setValue:tempDic forKey:[NSString stringWithFormat:@"%d", [curDic count] + 1]];
     
     //  [Functions writeToFile:curDic fileName:kNotificationsFile];
@@ -361,7 +361,7 @@ bool startUpdatePriceList = FALSE;
     else
         NSLog(@"Don't start price list update");
     
-    [UIApplication sharedApplication].applicationIconBadgeNumber += [[apsInfo objectForKey:@"badge"] integerValue];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
 	
     
     [self setBadgeCount];
@@ -451,7 +451,7 @@ bool startUpdatePriceList = FALSE;
  * Remote Notification Received while application was open.
  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	[self onReceiveRemoteNotification:userInfo];
+	//[self onReceiveRemoteNotification:userInfo];
 }
 
 /*

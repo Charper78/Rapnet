@@ -15,8 +15,8 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 	NSString *token = [prefs stringForKey:@"NotificationSettings_DeviceToken"];
     
-    if(token == nil)
-        token = @"c6aa4f184da5763a6194cd5acbe93a5136d1d66f6c70402645a6120cfdea1438";
+  //  if(token == nil)
+   //     token = @"c6aa4f184da5763a6194cd5acbe93a5136d1d66f6c70402645a6120cfdea1438";
     return [token copy];
 }
 

@@ -139,7 +139,7 @@ static NSString * const kResultElementName = @"Result";
     //NSLog(@"xml ended");
     //NSMutableArray *arr = [self getResults];
     
-    if([result isEqualToString:@"true"])
+    if([data isEqualToString:@"true"])
         [_delegate setReadMessagesReadFinished:notificationIds];
     
 }

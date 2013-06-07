@@ -12,14 +12,21 @@
 #import "Notification.h"
 #import "SetReadMessagesRead.h"
 #import "NotificationSettings.h"
+#import "AppDelegate.h"
+
+@protocol notificationsViewControllerDelegate
+-(void)onCloseNotificationsViewController;
+
+@end
 
 @interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, setReadMessagesReadDelegate>
 {
+    id<notificationsViewControllerDelegate> _delegate;
     NSDictionary *notificatios;
     NSArray *sortedNotifications;
     IBOutlet UITableView *tblNotifications;
 }
 
 -(IBAction)btnBack_Clicked:(id)sender;
-
+@property(retain, nonatomic) id<notificationsViewControllerDelegate> delegate;
 @end

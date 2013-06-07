@@ -17,15 +17,19 @@
 
 +(void)removeNotification:(NSInteger)notificationID
 {
-    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    //NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile]];
     [curDic removeObjectForKey:[NSString stringWithFormat:@"%d", notificationID]];
+    [Functions deleteFile:kNotificationsFile];
     [Functions writeObjectToFile:curDic fileName:kNotificationsFile];
 }
 
 +(void)removeAllNotifications
 {
-    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    //NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile] copyItems:YES];
+    NSMutableDictionary *curDic =  [[NSMutableDictionary alloc] initWithDictionary:[Functions readObjectFromFile:kNotificationsFile]];
     [curDic removeAllObjects];
+    [Functions deleteFile:kNotificationsFile];
     [Functions writeObjectToFile:curDic fileName:kNotificationsFile];
 }
 

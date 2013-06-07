@@ -47,6 +47,10 @@
 		logInBttn.hidden=YES;
 	}*/
     
+    /*CGRect ff = self.view.frame;
+    ff.size.height = [Functions getScreenHeight];
+    self.view.frame = ff;
+    */
     [sUse10crts setOn:[StoredData sharedData].use10crts animated:YES];
     
     if ([Functions isLogedIn]) {
@@ -1175,10 +1179,13 @@
     }
 }
 
+-(void)onCloseNotificationsViewController{
+    [self setBadgeCount];
+}
 -(IBAction)btnNotifications_Clicked:(id)sender
 {
     NotificationsViewController *n = [[NotificationsViewController alloc] init];
-  
+    n.delegate = self;
    /* UINavigationController *modalViewNavController =
     [[UINavigationController alloc]
      initWithRootViewController:n];
@@ -1186,10 +1193,10 @@
     [self.navigationController presentModalViewController:
      modalViewNavController animated:YES];
     [modalViewNavController release];*/
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    [self setBadgeCount];
+    //[UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    //[self setBadgeCount];
     
-    [(AppDelegate *)[[UIApplication sharedApplication] delegate] setBadgeCount];
+   // [(AppDelegate *)[[UIApplication sharedApplication] delegate] setBadgeCount];
     
     [self.view addSubview:n.view];
 }

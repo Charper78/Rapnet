@@ -544,6 +544,8 @@
 		F47E2CF9174210350091B2C6 /* header_save_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CF8174210350091B2C6 /* header_save_calc.png */; };
 		F47E2CFC174222390091B2C6 /* Price_Home_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */; };
 		F47E2CFD174222390091B2C6 /* Price_Home_top.png in Resources */ = {isa = PBXBuildFile; fileRef = F47E2CFB174222390091B2C6 /* Price_Home_top.png */; };
+		F48E05141761BB0D00DFD20F /* uuuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E05121761BB0D00DFD20F /* uuuViewController.m */; };
+		F48E05151761BB0D00DFD20F /* uuuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48E05131761BB0D00DFD20F /* uuuViewController.xib */; };
 		F49EB4661732E79800FAC102 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F49EB4651732E79800FAC102 /* Default-568h@2x.png */; };
 		F49EFE2C174554E5008C94B1 /* GetMessagesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2B174554E5008C94B1 /* GetMessagesParser.m */; };
 		F49EFE2F17455F1B008C94B1 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EFE2E17455F1B008C94B1 /* Notification.m */; };
@@ -1292,6 +1294,9 @@
 		F47E2CF8174210350091B2C6 /* header_save_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_save_calc.png; sourceTree = "<group>"; };
 		F47E2CFA174222390091B2C6 /* Price_Home_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_buttom.png; sourceTree = "<group>"; };
 		F47E2CFB174222390091B2C6 /* Price_Home_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Price_Home_top.png; sourceTree = "<group>"; };
+		F48E05111761BB0D00DFD20F /* uuuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uuuViewController.h; sourceTree = "<group>"; };
+		F48E05121761BB0D00DFD20F /* uuuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uuuViewController.m; sourceTree = "<group>"; };
+		F48E05131761BB0D00DFD20F /* uuuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = uuuViewController.xib; sourceTree = "<group>"; };
 		F49EB4651732E79800FAC102 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F49EFE2A174554E5008C94B1 /* GetMessagesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMessagesParser.h; sourceTree = "<group>"; };
 		F49EFE2B174554E5008C94B1 /* GetMessagesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMessagesParser.m; sourceTree = "<group>"; };
@@ -2430,6 +2435,9 @@
 				F453C464175D0FC8007CECA9 /* SetMessagesDownloadedParser.m */,
 				F453C466175D1510007CECA9 /* SetReadMessagesRead.h */,
 				F453C467175D1510007CECA9 /* SetReadMessagesRead.m */,
+				F48E05111761BB0D00DFD20F /* uuuViewController.h */,
+				F48E05121761BB0D00DFD20F /* uuuViewController.m */,
+				F48E05131761BB0D00DFD20F /* uuuViewController.xib */,
 			);
 			name = Push;
 			path = /Users/home/Documents/Projects/iOS/Rapnet/Push;
@@ -2857,6 +2865,7 @@
 				F47E2CF9174210350091B2C6 /* header_save_calc.png in Resources */,
 				F47E2CFC174222390091B2C6 /* Price_Home_buttom.png in Resources */,
 				F47E2CFD174222390091B2C6 /* Price_Home_top.png in Resources */,
+				F48E05151761BB0D00DFD20F /* uuuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3036,6 +3045,7 @@
 				F49EFE2F17455F1B008C94B1 /* Notification.m in Sources */,
 				F453C465175D0FC8007CECA9 /* SetMessagesDownloadedParser.m in Sources */,
 				F453C468175D1510007CECA9 /* SetReadMessagesRead.m in Sources */,
+				F48E05141761BB0D00DFD20F /* uuuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

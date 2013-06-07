@@ -31,7 +31,13 @@
         
     [self loadData];
     [tblNotifications reloadData];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    
+    
+ CGRect ff = self.view.frame;
+    ff.size.height = [Functions getScreenHeight];
+    self.view.frame = ff;
+   // [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -69,6 +75,7 @@ id mySort = ^(Notification * obj1, Notification * obj2){
 -(IBAction)btnBack_Clicked:(id)sender
 {
     [self.view removeFromSuperview];
+    [_delegate onCloseNotificationsViewController];
     //[self.parentViewController
     // dismissModalViewControllerAnimated:YES];
 }
@@ -114,8 +121,8 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     cell.textLabel.text = [NSString stringWithFormat:@"%d - %@", curNotification.notificationID, alert];
     cell.detailTextLabel.text = [Functions dateFormatFromDate:notificationDate format:@"yyyy-MM-dd HH:mm:ss"];
     
-    if(indexPath.row == sortedNotifications.count - 1)
-        [self setReadMessages];
+ 
+        
     return cell;
 }
 
@@ -124,6 +131,13 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     return YES;
 }
 
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+        //end of loading
+        [self setReadMessages];
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -175,6 +189,10 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     }
     
     [self loadData];
+    [UIApplication sharedApplication].applicationIconBadgeNumber -= [ids count];
+    [(AppDelegate *)[[UIApplication sharedApplication] delegate] setBadgeCount];
+    
+    
 }
 
 #pragma mark - Table view delegate
@@ -187,12 +205,14 @@ id mySort = ^(Notification * obj1, Notification * obj2){
         //[categoryArray objectAtIndex:indexPath.row];
         //NSString *key = [NSString stringWithFormat:@"%d", [notificatios count] - indexPath.row];
         //[NotificationsHelper removeNotification:key];
-        Notification *curNotification = [[notificatios allValues] objectAtIndex:[[notificatios allValues] count] - indexPath.row - 1 ];
+        Notification *curNotification = [sortedNotifications objectAtIndex:[sortedNotifications count] - indexPath.row - 1 ];
+        [NotificationsHelper removeNotification:curNotification.notificationID];
        // [NotificationsHelper removeNotification:curNotification.notificationID];
         
         //NSInteger index = [notificatios count] - indexPath.row - 1;
         //[NotificationsHelper removeNotification:index];
         notificatios = [NotificationsHelper getNotifications];
+        [self loadData];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
         
     }
@@ -225,9 +245,12 @@ id mySort = ^(Notification * obj1, Notification * obj2){
         }
     }
     
-    SetReadMessagesRead *r = [[SetReadMessagesRead alloc] init];
-    r.delegate = self;
-    [r setReadMessagesRead:[NotificationSettings getDeviceToken] ids:ids];
+    if(ids.count > 0)
+    {
+        SetReadMessagesRead *r = [[SetReadMessagesRead alloc] init];
+        r.delegate = self;
+        [r setReadMessagesRead:[NotificationSettings getDeviceToken] ids:ids];
+    }
 }
 
 /*-(BOOL)isRowVisible :  {
