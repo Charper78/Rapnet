@@ -451,7 +451,7 @@ bool startUpdatePriceList = FALSE;
  * Remote Notification Received while application was open.
  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	//[self onReceiveRemoteNotification:userInfo];
+	[self onReceiveRemoteNotification:userInfo];
 }
 
 /*
