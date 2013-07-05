@@ -58,7 +58,7 @@
     UIButton *workABtnGlobal;
     
     
-    BOOL loginPriceFlag,loginRapnetFlag,priceAlertFlag, rapnetAlertFlag;
+    BOOL loginPriceFlag,loginRapnetFlag,priceAlertFlag, rapnetAlertFlag, newsAlertFlag;
     
     NSInteger selectedTabBfrLogin;
     
@@ -123,6 +123,7 @@
 //@property (nonatomic)BOOL loginRapnetFlag;
 @property (nonatomic)BOOL priceAlertFlag;
 @property (nonatomic)BOOL rapnetAlertFlag;
+@property (nonatomic)BOOL newsAlertFlag;
 @property (nonatomic)BOOL use10crts;
 
 @property (nonatomic)NSInteger WAEditRowIndex;

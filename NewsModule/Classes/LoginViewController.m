@@ -15,7 +15,7 @@
 @implementation LoginViewController
 @synthesize strSucceed;//, pvProgress;
 
-
+bool performPriceListDownload;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initReachability];
+    performPriceListDownload = NO;
     appDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
 	isKeyBoardDown = YES;
@@ -54,6 +55,8 @@
     [sUse10crts setOn:[StoredData sharedData].use10crts animated:YES];
     
     if ([Functions isLogedIn]) {
+        
+        
         logOutBttn.hidden =NO;
 		logInBttn.hidden=YES;
     }
@@ -85,7 +88,19 @@
 		[btnRememPwd setImage:btnImage forState:UIControlStateNormal];
 	}
     
+    objPassword.delegate = self;
+    objUserName.delegate = self;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    BOOL editable;
     
+    if([Functions isLogedIn] && (textField == objUserName || textField == objPassword ))
+    {
+        return NO;
+    }
+    
+    return YES;
 }
 
 -(void)initReachability
@@ -264,6 +279,12 @@
             [objPassword resignFirstResponder];
             
             [RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+            
+            if(performPriceListDownload)
+            {
+                performPriceListDownload = NO;
+                [self startUpdatePriceList];
+            }
             
         }else{
             alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour login attempt was not successful." message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
@@ -534,10 +555,13 @@
 
 -(void)setAutoUpdatePriceListSelection:(BOOL)selected
 {
+    [sPriceListNotifications setOn:selected];
+    
     if (selected) {
         chkAutoUpdatePriceList.selected = YES;
 		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
 		[chkAutoUpdatePriceList setImage:btnImage forState:UIControlStateNormal];
+        
         [NotificationSettings setAutoUpdatePriceList:YES];
     }
     else
@@ -622,6 +646,18 @@
         [NotificationSettings setNotifyPriceListChange:YES];
 	}
 
+}
+
+-(IBAction)sNotifyPriceListChange_Click:(id)sender
+{
+    UISwitch *s = (UISwitch *)sender;
+	
+        [self setAutoUpdatePriceListSelection: s.isOn];
+        
+        [RegisterDevice registerDevice: objUserName.text notifyPriceChange:s.isOn];
+        [NotificationSettings setNotifyPriceListChange:s.isOn];
+    
+    
 }
 
 -(IBAction)newsToggleBtn:(id)sender
@@ -862,13 +898,48 @@
 }
 -(void)startUpdatePriceList
 {
-    if ([Functions canView:L_Prices])
+    [self startUpdatePriceList:NO];
+
+}
+
+-(void)startUpdatePriceList:(BOOL)alertLogin {
+    
+   /* if(isReachable == NO)
     {
+        [Functions NoInternetAlert];
+        return;
+    }
+    */
+    if([Functions canView:L_Prices])
+    {
+        /*if ([Functions canView:L_Prices])
+         {
+         pvProgress.progress = 0.0f;
+         [self showLoadingScreen];
+         [self performSelectorInBackground:@selector(downloadPrices) withObject:nil];
+         }*/
         pvProgress.progress = 0.0f;
         [self showLoadingScreen];
         [self performSelectorInBackground:@selector(downloadPrices) withObject:nil];
-    }
 
+    }
+    else if(alertLogin)
+    {
+                
+        if (customAlert1) {
+            [customAlert1.view removeFromSuperview];
+            [customAlert1 release];
+            customAlert1 = nil;
+        }
+        
+        [StoredData sharedData].priceAlertFlag = TRUE;
+        
+        customAlert1=[[CustomAlertViewController alloc]initWithNibName:@"CustomAlertViewController" bundle:nil];
+        [self.view addSubview:customAlert1.view];
+        view = customAlert1.view;
+        [self initialDelayEnded];
+        
+    }
 }
 
 -(IBAction)btnUpdatePrices_Clicked{

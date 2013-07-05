@@ -30,7 +30,7 @@
         joinNowBtn.hidden = YES;
         logInBtn.center = CGPointMake(logInBtn.center.x+30, logInBtn.center.y);
         okBtn.center = CGPointMake(okBtn.center.x-30, okBtn.center.y);
-    }else if ([StoredData sharedData].rapnetAlertFlag) {
+    }else if ([StoredData sharedData].rapnetAlertFlag || [StoredData sharedData].newsAlertFlag) {
             
             popUpImage.image = [UIImage imageNamed:@"price_login_register_popup2X.png"];
             joinNowBtn.hidden = YES;
@@ -95,7 +95,7 @@
 	login=nil;*/
     [StoredData sharedData].priceAlertFlag = FALSE;
     [StoredData sharedData].rapnetAlertFlag = FALSE;
-    
+    [StoredData sharedData].newsAlertFlag = FALSE;
     self.view.hidden =YES;
     UITabBarController *tabController = [AppDelegate getAppDelegate].tabBarController;
     [StoredData sharedData].selectedTabBfrLogin = [tabController selectedIndex];
@@ -127,6 +127,7 @@
     [tabController setSelectedIndex:selectedTabIndex];
     [StoredData sharedData].rapnetAlertFlag = FALSE;
     [StoredData sharedData].priceAlertFlag = FALSE;
+    [StoredData sharedData].newsAlertFlag = FALSE;
 	self.view.hidden =YES;
 }
 

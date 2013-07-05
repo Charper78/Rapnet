@@ -13,13 +13,14 @@
 #import "SetReadMessagesRead.h"
 #import "NotificationSettings.h"
 #import "AppDelegate.h"
+#import "NotificationParser.h"
 
 @protocol notificationsViewControllerDelegate
 -(void)onCloseNotificationsViewController;
 
 @end
 
-@interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, setReadMessagesReadDelegate>
+@interface NotificationsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, setReadMessagesReadDelegate, getNotificationsDelegate>
 {
     id<notificationsViewControllerDelegate> _delegate;
     NSDictionary *notificatios;

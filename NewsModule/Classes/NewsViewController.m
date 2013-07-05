@@ -1955,7 +1955,7 @@
 -(void)showAlertView
 {
 	customAlert=[[CustomAlertViewController alloc]initWithNibName:@"CustomAlertViewController" bundle:nil];
-    [StoredData sharedData].rapnetAlertFlag = true;
+    [StoredData sharedData].newsAlertFlag = true;
 	[self.view addSubview:customAlert.view];
 	[self initialDelayEnded];
 }

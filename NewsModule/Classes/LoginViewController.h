@@ -34,7 +34,7 @@
 #import "RegisterDevice.h"
 #import "NotificationsHelper.h"
 
-@interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate,notificationsViewControllerDelegate> {
+@interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate,notificationsViewControllerDelegate, UITextFieldDelegate> {
 
 	IBOutlet UIScrollView *loginScroll;
 	IBOutlet UIButton *btnRememPwd;
@@ -53,6 +53,7 @@
 	IBOutlet UILabel *lblPricesUpdated; 
     IBOutlet UIView *vDownload;
     IBOutlet UISwitch *sUse10crts;
+    IBOutlet UISwitch *sPriceListNotifications;
 	NSMutableArray *arrLogin,*arrPriceLogin;
 	NSMutableArray *arrForgotService;
 	LoginParser *loginParser;
@@ -99,9 +100,11 @@
 -(IBAction)btnNotifications_Clicked:(id)sender;
 -(void)setViewMovedUp:(BOOL)movedUp coordinateY:(NSInteger)coordinateY;
 -(void)startUpdatePriceList;
+-(void)startUpdatePriceList:(BOOL)alertLogin;
 -(void)setBadgeCount;
 -(BOOL)checkAllWebSrviceEnded;
 -(IBAction)chkAutoUpdatePriceList_Click:(id)sender;
 -(IBAction)chkNotifyPriceListChange_Click:(id)sender;
+-(IBAction)sNotifyPriceListChange_Click:(id)sender;
 -(IBAction)dismissKeyboard:(id)sender;
 @end

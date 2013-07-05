@@ -60,7 +60,7 @@
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 	
 }
-
+/*
 - (BOOL)shouldAutorotate
 {
     return YES;
@@ -70,7 +70,7 @@
 {
     return UIInterfaceOrientationMaskLandscape;
 }
-
+*/
 
 @end
 

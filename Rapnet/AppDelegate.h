@@ -19,11 +19,11 @@
 #import "Constants.h"
 #import "RegisterDevice.h"
 #import "NotificationSettings.h"
-#import "GetMessagesParser.h"
+#import "NotificationParser.h"
 
 @class LoginParser, MoreViewC, LoginPriceParser;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate,getAuthTicketDelegate,PriceListDownloaderDelegate>{
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate,getAuthTicketDelegate,PriceListDownloaderDelegate, getNotificationsDelegate>{
     
     IBOutlet UINavigationController* navigationController;
 	UIActivityIndicatorView *activityView;

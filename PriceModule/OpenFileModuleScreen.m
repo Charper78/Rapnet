@@ -93,6 +93,10 @@
     
     [self updateLabels];
   //  NSLog(@"%@",allDiamondsArr);
+    
+    CGRect ff = vButtom.frame;
+    ff.origin.y = [Functions getScreenHeight] - ff.size.height - 100;
+    vButtom.frame = ff;
 }
 
 

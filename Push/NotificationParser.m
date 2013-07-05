@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 coolban@gmail.com. All rights reserved.
 //
 
-#import "GetMessagesParser.h"
+#import "NotificationParser.h"
 
 @implementation NotificationParser
 

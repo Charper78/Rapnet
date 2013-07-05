@@ -43,6 +43,7 @@ bool startUpdatePriceList = FALSE;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     [AnalyticHelper initAnalytic];
     
     [self copyDatabaseIfNeeded];
@@ -120,15 +121,23 @@ bool startUpdatePriceList = FALSE;
     
    // [Functions deleteFile:kNotificationsFile];
     
+        [self setBadgeCount];
+      return YES;
+}
+
+-(void)downloadNotifications {
+    
     NotificationParser *nParser = [[NotificationParser alloc] init];
     
     NSString *deviceToken = [NotificationSettings getDeviceToken];
-   
+    
     if(deviceToken != nil)
         [nParser getNotifications:deviceToken];
-    
+
+}
+
+-(void)getNotificationsFinished:(NSMutableArray *)res total:(NSInteger)total{
     [self setBadgeCount];
-    return YES;
 }
 
 -(BOOL)downloadPriceIfNeeded{
@@ -266,13 +275,18 @@ bool startUpdatePriceList = FALSE;
      */
     if(startUpdatePriceList)
     {
-        startUpdatePriceList = FALSE;
-        NSLog(@"Start price list update");
-        LoginViewController *l = [[LoginViewController alloc] init];
-        [l startUpdatePriceList];
-        [l release];
-        l = NULL;
+        
+        [self downloadPriceList];
     }
+}
+
+-(void)downloadPriceList {
+    NSLog(@"Start price list update");
+    startUpdatePriceList = FALSE;
+    LoginViewController *l = [[LoginViewController alloc] init];
+    [l startUpdatePriceList:YES];
+    [l release];
+    l = NULL;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -324,6 +338,31 @@ bool startUpdatePriceList = FALSE;
 	return [documentsDir stringByAppendingPathComponent:@"RapnetDB.sqlite"];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        
+        if([Functions canView:L_Prices] ==false)
+        {
+            //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setLoginTab) userInfo:nil repeats:NO];
+            [self setLoginTab];
+            [self downloadPriceList];
+            
+        }
+        else
+            [self downloadPriceList];
+        
+        
+      //  [self downloadPriceList];
+    }
+}
+
+-(void)setLoginTab {
+    MainTabIndexes selectedTabIndex = MTI_Login;
+    
+    UITabBarController *tabController = [AppDelegate getAppDelegate].tabBarController;
+    [tabController setSelectedIndex:selectedTabIndex];
+}
+
 -(void)onReceiveRemoteNotification:(NSDictionary*)userInfo
 {
 #if !TARGET_IPHONE_SIMULATOR
@@ -355,7 +394,16 @@ bool startUpdatePriceList = FALSE;
 	
     if([userInfo objectForKey:@"PriceListUpdate"])
     {
-        startUpdatePriceList = TRUE;
+        
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Price List"
+                                                        message:@"A new Price List is available, do you want to download it?"
+                                                       delegate:self
+                                            
+                                              cancelButtonTitle:@"Yes"
+                                              otherButtonTitles:@"No", nil];
+        [alert show];
+        [alert release];
         
     }
     else
@@ -363,7 +411,7 @@ bool startUpdatePriceList = FALSE;
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
 	
-    
+    [self downloadNotifications];
     [self setBadgeCount];
     
     

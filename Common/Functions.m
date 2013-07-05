@@ -474,7 +474,20 @@
 
 +(CGFloat)getScreenWidth{
     return [[UIScreen mainScreen] bounds].size.width;
-}/*
+}
+
++(void)downloadNotifications {
+    
+    NotificationParser *nParser = [[NotificationParser alloc] init];
+    
+    NSString *deviceToken = [NotificationSettings getDeviceToken];
+    
+    if(deviceToken != nil)
+        [nParser getNotifications:deviceToken];
+}
+
+
+/*
 #pragma mark sendInAppSMS
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
 -(void)sendInA/Users/admin/Documents/Google Drive/Projects/Rapnet/Rapnet/Common/Functions.mppSMS{

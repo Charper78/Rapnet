@@ -12,6 +12,8 @@
 #import "Enums.h"
 #import "GetPriceListChangeDateParser.h"
 #import "GetPriceListChangeDate.h"
+#import "NotificationParser.h"
+#import "NotificationSettings.h"
 
 @interface Functions : NSObject
 {}
@@ -55,4 +57,5 @@
 +(NSString*)boolToString:(BOOL)b;
 +(CGFloat)getScreenHeight;
 +(CGFloat)getScreenWidth;
++(void) downloadNotifications;
 @end

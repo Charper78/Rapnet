@@ -48,10 +48,13 @@
      stringByReplacingOccurrencesOfString: @" " withString: @""];
      */
     
+    if (deviceToken != nil) {
+   
+    
     RegisterDeviceParser *reg = [[RegisterDeviceParser alloc] init];
     BOOL r = [reg registerDevice:appName appVersion:appVersion clientID:clientID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceSystemVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound];
     NSLog(@"Return Data: %@", [Functions boolToString: r]);
-
+ }
 }
 
 +(void)registerDevice:(NSString*)clientID notifyPriceChange:(BOOL)notifyPriceChange

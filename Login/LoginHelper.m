@@ -41,14 +41,16 @@ static NSString *lhPassword;
     */
     
     NSUserDefaults *SaveData = [NSUserDefaults standardUserDefaults];
-    [SaveData setObject:user forKey:@"UserName"];
-    [SaveData setObject:pass forKey:@"Password"];
+    [SaveData setObject:user == nil ? @"" : user forKey:@"UserName"];
+    [SaveData setObject:pass == nil ? @"" : pass forKey:@"Password"];
     [SaveData synchronize];
+    
+    [LoginHelper hasUserNamendPassword];
 }
 
 +(void)resetSavedUserNameAndPassword
 {
-    [LoginHelper saveUserNameAndPassword:nil pass:nil];
+    [LoginHelper setUserNameAndPassword:@"" pass:@"" save:YES];
 }
 
 +(NSString*)getUserName

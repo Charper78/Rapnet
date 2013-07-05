@@ -34,6 +34,7 @@
     
     
     
+    
  CGRect ff = self.view.frame;
     ff.size.height = [Functions getScreenHeight];
     self.view.frame = ff;
@@ -43,7 +44,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    NotificationParser *parser = [[NotificationParser alloc] init];
+    [parser getNotifications:[NotificationSettings getDeviceToken]];
+    parser.delegate = self;
+    [parser release];
+    parser = nil;
 }
 
 id mySort = ^(Notification * obj1, Notification * obj2){
@@ -251,6 +256,11 @@ id mySort = ^(Notification * obj1, Notification * obj2){
         r.delegate = self;
         [r setReadMessagesRead:[NotificationSettings getDeviceToken] ids:ids];
     }
+}
+
+-(void)getNotificationsFinished:(NSMutableArray *)res total:(NSInteger)total{
+    [self loadData];
+    [tblNotifications reloadData];
 }
 
 /*-(BOOL)isRowVisible :  {

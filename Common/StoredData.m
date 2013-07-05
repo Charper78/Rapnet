@@ -52,7 +52,7 @@
 @synthesize workABtnGlobal;
 
 //@synthesize loginPriceFlag,loginRapnetFlag,selectedTabBfrLogin,priceAlertFlag,blackScreen,rapnetAlertFlag;
-@synthesize selectedTabBfrLogin,priceAlertFlag,blackScreen,rapnetAlertFlag;
+@synthesize selectedTabBfrLogin,priceAlertFlag,blackScreen,rapnetAlertFlag, newsAlertFlag;
 
 @synthesize arrShape,arrClarity,arrColors;
 @synthesize loginData,use10crts;
