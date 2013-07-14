@@ -345,7 +345,7 @@ bool startUpdatePriceList = FALSE;
         {
             //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setLoginTab) userInfo:nil repeats:NO];
             [self setLoginTab];
-            [self downloadPriceList];
+            //[self downloadPriceList];
             
         }
         else
@@ -395,15 +395,22 @@ bool startUpdatePriceList = FALSE;
     if([userInfo objectForKey:@"PriceListUpdate"])
     {
         
+        NSString *cancelButton = @"Update";
+        NSString *otherButton = @"Cancel";
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Price List"
-                                                        message:@"A new Price List is available, do you want to download it?"
+        if([Functions canView:L_Prices] == NO) {
+            alert = [NSString stringWithFormat:@"%@\nLogin to update", alert];
+            cancelButton = @"Login";
+        }
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Price List"
+                                                        message:alert
                                                        delegate:self
                                             
-                                              cancelButtonTitle:@"Yes"
-                                              otherButtonTitles:@"No", nil];
-        [alert show];
-        [alert release];
+                                              cancelButtonTitle:cancelButton
+                                              otherButtonTitles:otherButton, nil];
+        [message show];
+        [message release];
         
     }
     else
