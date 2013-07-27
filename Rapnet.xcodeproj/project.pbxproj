@@ -2440,8 +2440,8 @@
 				F48E05131761BB0D00DFD20F /* uuuViewController.xib */,
 			);
 			name = Push;
-			path = /Users/home/Documents/Projects/iOS/Rapnet/Push;
-			sourceTree = "<absolute>";
+			path = ../Push;
+			sourceTree = "<group>";
 		};
 		F4D6192316F34EA600AE3D19 /* CustomBadge */ = {
 			isa = PBXGroup;
@@ -2479,7 +2479,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
-				ORGANIZATIONNAME = "coolban@gmail.com";
+				ORGANIZATIONNAME = "appdev@diamonds.net";
 			};
 			buildConfigurationList = BB2F39C414D3EA8E0065CBF5 /* Build configuration list for PBXProject "Rapnet" */;
 			compatibilityVersion = "Xcode 3.2";
