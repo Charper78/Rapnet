@@ -87,12 +87,23 @@
         weeklyPrices = [[NSMutableString alloc] init];
         monthlyPrices = [[NSMutableString alloc] init];
         individual = [[NSMutableString alloc] init];
+        account  = [[NSMutableString alloc] init];
+        contact  = [[NSMutableString alloc] init];
 	}
     
 	
 }
 
-
+/*
+ <AccountID>47036</AccountID>
+ <ContactID>0</ContactID>
+ <Feat_SearchDiamonds>true</Feat_SearchDiamonds>
+ <Feat_MsgCenter>true</Feat_MsgCenter>
+ <Feat_MsgCenterSetting>true</Feat_MsgCenterSetting>
+ <Feat_ManageRapnetListing>true</Feat_ManageRapnetListing>
+ <Feat_ViewBuyRequest>true</Feat_ViewBuyRequest>
+ <Feat_AddBuyRequest>true</Feat_AddBuyRequest>
+ */
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
 	if ([currentElement isEqualToString:@"Auth_RapNet"]){
@@ -104,6 +115,12 @@
     }else if ([currentElement isEqualToString:@"Auth_Individual"]){
 		[individual  appendString:string];
     }
+    else if ([currentElement isEqualToString:@"AccountID"]){
+		[account  appendString:string];
+    }else if ([currentElement isEqualToString:@"ContactID"]){
+		[contact  appendString:string];
+    }
+
 
 }
 
@@ -115,8 +132,10 @@
         bool weeklyPricesRes = [[weeklyPrices lowercaseString] isEqualToString:@"true"] ? true : false;
         bool monthlyPricesRes = [[monthlyPrices lowercaseString] isEqualToString:@"true"] ? true : false;
         bool individualRes = [[individual lowercaseString] isEqualToString:@"true"] ? true : false;
+        int accountRes = [account intValue];
+        int contRes = [contact intValue];
         
-        userPermissions = [[GetUserPermissions alloc] initWithRapnet:rapnetRes weeklyPrices:weeklyPricesRes monthlyPrices:monthlyPricesRes individual:individualRes];
+        userPermissions = [[GetUserPermissions alloc] initWithRapnet:rapnetRes weeklyPrices:weeklyPricesRes monthlyPrices:monthlyPricesRes individual:individualRes accID:accountRes contID: contRes];
 	}
     else if([elementName isEqualToString:@"Permissions"])
     {
@@ -124,6 +143,8 @@
         ReleaseObject(weeklyPrices);
         ReleaseObject(monthlyPrices);
         ReleaseObject(individual);
+        ReleaseObject(account);
+        ReleaseObject(contact);
     }
 }
 
@@ -144,6 +165,9 @@
     ReleaseObject(weeklyPrices);
     ReleaseObject(monthlyPrices);
     ReleaseObject(individual);
+    ReleaseObject(account);
+    ReleaseObject(contact);
+
     
 	[xmlParser release];
 	[webData release];

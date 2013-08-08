@@ -16,6 +16,7 @@
 }
 
 +(void)registerDevice;
-+(void)registerDevice:(NSString*)clientID;
-+(void)registerDevice:(NSString*)clientID notifyPriceChange:(BOOL)notifyPriceChange;
++(void)registerDevice:(BOOL)notifyPriceChange;
+//+(void)registerDevice:(NSString*)clientID;
+//+(void)registerDevice:(NSString*)clientID notifyPriceChange:(BOOL)notifyPriceChange;
 @end

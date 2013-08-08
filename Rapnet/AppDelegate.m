@@ -237,12 +237,15 @@ bool startUpdatePriceList = FALSE;
 
 -(void)setBadgeCount
 {
-    NSInteger count = self.tabBarController.tabBar.items.count;
-    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    //NSInteger count = self.tabBarController.tabBar.items.count;
+    //NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    
+    /*
     if(badgeCount > 0)
         [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:[NSString stringWithFormat:@"%d", badgeCount]];
     else
         [[self.tabBarController.tabBar.items objectAtIndex:count - 1] setBadgeValue:nil];
+     */
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -394,7 +397,11 @@ bool startUpdatePriceList = FALSE;
 	
     if([userInfo objectForKey:@"PriceListUpdate"])
     {
-        
+        if([NotificationSettings getAutoUpdatePriceList] && [Functions canView:L_Prices]) {
+            [self downloadPriceList];
+        }
+        else
+        {
         NSString *cancelButton = @"Update";
         NSString *otherButton = @"Cancel";
         
@@ -411,12 +418,12 @@ bool startUpdatePriceList = FALSE;
                                               otherButtonTitles:otherButton, nil];
         [message show];
         [message release];
-        
+        }
     }
     else
         NSLog(@"Don't start price list update");
     
-    [UIApplication sharedApplication].applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
+    //[UIApplication sharedApplication].applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
 	
     [self downloadNotifications];
     [self setBadgeCount];

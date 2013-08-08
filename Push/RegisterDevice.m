@@ -10,18 +10,22 @@
 
 @implementation RegisterDevice
 
-+(void)registerDevice
+/*+(void)registerDevice
 {
     [RegisterDevice registerDevice:nil];
 }
+*/
 
-+(void)registerDevice:(NSString*)clientID
+//+(void)registerDevice:(NSString*)clientID
++(void)registerDevice
 {
     RegisterDevice *reg = [[RegisterDevice alloc] init];
-    [reg performSelectorInBackground:@selector(performRegistration:) withObject:clientID];
+   
+    [reg performSelectorInBackground:@selector(performRegistration)  withObject:nil];
 }
 
--(void)performRegistration : (NSString*)clientID
+//-(void)performRegistration : (NSString*)clientID
+-(void)performRegistration 
 {
     // Get Bundle Info for Remote Registration (handy if you have more than one app)
 	NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
@@ -40,7 +44,9 @@
 	NSString *deviceModel = dev.model;
 	NSString *deviceSystemVersion = dev.systemVersion;
 	NSString *deviceToken = [NotificationSettings getDeviceToken];
-    
+    NSString *clientID = [LoginHelper getUserName];
+    NSString *accountID = [NSString stringWithFormat:@"%d" ,[[Functions getUserPermissions] getAccountID]];
+    NSString *contactID = [NSString stringWithFormat:@"%d" ,[[Functions getUserPermissions] getContactID]];
 	// Prepare the Device Token for Registration (remove spaces and < >)
 	/*NSString *deviceToken = [[[[devToken description]
      stringByReplacingOccurrencesOfString:@"<"withString:@""]
@@ -52,12 +58,12 @@
    
     
     RegisterDeviceParser *reg = [[RegisterDeviceParser alloc] init];
-    BOOL r = [reg registerDevice:appName appVersion:appVersion clientID:clientID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceSystemVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound];
+    BOOL r = [reg registerDevice:appName appVersion:appVersion clientID:clientID accountID:accountID contactID:contactID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceSystemVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound];
     NSLog(@"Return Data: %@", [Functions boolToString: r]);
  }
 }
 
-+(void)registerDevice:(NSString*)clientID notifyPriceChange:(BOOL)notifyPriceChange
++(void)registerDevice:(BOOL)notifyPriceChange
 {
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
 	NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
@@ -75,6 +81,14 @@
 	NSString *deviceModel = dev.model;
 	NSString *deviceSystemVersion = dev.systemVersion;
 	NSString *deviceToken = [NotificationSettings getDeviceToken];
+    NSString *clientID = [LoginHelper getUserName];
+    NSString *accountID = [NSString stringWithFormat:@"%d" ,[[Functions getUserPermissions] getAccountID]];
+    NSString *contactID = [NSString stringWithFormat:@"%d" ,[[Functions getUserPermissions] getContactID]];
+
+    
+    if (deviceToken == NULL) {
+        return;
+    }
     
 	// Prepare the Device Token for Registration (remove spaces and < >)
 	/*NSString *deviceToken = [[[[devToken description]
@@ -84,7 +98,7 @@
      */
     
     RegisterDeviceParser *reg = [[RegisterDeviceParser alloc] init];
-    BOOL r = [reg registerDevice:appName appVersion:appVersion clientID:clientID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceSystemVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound notifyPriceChange:notifyPriceChange];
+    BOOL r = [reg registerDevice:appName appVersion:appVersion clientID:clientID accountID:accountID contactID:contactID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceSystemVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound notifyPriceChange:notifyPriceChange];
     NSLog(@"Return Data: %@", [Functions boolToString: r]);
 }
 @end

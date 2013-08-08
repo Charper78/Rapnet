@@ -11,14 +11,14 @@
 @implementation RegisterDeviceParser
 
 -(bool)registerDevice:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
-          deviceToken:(NSString*)deviceToken
+          accountID:(NSString*)accountID contactID:(NSString*)contactID deviceToken:(NSString*)deviceToken
           deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
             pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound
 {
     NSString *soapAction = @"RegisterDevice";
     NSString *soapMessage = @"";
     
-    soapMessage = [self getSoapMessage:soapAction appName:appName appVersion:appVersion clientID:clientID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound notifyPriceChange:nil];
+    soapMessage = [self getSoapMessage:soapAction appName:appName appVersion:appVersion clientID:clientID accountID:accountID contactID:contactID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound notifyPriceChange:nil];
     
     NSLog(@"%@", soapMessage);
     
@@ -26,14 +26,14 @@
 }
 
 -(bool)registerDevice:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
-            deviceToken:(NSString*)deviceToken 
+           accountID:(NSString*)accountID contactID:(NSString*)contactID deviceToken:(NSString*)deviceToken
           deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
 pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(BOOL)notifyPriceChange
 {
     NSString *soapAction = @"RegisterDevice";
     NSString *soapMessage = @"";
     
-    soapMessage = [self getSoapMessage:soapAction appName:appName appVersion:appVersion clientID:clientID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound notifyPriceChange:[Functions boolToString:notifyPriceChange]];
+    soapMessage = [self getSoapMessage:soapAction appName:appName appVersion:appVersion clientID:clientID accountID:accountID contactID:contactID deviceToken:deviceToken deviceModel:deviceModel deviceVersion:deviceVersion pushBadge:pushBadge pushAlert:pushAlert pushSound:pushSound notifyPriceChange:[Functions boolToString:notifyPriceChange]];
         
     NSLog(@"%@", soapMessage);
     
@@ -64,7 +64,7 @@ pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(BOOL)noti
 }
 
 -(NSString*)getSoapMessage:(NSString*)soapAction appName:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
-                                    deviceToken:(NSString*)deviceToken
+                 accountID:(NSString*)accountID contactID:(NSString*)contactID deviceToken:(NSString*)deviceToken
                                     deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
                                       pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(NSString*)notifyPriceChange
 {
@@ -72,19 +72,30 @@ pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(BOOL)noti
     
     NSString *client = @"";
     NSString *notifyPrice = @"";
+    NSString *account = @"";
+    NSString *contact = @"";
     
     if(notifyPriceChange != nil)
         notifyPrice = [NSString stringWithFormat:@"<notifyPriceChange>%@</notifyPriceChange> \n", notifyPriceChange];
     
-    if(clientID != nil)
+    if(clientID != nil && [clientID length] > 0)
         client = [NSString stringWithFormat:@"<clientID>%@</clientID> \n", clientID];
     
+    if(accountID != nil && [accountID length] > 0 && [accountID isEqualToString:@"0"] == false)
+        account = [NSString stringWithFormat:@"<accountID>%@</accountID> \n", accountID];
+
+    
+    if(contactID != nil && [contactID length] > 0 && [contactID isEqualToString:@"0"] == false)
+        contact = [NSString stringWithFormat:@"<contactID>%@</contactID> \n", contactID];
+
     NSString *soapMessage = [NSString stringWithFormat:
                              @"%@"
                              "<SOAP-ENV:Body> \n"
                              "<%@ xmlns=\"%@/\"> \n"
                              "<appName>%@</appName> \n"
                              "<appVersion>%@</appVersion> \n"
+                             "%@"
+                             "%@"
                              "%@"
                              "<deviceToken>%@</deviceToken> \n"
                              "<deviceModel>%@</deviceModel> \n"
@@ -93,11 +104,12 @@ pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(BOOL)noti
                              "<pushAlert>%@</pushAlert> \n"
                              "<pushSound>%@</pushSound> \n"
                              "%@"
+                             "<devicePlatform>iOS</devicePlatform> \n"
                              "</%@> \n"
                              "</SOAP-ENV:Body> \n"
                              "</SOAP-ENV:Envelope>"
                              ,SoapEnvelope, soapAction, PnsNamespace, appName, appVersion,
-                             client, deviceToken, deviceModel,
+                             client, account, contact, deviceToken, deviceModel,
                              deviceVersion, [Functions boolToString: pushBadge],
                              [Functions boolToString: pushAlert], [Functions boolToString: pushSound],
                              notifyPrice,

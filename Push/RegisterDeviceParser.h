@@ -28,14 +28,14 @@
 @property(nonatomic, retain) NSString *strTicket;
 
 -(bool)registerDevice:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
-          deviceToken:(NSString*)deviceToken
+            accountID:(NSString*)accountID contactID:(NSString*)contactID deviceToken:(NSString*)deviceToken
           deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
             pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound;
 
 -(bool)registerDevice:(NSString*)appName appVersion:(NSString*)appVersion clientID:(NSString*)clientID
- deviceToken:(NSString*)deviceToken 
-deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
-pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(BOOL)notifyPriceChange;
+            accountID:(NSString*)accountID contactID:(NSString*)contactID deviceToken:(NSString*)deviceToken
+          deviceModel:(NSString*)deviceModel deviceVersion:(NSString*)deviceVersion pushBadge:(BOOL)pushBadge
+            pushAlert:(BOOL)pushAlert pushSound:(BOOL)pushSound notifyPriceChange:(BOOL)notifyPriceChange;
 
 @end
 

@@ -274,6 +274,11 @@
     return [[[StoredData sharedData] loginData] isLogedIn];
 }
 
++(GetUserPermissions*)getUserPermissions
+{
+    return [[[StoredData sharedData] loginData] getPermissions];
+}
+
 +(void)loginAll
 {
     LoginData *ld = [[LoginData alloc] init];
@@ -478,6 +483,8 @@
 
 +(void)downloadNotifications {
     
+    return;
+    
     NotificationParser *nParser = [[NotificationParser alloc] init];
     
     NSString *deviceToken = [NotificationSettings getDeviceToken];
@@ -486,6 +493,20 @@
         [nParser getNotifications:deviceToken];
 }
 
++(BOOL)isSimulator {
+    
+#if !(TARGET_IPHONE_SIMULATOR)
+    
+    NSLog(@"Running on the Device");
+    return NO;
+    
+#else
+    NSLog(@"Running in Simulator");
+    return YES;
+    
+#endif
+
+}
 
 /*
 #pragma mark sendInAppSMS

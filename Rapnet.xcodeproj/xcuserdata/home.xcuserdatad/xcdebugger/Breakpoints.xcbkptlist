@@ -7,52 +7,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "NewsModule/Classes/LoginViewController.m"
-         timestampString = "394705803.553123"
+         filePath = "Login/GetUserPermissionsParser.m"
+         timestampString = "397679404.991596"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "884"
-         endingLineNumber = "884"
-         landmarkName = "-showLoadingScreen"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
+         landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "NewsModule/Classes/LoginViewController.m"
-         timestampString = "394705803.553123"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "913"
-         endingLineNumber = "913"
-         landmarkName = "-startUpdatePriceList:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "NewsModule/Classes/LoginViewController.m"
-         timestampString = "394705803.553123"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "893"
-         endingLineNumber = "893"
-         landmarkName = "-hideLoadingScreen"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Push/RegisterDeviceParser.m"
-         timestampString = "395512527.055322"
+         timestampString = "397684308.83105"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "56"
-         endingLineNumber = "56"
-         landmarkName = "-sendMessage:soapAction:"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "-getSoapMessage:appName:appVersion:clientID:accountID:contactID:deviceToken:deviceModel:deviceVersion:pushBadge:pushAlert:pushSound:notifyPriceChange:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

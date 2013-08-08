@@ -12,6 +12,11 @@
 @implementation LoginData
 //@synthesize newsTicket;
 
+-(GetUserPermissions*) getPermissions
+{
+    return userPermissions;
+    
+}
 -(void)loginAll
 {
     if([LoginHelper hasUserNamendPassword] == NO)

@@ -10,13 +10,15 @@
 
 @implementation GetUserPermissions
 
--(id)initWithRapnet:(bool)rapnet weeklyPrices:(bool)weeklyPrices monthlyPrices:(bool)monthlyPrices individual:(bool)individual
+-(id)initWithRapnet:(bool)rapnet weeklyPrices:(bool)weeklyPrices monthlyPrices:(bool)monthlyPrices individual:(bool)individual accID:(int)accID contID:(int)contID;
 {
     if (self = [super init]) {
         hasRapnet = rapnet;
         hasWeeklyPrices = weeklyPrices;
         hasMonthlyPrices = monthlyPrices;
         hasIndividual = individual;
+        accountID = accID;
+        contactID = contID;
     }
     
     return self;
@@ -27,4 +29,6 @@
 -(bool)getHasMonthlyPrices { return hasMonthlyPrices; }
 -(bool)getHasIndividual { return hasIndividual; }
 
+-(int)getAccountID { return accountID; }
+-(int)getContactID { return contactID; }
 @end

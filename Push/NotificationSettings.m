@@ -15,8 +15,8 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 	NSString *token = [prefs stringForKey:@"NotificationSettings_DeviceToken"];
     
-  //  if(token == nil)
-   //     token = @"c6aa4f184da5763a6194cd5acbe93a5136d1d66f6c70402645a6120cfdea1438";
+    if([Functions isSimulator])
+        token = @"c6aa4f184da5763a6194cd5acbe93a5136d1d66f6c70402645a6120cfdea1438";
     return [token copy];
 }
 
@@ -29,26 +29,36 @@
 
 +(BOOL)getAutoUpdatePriceList
 {
-    /*
+    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    if ([prefs objectForKey:@"NotificationSettings_AutoUpdatePriceList"] == NULL) {
+        [NotificationSettings setAutoUpdatePriceList:YES];
+    }
+    
 	BOOL autoUpdate = [prefs boolForKey:@"NotificationSettings_AutoUpdatePriceList"];
     return autoUpdate;
-     */
+     
     return YES;
 }
 
 +(void)setAutoUpdatePriceList:(BOOL)autoUpdate
 {
-    /*
+    
     NSUserDefaults *SaveData = [NSUserDefaults standardUserDefaults];
     [SaveData setBool:autoUpdate forKey:@"NotificationSettings_AutoUpdatePriceList"];
     [SaveData synchronize];
-     */
+     
 }
 
 +(BOOL)getNotifyPriceListChange
 {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    if ([prefs objectForKey:@"NotificationSettings_NotifyPriceListChange"] == NULL) {
+        [NotificationSettings setNotifyPriceListChange:YES];
+    }
+    
 	BOOL autoUpdate = [prefs boolForKey:@"NotificationSettings_NotifyPriceListChange"];
     return autoUpdate;
 }

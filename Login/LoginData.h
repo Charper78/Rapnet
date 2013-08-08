@@ -37,5 +37,5 @@
 -(void)loginAll;
 -(bool)isLogedIn;
 -(void)logout;
-
+-(GetUserPermissions*) getPermissions;
 @end

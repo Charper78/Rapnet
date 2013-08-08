@@ -24,6 +24,8 @@
     NSMutableString *weeklyPrices;
     NSMutableString *monthlyPrices;
     NSMutableString *individual;
+    NSMutableString *account;
+    NSMutableString *contact;
 }
 
 @property(nonatomic, retain) NSXMLParser *xmlParser;

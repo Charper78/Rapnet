@@ -14,6 +14,7 @@
 #import "GetPriceListChangeDate.h"
 #import "NotificationParser.h"
 #import "NotificationSettings.h"
+#import "GetUserPermissions.h"
 
 @interface Functions : NSObject
 {}
@@ -35,6 +36,7 @@
 +(bool)canView:(LoginTypes)l;
 +(NSString*)getTicket:(LoginTypes)l;
 +(bool)isLogedIn;
++(GetUserPermissions*)getUserPermissions;
 +(void)loginAll;
 +(void)logout;
 +(NSString*)getCurrentRegionCountryCode;
@@ -58,4 +60,5 @@
 +(CGFloat)getScreenHeight;
 +(CGFloat)getScreenWidth;
 +(void) downloadNotifications;
++(BOOL)isSimulator;
 @end

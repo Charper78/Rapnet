@@ -14,13 +14,18 @@
     bool hasWeeklyPrices;
     bool hasMonthlyPrices;
     bool hasIndividual;
+    
+    int accountID;
+    int contactID;
 }
 
--(id)initWithRapnet:(bool)rapnet weeklyPrices:(bool)weeklyPrices monthlyPrices:(bool)monthlyPrices individual:(bool)individual;
+-(id)initWithRapnet:(bool)rapnet weeklyPrices:(bool)weeklyPrices monthlyPrices:(bool)monthlyPrices individual:(bool)individual accID:(int)accID contID:(int)contID;
 
 -(bool)getHasRapnet;
 -(bool)getHasWeeklyPrices;
 -(bool)getHasMonthlyPrices;
 -(bool)getHasIndividual;
 
+-(int)getAccountID;
+-(int)getContactID;
 @end

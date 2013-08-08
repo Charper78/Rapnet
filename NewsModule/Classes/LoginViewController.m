@@ -78,7 +78,7 @@ bool performPriceListDownload;
     objUserName.text = [LoginHelper getUserName];
     objPassword.text = [LoginHelper getPassword];
     
-    //[self setNotifyPriceListChange:[NotificationSettings getNotifyPriceListChange]];
+    
     [self setAutoUpdatePriceListSelection:[NotificationSettings getAutoUpdatePriceList]];
     
 	if (objUserName.text.length > 0) 
@@ -172,9 +172,12 @@ bool performPriceListDownload;
 
 -(void)setBadgeCount
 {
+    return;
+    
     NSInteger badgeCount =  [UIApplication sharedApplication].applicationIconBadgeNumber;
     if (badgeCount > 0)
     {
+        /*
          badge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeCount]
                                                 withStringColor:[UIColor whiteColor]
                                                  withInsetColor:[UIColor redColor]
@@ -182,16 +185,14 @@ bool performPriceListDownload;
                                             withBadgeFrameColor:[UIColor whiteColor]
                                                       withScale:0.8
                                                     withShining:YES];
-        //float x = btnNotifications.frame.size.width - (badge.frame.size.width / 2);;
-        //float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
         float x = btnNotifications.frame.origin.x + btnNotifications.frame.size.width - badge.frame.size.width + 10;
         float y = btnNotifications.frame.origin.y - (badge.frame.size.height / 2);
         
         [badge setFrame:CGRectMake(x, y, badge.frame.size.width, badge.frame.size.height)];
-        //[badge setFrame:CGRectMake(self.view.frame.size.width/2-badge.frame.size.width/2+badge.frame.size.width/2, 110, badge.frame.size.width, badge.frame.size.height)];
+      
         [loginScroll addSubview:badge];
+        */
         
-        //[self.view addSubview:badge];
     }
     else if(badge != nil)
     {
@@ -249,8 +250,8 @@ bool performPriceListDownload;
         [Functions loginAll];
         
         if ([Functions isLogedIn]) {
-            [RegisterDevice registerDevice:objUserName.text];
-            
+            //[RegisterDevice registerDevice:objUserName.text];
+            [RegisterDevice registerDevice];
             alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogin Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [alert show];
             UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];
@@ -278,7 +279,8 @@ bool performPriceListDownload;
             [objUserName resignFirstResponder];
             [objPassword resignFirstResponder];
             
-            [RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+            //[RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
+            [RegisterDevice registerDevice: chkNotifyPriceListChange.selected];
             
             if(performPriceListDownload)
             {
@@ -466,7 +468,8 @@ bool performPriceListDownload;
     objUserName.text = @"";
     objPassword.text = @"";
     
-    [RegisterDevice registerDevice:@"" notifyPriceChange:NO];
+    //[RegisterDevice registerDevice:@"" notifyPriceChange:NO];
+    [RegisterDevice registerDevice:NO];
     [self setNotifyPriceListChange:FALSE];
     
     btnRememPwd.selected = NO;
@@ -555,8 +558,10 @@ bool performPriceListDownload;
 
 -(void)setAutoUpdatePriceListSelection:(BOOL)selected
 {
-    [sPriceListNotifications setOn:selected];
+    [sAutoUpdatePriceList setOn:selected];
+    [NotificationSettings setAutoUpdatePriceList:selected];
     
+    /*
     if (selected) {
         chkAutoUpdatePriceList.selected = YES;
 		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
@@ -572,6 +577,7 @@ bool performPriceListDownload;
         [NotificationSettings setAutoUpdatePriceList:NO];
 
     }
+     */
 }
 
 -(void)setNotifyPriceListChange:(BOOL)selected
@@ -582,7 +588,19 @@ bool performPriceListDownload;
         return;
     }
     
-    if (selected) {
+    [sPriceListNotifications setOn:selected];
+   // [NotificationSettings setAutoUpdatePriceList:selected];
+    
+    
+    //[RegisterDevice registerDevice: objUserName.text notifyPriceChange:selected];
+    [RegisterDevice registerDevice:selected];
+    [NotificationSettings setNotifyPriceListChange:selected];
+    
+    if (selected == NO) {
+        [self setAutoUpdatePriceListSelection:selected];
+    }
+    
+    /*if (selected) {
         chkNotifyPriceListChange.selected = YES;
 		UIImage *btnImage = [UIImage imageNamed:@"check.png"];
 		[chkNotifyPriceListChange setImage:btnImage forState:UIControlStateNormal];
@@ -599,14 +617,18 @@ bool performPriceListDownload;
         
         [self setAutoUpdatePriceListSelection: NO];
         chkAutoUpdatePriceList.enabled = false;
-    }
+    }*/
 }
 
--(IBAction)chkAutoUpdatePriceList_Click:(id)sender
+-(IBAction)sAutoUpdatePriceList_Click:(id)sender
 {
-    UIButton *aBtn = (UIButton *)sender;
-	BOOL isSel = aBtn.selected;
+    //UIButton *aBtn = (UIButton *)sender;
+	//BOOL isSel = aBtn.selected;
+    //[self setAutoUpdatePriceListSelection: isSel];
+    UISwitch *s = (UISwitch *)sender;
+    [self setAutoUpdatePriceListSelection:s.isOn];
     
+    /*
 	if (isSel == YES)
 	{
 		[self setAutoUpdatePriceListSelection: NO];
@@ -615,9 +637,10 @@ bool performPriceListDownload;
 	else
 	{
 		[self setAutoUpdatePriceListSelection: YES];
-	}
+	}*/
 
 }
+/*
 -(IBAction)chkNotifyPriceListChange_Click:(id)sender
 {
     UIButton *aBtn = (UIButton *)sender;
@@ -647,15 +670,16 @@ bool performPriceListDownload;
 	}
 
 }
+*/
 
 -(IBAction)sNotifyPriceListChange_Click:(id)sender
 {
     UISwitch *s = (UISwitch *)sender;
 	
-        [self setAutoUpdatePriceListSelection: s.isOn];
-        
-        [RegisterDevice registerDevice: objUserName.text notifyPriceChange:s.isOn];
-        [NotificationSettings setNotifyPriceListChange:s.isOn];
+        //[self setAutoUpdatePriceListSelection: s.isOn];
+    [self setNotifyPriceListChange:s.isOn];
+     //   [RegisterDevice registerDevice: objUserName.text notifyPriceChange:s.isOn];
+     //   [NotificationSettings setNotifyPriceListChange:s.isOn];
     
     
 }
@@ -712,7 +736,8 @@ bool performPriceListDownload;
 	objPassword.text = nil;
 	objForgotPw.text = nil;
     
-    [RegisterDevice registerDevice: @"" notifyPriceChange:NO];
+    //[RegisterDevice registerDevice: @"" notifyPriceChange:NO];
+    [RegisterDevice registerDevice:NO];
     //[NotificationSettings setNotifyPriceListChange:NO];
     [self setNotifyPriceListChange:NO];
     [NotificationsHelper removeAllNotifications];

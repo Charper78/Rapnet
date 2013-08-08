@@ -54,6 +54,7 @@
     IBOutlet UIView *vDownload;
     IBOutlet UISwitch *sUse10crts;
     IBOutlet UISwitch *sPriceListNotifications;
+    IBOutlet UISwitch *sAutoUpdatePriceList;
 	NSMutableArray *arrLogin,*arrPriceLogin;
 	NSMutableArray *arrForgotService;
 	LoginParser *loginParser;
@@ -103,7 +104,7 @@
 -(void)startUpdatePriceList:(BOOL)alertLogin;
 -(void)setBadgeCount;
 -(BOOL)checkAllWebSrviceEnded;
--(IBAction)chkAutoUpdatePriceList_Click:(id)sender;
+-(IBAction)sAutoUpdatePriceList_Click:(id)sender;
 -(IBAction)chkNotifyPriceListChange_Click:(id)sender;
 -(IBAction)sNotifyPriceListChange_Click:(id)sender;
 -(IBAction)dismissKeyboard:(id)sender;
