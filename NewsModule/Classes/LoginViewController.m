@@ -16,6 +16,7 @@
 @synthesize strSucceed;//, pvProgress;
 
 bool performPriceListDownload;
+UITextField *lastTextField = nil;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -251,7 +252,8 @@ bool performPriceListDownload;
         
         if ([Functions isLogedIn]) {
             //[RegisterDevice registerDevice:objUserName.text];
-            [RegisterDevice registerDevice];
+            //[RegisterDevice registerDevice];
+            [RegisterDevice registerDevice: sPriceListNotifications.isOn];
             alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogin Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [alert show];
             UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];
@@ -280,7 +282,7 @@ bool performPriceListDownload;
             [objPassword resignFirstResponder];
             
             //[RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
-            [RegisterDevice registerDevice: chkNotifyPriceListChange.selected];
+            [RegisterDevice registerDevice: sPriceListNotifications.isOn];
             
             if(performPriceListDownload)
             {
@@ -770,7 +772,7 @@ bool performPriceListDownload;
 	
 }
 
--(void)resignTextFields
+-(void)resignTextFields:(UITextField*)txt
 {
     [objUserName resignFirstResponder];
     [objPassword resignFirstResponder];
@@ -779,13 +781,15 @@ bool performPriceListDownload;
     //CGFloat height = 350;
     CGFloat height = [Functions getScreenHeight];
     
-	loginScroll.frame = CGRectMake(0,35,320,height);
+	//loginScroll.frame = CGRectMake(0,35,320,height);
+	if(txt == nil)
+        txt = lastTextField;
 	
-	
-	//if(textField.tag == 1)
+	if(txt != nil && txt.tag == 1)
 	{
-		loginScroll.contentSize = CGSizeMake(0,height);
-		[self setViewMovedUp:NO coordinateY:0];
+		//loginScroll.contentSize = CGSizeMake(0,height);
+        loginScroll.contentSize = CGSizeMake(0,height);
+		[self setViewMovedUp:NO coordinateY:100];
 		
 	}
 	
@@ -794,7 +798,7 @@ bool performPriceListDownload;
 }
 -(IBAction)dismissKeyboard:(id)sender
 {
-    [self resignTextFields];
+    [self resignTextFields:nil];
 }
 
 
@@ -818,7 +822,7 @@ bool performPriceListDownload;
 		
 	}
  */
-    [self resignTextFields];
+    [self resignTextFields:textField];
 	return YES;
 }
 
@@ -826,7 +830,7 @@ bool performPriceListDownload;
 #pragma mark textFieldDidBeginEditing
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	
+	lastTextField = textField;
 	if(textField.tag == 1)
 	{
 		if(isKeyBoardDown)

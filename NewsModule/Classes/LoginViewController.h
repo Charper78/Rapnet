@@ -42,8 +42,8 @@
 	IBOutlet UIButton *logOutBttn;
 	IBOutlet UIButton *logInBttn;
 	IBOutlet UIButton *btnNotifications;
-    IBOutlet UIButton *chkNotifyPriceListChange;
-    IBOutlet UIButton *chkAutoUpdatePriceList;
+    //IBOutlet UIButton *chkNotifyPriceListChange;
+    //IBOutlet UIButton *chkAutoUpdatePriceList;
     
 	IBOutlet UITextField *objUserName;
 	IBOutlet UITextField *objPassword;
