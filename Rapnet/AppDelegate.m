@@ -237,6 +237,7 @@ bool startUpdatePriceList = FALSE;
 
 -(void)setBadgeCount
 {
+    
     //NSInteger count = self.tabBarController.tabBar.items.count;
     //NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
     
@@ -347,6 +348,7 @@ bool startUpdatePriceList = FALSE;
         if([Functions canView:L_Prices] ==false)
         {
             //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setLoginTab) userInfo:nil repeats:NO];
+            [StoredData sharedData].autoDownloadPrices = true;
             [self setLoginTab];
             //[self downloadPriceList];
             
@@ -381,6 +383,8 @@ bool startUpdatePriceList = FALSE;
     //  [Functions writeToFile:curDic fileName:kNotificationsFile];
     
     //NSMutableDictionary *curDic1 =  [[NSMutableDictionary alloc] initWithDictionary: [Functions readFromFile:kNotificationsFile] copyItems:YES];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
 	NSLog(@"remote notification: %@",[userInfo description]);
 	NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
@@ -425,7 +429,7 @@ bool startUpdatePriceList = FALSE;
     
     //[UIApplication sharedApplication].applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
 	
-    [self downloadNotifications];
+    //[self downloadNotifications];
     [self setBadgeCount];
     
     

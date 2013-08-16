@@ -125,6 +125,7 @@
 @property (nonatomic)BOOL rapnetAlertFlag;
 @property (nonatomic)BOOL newsAlertFlag;
 @property (nonatomic)BOOL use10crts;
+@property (nonatomic)BOOL autoDownloadPrices;
 
 @property (nonatomic)NSInteger WAEditRowIndex;
 @property (nonatomic)NSInteger updateDiamondIndex;

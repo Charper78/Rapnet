@@ -194,8 +194,8 @@ id mySort = ^(Notification * obj1, Notification * obj2){
     }
     
     [self loadData];
-    [UIApplication sharedApplication].applicationIconBadgeNumber -= [ids count];
-    [(AppDelegate *)[[UIApplication sharedApplication] delegate] setBadgeCount];
+   // [UIApplication sharedApplication].applicationIconBadgeNumber -= [ids count];
+   // [(AppDelegate *)[[UIApplication sharedApplication] delegate] setBadgeCount];
     
     
 }
