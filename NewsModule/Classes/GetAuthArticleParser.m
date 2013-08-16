@@ -33,7 +33,7 @@
                              "</SOAP-ENV:Envelope>", SoapEnvelope, BaseUrl,[Functions getTicket:L_News],BaseUrl, articleId, SoftwareCode];
 	
     
-   // NSLog(@"%@", soapMessage);
+    NSLog(@"%@", soapMessage);
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/NewsWebService.asmx", BaseUrl]];               
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];             
@@ -79,7 +79,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	NSString *theXML = [[NSString alloc] initWithBytes: [webData mutableBytes] length:[webData length] encoding:NSUTF8StringEncoding];
-	//NSLog(@"%@",theXML);
+	NSLog(@"%@",theXML);
 	[theXML release];
 	[self connectToParser:webData];
 	[delegate webserviceCallFinished];	

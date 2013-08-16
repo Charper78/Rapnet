@@ -33,6 +33,7 @@
 #import "NotificationsViewController.h"
 #import "RegisterDevice.h"
 #import "NotificationsHelper.h"
+#import "MsgAlertView.h"
 
 @interface LoginViewController : UIViewController<getAuthTicketDelegate,getPasswordDelegate,PriceListDownloaderDelegate,CustomUpdatePriceListAlertDelegate, getPriceListDateDelegate, getPriceListDelegate,notificationsViewControllerDelegate, UITextFieldDelegate> {
 
@@ -79,6 +80,8 @@
     bool IsDownloadViewVisible;
     IBOutlet UIProgressView *pvProgress;
     CustomBadge *badge;
+    
+    MsgAlertView *alertView;
     
 }
 

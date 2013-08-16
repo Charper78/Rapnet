@@ -16,12 +16,19 @@
     id<MsgAlertViewDelegate> delegate;
     IBOutlet UIButton *OkBtn;	
     IBOutlet UILabel *msglbl;
+    IBOutlet UIView *vDefault;
+    IBOutlet UIView *loginFaild;
+    IBOutlet UIView *vReciveEmailShortly;
+    IBOutlet UIView *vInvalidEmail;
 }
 
 @property(nonatomic,retain)IBOutlet UILabel *msglbl;
 @property(nonatomic,retain)IBOutlet UIButton *OkBtn;
 @property(retain, nonatomic)id<MsgAlertViewDelegate> delegate;
-
+@property(nonatomic)BOOL hideBtn;
 -(IBAction)OkBtn:(id)sender;
 
+-(void)showLoginFaild;
+-(void)reciveEmailShortly;
+-(void)invalidEmail;
 @end

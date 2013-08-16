@@ -61,4 +61,28 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)showLoginFaild
+{
+    vReciveEmailShortly.hidden = YES;
+    vDefault.hidden = YES;
+    loginFaild.hidden = NO;
+    vInvalidEmail.hidden = YES;
+    
+}
+
+-(void)reciveEmailShortly
+{
+    vReciveEmailShortly.hidden = NO;
+    vDefault.hidden = YES;
+    loginFaild.hidden = YES;
+    vInvalidEmail.hidden = YES;
+}
+
+-(void)invalidEmail
+{
+    vReciveEmailShortly.hidden = YES;
+    vDefault.hidden = YES;
+    loginFaild.hidden = YES;
+    vInvalidEmail.hidden = NO;
+}
 @end

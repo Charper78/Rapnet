@@ -254,7 +254,7 @@ UITextField *lastTextField = nil;
             //[RegisterDevice registerDevice:objUserName.text];
             //[RegisterDevice registerDevice];
             [RegisterDevice registerDevice: sPriceListNotifications.isOn];
-            alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogin Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+            /*alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogin Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [alert show];
             UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];
             theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -274,7 +274,8 @@ UITextField *lastTextField = nil;
             [[alert layer] setContents:(id)theImage.CGImage];
             
             [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
-            
+            */
+            [self showMessage:@"Login Successful"];
             logOutBttn.hidden =NO;
             logInBttn.hidden=YES;
             
@@ -284,14 +285,15 @@ UITextField *lastTextField = nil;
             //[RegisterDevice registerDevice: objUserName.text notifyPriceChange:chkNotifyPriceListChange.selected];
             [RegisterDevice registerDevice: sPriceListNotifications.isOn];
             
-            if(performPriceListDownload)
+            if(performPriceListDownload || [StoredData sharedData].autoDownloadPrices)
             {
+                [StoredData sharedData].autoDownloadPrices = NO;
                 performPriceListDownload = NO;
                 [self startUpdatePriceList];
             }
             
         }else{
-            alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour login attempt was not successful." message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+            /*alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour login attempt was not successful." message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             [alert show];
             UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];
             theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -311,6 +313,15 @@ UITextField *lastTextField = nil;
             [[alert layer] setContents:(id)theImage.CGImage];
             
             [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(aTimer:)userInfo:nil repeats:NO];
+             */
+            //[self showMessage:@"Your login attempt was not successful. Please try again"];
+            
+            alertView=[[MsgAlertView alloc]initWithNibName:@"MsgAlertView" bundle:nil];
+            //alertView.delegate = self;
+            
+            [self.view addSubview:alertView.view];
+            [alertView showLoginFaild];
+            [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
         }
 	}
 	else
@@ -369,7 +380,7 @@ UITextField *lastTextField = nil;
 	
 	if([self.strSucceed isEqual:@"true"])
 	{
-		alert = [[UIAlertView alloc] initWithTitle:@"\n\nYou will receive an email shortly with your password." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		/*alert = [[UIAlertView alloc] initWithTitle:@"\n\nYou will receive an email shortly with your password." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
 		[alert show];
 		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
 		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -389,9 +400,16 @@ UITextField *lastTextField = nil;
 		[[alert layer] setContents:(id)theImage.CGImage];
 		
 		[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+         */
+        
+        alertView=[[MsgAlertView alloc]initWithNibName:@"MsgAlertView" bundle:nil];
+        [self.view addSubview:alertView.view];
+        [alertView reciveEmailShortly];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+
 	}
 	else {
-		alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour email id is invaild" message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+		/*alert = [[UIAlertView alloc] initWithTitle:@"\n\nYour email id is invaild" message:@"Please try again" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
 		[alert show];
 		UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
 		theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -411,13 +429,20 @@ UITextField *lastTextField = nil;
 		[[alert layer] setContents:(id)theImage.CGImage];
 		
 		[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(aTimer:)userInfo:nil repeats:NO];
+         */
+        alertView=[[MsgAlertView alloc]initWithNibName:@"MsgAlertView" bundle:nil];
+        [self.view addSubview:alertView.view];
+        [alertView invalidEmail];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
 	}
 }
 
 
 #pragma mark timer
 - (void)theTimer:(NSTimer*)timer 
-{ 
+{
+    if(alertView != nil)
+        [alertView.view removeFromSuperview];
 	[alert dismissWithClickedButtonIndex:0 animated:YES];
 	//[[self navigationController] popViewControllerAnimated:YES];
     
@@ -478,7 +503,7 @@ UITextField *lastTextField = nil;
     UIImage *btnImage = [UIImage imageNamed:@"uncheck.png"];
     [btnRememPwd setImage:btnImage forState:UIControlStateNormal];
     
-    alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogout Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+   /* alert = [[UIAlertView alloc] initWithTitle:@"\n\nLogout Successful" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
 	[alert show];
 	UIImage *theImage = [UIImage imageNamed:@"alertBG.png"];    
 	theImage = [theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0];
@@ -496,8 +521,26 @@ UITextField *lastTextField = nil;
 		}
 	}
 	[[alert layer] setContents:(id)theImage.CGImage];
-	
-	[NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+	*/
+    
+    	
+    
+   /* */
+    [self showMessage:@"Logout Successful"];
+}
+-(void)showMessage:(NSString*)msg
+{
+    
+    alertView=[[MsgAlertView alloc]initWithNibName:@"MsgAlertView" bundle:nil];
+    //alertView.delegate = self;
+    
+    [self.view addSubview:alertView.view];
+    alertView.msglbl.text = msg;
+    alertView.OkBtn.hidden = YES;
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target: self selector:@selector(theTimer:)userInfo:nil repeats:NO];
+
 }
 
 -(IBAction)sendBtn
