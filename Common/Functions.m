@@ -21,12 +21,12 @@
     //KZ - Kazakhstan, KG - Kirgistan, LV - Latvia, LB - Lebanon, LT - Lithuania, MK - Macedonia, MD - Moldova
     //MN - Mongolia, MA - Morocco, NL - Netherlands, NO - Norway, PA - Panama, PY - Paraguay, PE - Peru, PL - Poland
     //PT - Portugal, RO - Romania, RU - Russia, RS - Serbia, SK - Slovakia, SI - Slovenia, SE - Sweden, TN - Tunisia
-    //TR - Turkey, UA - Ukraine, UY - Uruguay, UZ - Uzbekistan, VE - Venezuela, VN - Vietnam
+    //TR - Turkey, UA - Ukraine, UY - Uruguay, UZ - Uzbekistan, VE - Venezuela, VN - Vietnam, ZA - South Africa
     NSArray *eurCounries = @[@"BE", @"FR", @"CH", @"IT", @"ES", @"DE", @"AL", @"AD", @"AR", @"AM", @"AU", @"AT",
     @"AZ", @"BY", @"BO", @"BA", @"BR", @"BG", @"CM", @"CL", @"CO", @"CR", @"CU", @"CY", @"DK", @"DM", @"EE", @"FI",
     @"GE", @"GR", @"GL", @"HN", @"HU", @"IS", @"ID", @"KZ", @"KG", @"LV", @"LB", @"LT", @"MK", @"MD", @"MN", @"MA",
     @"NL", @"NO", @"PA", @"PY", @"PE", @"PL", @"PT", @"RO", @"RU", @"RS", @"SK", @"SI", @"SE", @"TN", @"TR", @"UA",
-    @"UY", @"UZ", @"VE", @"VN"];
+    @"UY", @"UZ", @"VE", @"VN", @"ZA"];
     return eurCounries;
 }
 

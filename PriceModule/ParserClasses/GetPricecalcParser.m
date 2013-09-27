@@ -105,7 +105,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	NSString *theXML = [[NSString alloc] initWithBytes: [webData mutableBytes] length:[webData length] encoding:NSUTF8StringEncoding];
-    //NSLog(@"XML  = %@",theXML);
+    NSLog(@"XML  = %@",theXML);
 	[theXML release];
 	[self connectToParser:webData];
 		

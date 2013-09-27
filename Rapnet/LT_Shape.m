@@ -113,7 +113,7 @@ static NSString * const kTableName = @"LT_Shapes";
     lt = [LT_Shape  getLT:@"26" desc:@"Lozenge" order:4];
     [arr addObject:lt];   
     
-    lt = [LT_Shape  getLT:@"29" desc:@"Pent" order:1];
+    lt = [LT_Shape  getLT:@"27" desc:@"Pent" order:1];
     [arr addObject:lt];
     
     lt = [LT_Shape  getLT:@"28" desc:@"Rose" order:2];

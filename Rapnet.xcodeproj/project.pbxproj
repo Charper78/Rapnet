@@ -3087,8 +3087,8 @@
 					armv6,
 					armv7,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rapaport USA Inc. (63DFZ7LWFT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rapaport USA Inc. (63DFZ7LWFT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3098,8 +3098,8 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "072CEE44-9850-4B5B-B113-501B65DD5ED8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "072CEE44-9850-4B5B-B113-501B65DD5ED8";
+				PROVISIONING_PROFILE = "C1F27483-4751-4462-A22C-BC64CDE2C2DB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3139,8 +3139,8 @@
 					armv6,
 					armv7,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rapaport USA Inc. (63DFZ7LWFT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rapaport USA Inc. (63DFZ7LWFT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3156,8 +3156,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "072CEE44-9850-4B5B-B113-501B65DD5ED8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "072CEE44-9850-4B5B-B113-501B65DD5ED8";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3170,8 +3170,8 @@
 					armv6,
 					armv7,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sherri  Hendriks  (BSR299XSGH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rapaport USA Inc. (63DFZ7LWFT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rapaport USA Inc. (63DFZ7LWFT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3181,8 +3181,8 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "072CEE44-9850-4B5B-B113-501B65DD5ED8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "072CEE44-9850-4B5B-B113-501B65DD5ED8";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
