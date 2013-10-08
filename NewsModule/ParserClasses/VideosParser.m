@@ -82,7 +82,7 @@
 {
 	
 	NSString *theXML = [[NSString alloc] initWithBytes: [webData mutableBytes] length:[webData length] encoding:NSUTF8StringEncoding];
-	//NSLog(@"Video XML Response%@",theXML);
+	NSLog(@"Video XML Response%@",theXML);
 	[theXML release];
 	[self connectToParser:webData];
 	

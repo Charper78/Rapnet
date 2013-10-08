@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9045AB18-D184-4950-BF35-7642A43C349A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Rapnet</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1AF0E0FC-CF86-4525-AA62-2461181E2C08</key>
+		<string>https://github.com/Charper78/Rapnet.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Rapnet.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1AF0E0FC-CF86-4525-AA62-2461181E2C08</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Charper78/Rapnet.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1AF0E0FC-CF86-4525-AA62-2461181E2C08</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1AF0E0FC-CF86-4525-AA62-2461181E2C08</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Rapnet</string>
+		</dict>
+	</array>
+</dict>
+</plist>
